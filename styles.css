@@ -427,6 +427,8 @@ h4 {
   border: 1px solid black;
   overflow: hidden;  
   transition: flex 0.5s ease;
+  scroll-margin-top: 100px;
+
 
 
 }
@@ -442,6 +444,7 @@ h4 {
   border: 1px solid black;
   overflow: hidden; 
   transition: flex 0.5s ease;
+  scroll-margin-top: 30px;
 
 }
 

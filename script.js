@@ -398,7 +398,7 @@ function openTask(id) {
           // Scroll to the newly opened task
           task.scrollIntoView({
               behavior: "smooth", // Smooth scrolling animation
-              block: "center",    // Scroll the task to the center of the viewport
+              block: "start",    // Scroll the task to the center of the viewport
           });
 
       } else {
