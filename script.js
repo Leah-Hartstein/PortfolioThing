@@ -5,6 +5,12 @@ const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
 const task = document.getElementById("1");
+
+var mapCanvas = document.getElementById("map");
+var ctx = mapCanvas.getContext("2d");
+
+
+
 // just giving the one task you can open an ID but this would be programatically generated
 // a la advanced web dev
 
@@ -38,6 +44,7 @@ function openMap(){
     
             roadMap.classList.remove("roadMap");
             roadMap.classList.add("roadMapOpen");
+            drawMap();
     
         } else {
             chosenTask.classList.remove("chosenTaskHidden");
@@ -45,6 +52,7 @@ function openMap(){
 
             roadMap.classList.remove("roadMapOpen");
             roadMap.classList.add("roadMap");
+            closeMap();
             }
 }
 
@@ -65,21 +73,18 @@ function openTask(){
 // heres where all the map stuff is handled - I think you'd read all the tasks from localstorage, then run a for loop placing each task in clusters 
 // according to if they're ideation/drafting/etc. 
 
-var c = document.getElementById("map");
-var ctx = c.getContext("2d");
+// just whacking some bullshit on the frame atm
 
-// Get the canvas width and height
-var canvasWidth = c.width;
-var canvasHeight = c.height;
+function drawMap(){
 
-// Use percentages or ratios to position elements
-var x1 = canvasWidth * 0.55;  // 50% of the width
-var y1 = canvasHeight * 0.10;  // 4% of the height
+ctx.beginPath();
+ctx.arc(95,50,40,0,2*Math.PI);
 
-var x2 = canvasWidth * 0.7;  // 30% of the width
-var y2 = canvasHeight * 0.2;  // 30% of the height
-
-// Draw the line using relative positions
-ctx.moveTo(x1, y1);
-ctx.lineTo(x2, y2);
 ctx.stroke();
+}
+
+// and u can call this one whenever u need to clean the thing off :)
+
+function closeMap(){
+ctx.clearRect(0, 0, mapCanvas.width, mapCanvas.height);
+}
