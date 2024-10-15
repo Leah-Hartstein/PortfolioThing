@@ -4,6 +4,10 @@ const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
+const task = document.getElementById("1");
+// just giving the one task you can open an ID but this would be programatically generated
+// a la advanced web dev
+
 function expandList() {
     // Toggle the class for myTasks section
     if (myTasksSection.classList.contains("myTasks")) {
@@ -44,6 +48,19 @@ function openMap(){
             }
 }
 
+
+function openTask(){
+        // Toggle the class for myTasks section
+        if (task.classList.contains("listTask")) {
+            task.classList.remove("listTask");
+            task.classList.add("listTaskOpen");
+
+        } else {
+            task.classList.remove("listTaskOpen");
+            task.classList.add("listTask");
+        }
+
+}
 
 // heres where all the map stuff is handled - I think you'd read all the tasks from localstorage, then run a for loop placing each task in clusters 
 // according to if they're ideation/drafting/etc. 
