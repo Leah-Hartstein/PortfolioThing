@@ -7,7 +7,7 @@ const roadMap = document.querySelector(".roadMap");
 const taskList = document.querySelector(".taskList");
 
 
-const task = document.getElementById("1");
+// const task = document.getElementById("1");
 //all thats missing from opening tasks from the list here atm is a reference to the 
 // i'ds that are generated when a new task is added
 
@@ -222,18 +222,7 @@ function openMap(){
 }
 
 
-function openTask(id){
-        // Toggle the class for myTasks section
-        if (task.classList.contains("listTask")) {
-            task.classList.remove("listTask");
-            task.classList.add("listTaskOpen");
 
-        } else {
-            task.classList.remove("listTaskOpen");
-            task.classList.add("listTask");
-        }
-
-}
 
 // heres where all the map stuff is handled - I think you'd read all the tasks from localstorage, then run a for loop placing each task in clusters 
 // according to if they're ideation/drafting/etc. 
@@ -268,6 +257,7 @@ function displayTasks() {
   // Check if localTasks is not empty or null
   if (localTasks) {
       localTasks.forEach((task) => {
+        
           // Create a task item for the DOM
           let item = document.createElement("div");
           item.className = "listTask";
@@ -277,6 +267,9 @@ function displayTasks() {
                   <strong>${task.taskName}</strong><br>
                   <em>${task.taskSection}</em>
                   <p>${task.taskDescription}</p>
+                  <p>${task.taskDescription}</p>
+                  <p>${task.taskDescription}</p>
+                  
               </p>
           `;
 
@@ -382,4 +375,45 @@ function addTask(taskName, taskSection, taskStage, taskDescription, taskImage, t
     displayTasks();
 }
 
+function openTask(id) {
+  // Find the task element using data-id instead of id
+  var alreadyOpenTask = document.querySelector(".listTaskOpen");
+
+  // Find the task element by its data-id
+  var task = document.querySelector(`[data-id="${id}"]`);
+
+  // Check if the task element exists to avoid the null error
+  if (task) {
+      // Toggle the class for the task
+      if (task.classList.contains("listTask")) {
+          task.classList.remove("listTask");
+          task.classList.add("listTaskOpen");
+
+          // Close any other tasks that are open
+          if (alreadyOpenTask) {
+              alreadyOpenTask.classList.remove("listTaskOpen");
+              alreadyOpenTask.classList.add("listTask");
+          }
+
+          // Scroll to the newly opened task
+          task.scrollIntoView({
+              behavior: "smooth", // Smooth scrolling animation
+              block: "center",    // Scroll the task to the center of the viewport
+          });
+
+      } else {
+          task.classList.remove("listTaskOpen");
+          task.classList.add("listTask");
+      }
+  } else {
+      console.error("Task element not found for id:", id);
+  }
+}
+
+
+// function closeOtherTasks(){
+
+// }
+
 addTask ("Draft Case Study 1", "Case Study 1", "Drafting", "Draft that shit","","3");
+
