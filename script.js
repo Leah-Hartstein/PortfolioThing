@@ -376,29 +376,35 @@ function addTask(taskName, taskSection, taskStage, taskDescription, taskImage, t
 }
 
 function openTask(id) {
-  // Find the task element using data-id instead of id
+  // Find the task element using data-id
   var alreadyOpenTask = document.querySelector(".listTaskOpen");
 
   // Find the task element by its data-id
   var task = document.querySelector(`[data-id="${id}"]`);
 
-  // Check if the task element exists to avoid the null error
-  if (task) {
+  // Reference to the scrollable container (replace with your actual div's ID or class)
+  var scrollContainer = document.querySelector(".taskList");
+
+  // Check if the scrollContainer and task element exist
+  if (scrollContainer && task) {
       // Toggle the class for the task
       if (task.classList.contains("listTask")) {
           task.classList.remove("listTask");
           task.classList.add("listTaskOpen");
 
-          // Close any other tasks that are open
+          // Close any already open tasks
           if (alreadyOpenTask) {
               alreadyOpenTask.classList.remove("listTaskOpen");
               alreadyOpenTask.classList.add("listTask");
           }
 
-          // Scroll to the newly opened task
-          task.scrollIntoView({
-              behavior: "smooth", // Smooth scrolling animation
-              block: "start",    // Scroll the task to the center of the viewport
+          // Calculate the task's position relative to the container
+          const taskPosition = task.offsetTop - scrollContainer.offsetTop;
+
+          // Set the scroll position with a 10px offset
+          scrollContainer.scrollTo({
+              top: taskPosition - 8, // Subtract 10 for the offset
+              behavior: "smooth" // Smooth scrolling
           });
 
       } else {
@@ -406,9 +412,15 @@ function openTask(id) {
           task.classList.add("listTask");
       }
   } else {
-      console.error("Task element not found for id:", id);
+      if (!scrollContainer) {
+          console.error("Scrollable container not found");
+      }
+      if (!task) {
+          console.error("Task element not found for id:", id);
+      }
   }
 }
+
 
 
 // function closeOtherTasks(){
