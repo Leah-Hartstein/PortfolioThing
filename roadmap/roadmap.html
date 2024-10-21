@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Used external fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="roadmap.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div classs="logo">PortfolioThing.</div>
+        <nav class="nav">
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">My Tasks</a></li>
+            <li><a href="#">My Portfolio</a></li>
+            <li><a href="#">Guides</a></li>
+          </ul>
+        </nav>
+      </header>
+
+  <div class="layout">
+
+    <!-- TimeLine Section -->
+    <div class="TimeLine">
+        <h4>Roadmap</h4>
+
+      <div class="timeline-container">
+        <div class="milestones">
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Prepare Moodboard</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Draft Case Study 1</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Draft Case Study 2</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Draft Bio and About-me Page</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Finalize Case Studies</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <div class="milestone">
+            <div class="text"><div class="align-bottom">Review and Peer-feedback Case Studies</div></div>
+            <div class="point"></div>
+            <div class="line"></div>
+          </div>
+          <!-- Can add more milestones as needed -->
+          
+          <div class="timeline"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TaskList Section -->
+    <div class="TaskList">
+      <h1 class="intro">Portfolio Task List</h1>
+
+      <div class="box">
+        <div class="cards">
+          <!-- Existing Task Cards -->
+          <!-- Task Card 1 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Define the Type of Job You Want</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Identify roles like UI Designer, UX Researcher, or Product Designer.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 2 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Identify Key Skills to Highlight</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Focus on skills like wireframing, user testing, and visual design.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 3 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Select Projects for the Portfolio</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Choose 3-5 projects showcasing your skills, including academic, freelance, or personal projects.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 4 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Ensure Projects Demonstrate Design Thinking</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Highlight your design process and problem-solving abilities in each project.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 5 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Write Case Study Outlines</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Include problem statements, research insights, design process, outcomes, and reflections.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 6 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Organize Visual Assets</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Gather and create consistent, high-quality images of your design work.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 7 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Design Your Portfolio Structure</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Plan the layout, navigation, and choose a platform like a personal website, Behance, or Dribbble.</p>
+            </div>
+          </div>
+
+          <!-- Task Card 8 -->
+          <div class="card">
+            <div class="card__header">
+              <input type="checkbox" class="task-checkbox">
+              <h2 class="card__title">Promote Your Portfolio</h2>
+            </div>
+            <div class="schedules">
+              <p class="task-description">Share your portfolio on professional networks and social media.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="new-card">+ Add New Task</button>
+
+        <!-- New Task Form -->
+        <form id="new-task-form" class="new-task-form">
+          <h3>Add New Task</h3>
+          <label for="task-title">Title:</label>
+          <input type="text" id="task-title" name="task-title" required>
+
+          <label for="task-description">Description:</label>
+          <textarea id="task-description" name="task-description" required></textarea>
+
+          <label for="task-priority">Priority Level:</label>
+          <select id="task-priority" name="task-priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+          </select>
+
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="roadmap.js"></script>
+</body>
+</html>

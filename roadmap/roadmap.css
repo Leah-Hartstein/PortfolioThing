@@ -1,0 +1,445 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    background-color: #f0f0f0;
+    color: #222;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font: bold 14px/1.4 'Open Sans', Arial, sans-serif; /* Applying the Open Sans font with bold style */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #000;
+  border: 2px solid #000;
+  padding: 5px 15px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font: bold 14px/1.4 'Open Sans', Arial, sans-serif; /* Applying Open Sans to the logo as well */
+}
+
+.nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 15px; /* Space between each nav item */
+}
+
+.nav ul li {
+  display: inline-block;
+  position: relative; /* Make sure the links have relative positioning for the line hover effect */
+}
+
+.nav ul li a {
+  font-weight: 600; /* Making the font bold */
+  color: #555;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  position: relative; /* Required for the hover line effect */
+  transition: color 0.3s ease;
+  font: bold 14px/1.4 'Open Sans', Arial, sans-serif; /* Applying Open Sans to nav items */
+}
+
+.nav ul li a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #333; /* Line color */
+  transition: width 0.3s ease, left 0.3s ease;
+  width: 0;
+}
+
+.nav ul li a:hover {
+  color: #000; /* Change link text color on hover */
+}
+
+.nav ul li a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.nav ul li a.sign-up:hover {
+  background-color: #000;
+  color: #fff;
+}  
+
+  /* Layout container */
+  .layout {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+      "TimeLine TaskList";
+    grid-template-columns: 70% 30%;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .TimeLine {
+    grid-area: TimeLine;
+    background-color: #433c4c;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  .TaskList {
+    grid-area: TaskList;
+  }
+
+  /* Timeline Styles */
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-container .milestones {
+    display: flex;
+    flex-wrap: nowrap; /* No line wrapping */
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .milestones .timeline {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .milestone {
+    width: 120px;
+    height: 220px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .milestone .text {
+    display: table;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    color: #D3D0D8;
+    width: 100%;
+    height: 100px;
+    transition: 0.15s ease-out;
+  }
+
+  .milestone .text .align-bottom {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+
+  .milestone .point {
+    transform: scale(0);
+    width: 30px;
+    height: 30px;
+    background: rgba(59, 46, 53, 0.5);
+    border: none;
+    border-radius: 30px;
+    margin: 10px auto 0 auto;
+    position: relative;
+    transition: 0.15s ease-in;
+  }
+
+  .milestone .point::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(35, 40, 60);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: rgb(35, 40, 60);
+    border-radius: 30px;
+  }
+
+  .milestone .line {
+    margin: 0 auto;
+    width: 2px;
+    height: 100px;
+    background: rgb(35, 40, 60);
+    position: relative;
+    bottom: 0;
+    transition: 0.15s ease-out;
+  }
+
+  .milestone .line::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background: #cbcbcd;
+    border: 2px solid #745a67;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 6px);
+    z-index: 10;
+  }
+
+  .milestone:hover .text {
+    height: 80px;
+  }
+
+  .milestone:hover .point {
+    transform: scale(1);
+    transform-origin: 50% 50%;
+  }
+
+  .milestone:hover .line {
+    height: 120px;
+  }
+
+  /* Task List Styles */
+  /* Intro Header */
+  .intro {
+    width: 80%;
+    max-width: 30rem;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    margin: 0 auto 1em;
+    padding-top: .5em;
+    text-align: center;
+    text-transform: capitalize;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Container Box */
+  .box {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  /* Cards Container */
+  .cards {
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  /* Card */
+  .card {
+    position: relative;
+    width: 100%;
+    margin-bottom: -1rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    color: #fff;
+    transition: all .5s;
+    background-image: linear-gradient(to right,
+      transparent calc(1.5rem - 3px),
+      #fff calc(1.5rem - 3px),
+      #fff calc(1.5rem + 3px),
+      transparent calc(1.5rem + 3px)
+    );
+  }
+
+  /* Assign background colors */
+  .card:nth-child(5n+1) { background-color: #4c6591; }
+  .card:nth-child(5n+2) { background-color: #5a4b56; }
+  .card:nth-child(5n+3) { background-color: #7a7362; }
+  .card:nth-child(5n+4) { background-color: #50555b; }
+  .card:nth-child(5n+5) { background-color: #807b93; }
+
+  /* Card Header */
+  .card__header {
+    display: flex;
+    align-items: center;
+    margin: 0 1.5rem .25em 3rem;
+    padding-top: 1rem;
+    cursor: pointer;
+  }
+
+  .task-checkbox {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+
+  .card__title {
+    background-color: inherit;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; 
+    font-weight: 700;
+    text-transform: capitalize;
+    transition: transform .3s;
+  }
+
+  .task-description {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 0.8rem; 
+    color: #f2f2f2; 
+    line-height: 1.6; 
+    margin-bottom: 0.5rem;
+  }
+
+  .card__title::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: -1.5rem;
+    z-index: 1;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: inherit;
+    box-shadow: inset 0 0 0 calc(1rem / 3.5);
+    transition: all .5s;
+  }
+
+  .card.is-active .card__title::before {
+    box-shadow: inset 0 0 0 1rem;
+  }
+
+  /* Task Details */
+  .schedules {
+    background-color: inherit;
+    background-image: inherit;
+    padding-left: 3rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+    overflow: hidden;
+    transition: max-height .3s ease, opacity .3s ease;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .card.is-active .schedules {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  /* Completed Task */
+  .card.completed .card__title {
+    text-decoration: line-through;
+    color: #ddd;
+  }
+
+  .card.completed .card__title::before {
+    background-color: #ddd;
+    box-shadow: inset 0 0 0 1rem;
+  }
+
+  .card.completed .task-checkbox {
+    pointer-events: none;
+  }
+
+  /* Add New Task Button */
+  .new-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 3rem;
+    margin-top: -1rem;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #999;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .new-card:hover {
+    background-color: #dbdbdb;
+  }
+
+  /* New Task Form */
+  .new-task-form {
+    background-color: #fff;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+    display: none; /* Initially hidden */
+  }
+
+  .new-task-form h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .new-task-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .new-task-form input[type="text"],
+  .new-task-form textarea,
+  .new-task-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+  }
+
+  .new-task-form button[type="submit"] {
+    background-color: #3A5B94;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .new-task-form button[type="submit"]:hover {
+    background-color: #2a4470;
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 768px) {
+    .layout {
+      grid-template-areas:
+        "TimeLine"
+        "TaskList";
+      grid-template-columns: 1fr;
+    }
+
+    .TimeLine, .TaskList {
+      width: 100%;
+    }
+  }
