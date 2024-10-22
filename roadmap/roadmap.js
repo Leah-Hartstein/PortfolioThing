@@ -79,3 +79,30 @@ let card = {};
       newTaskForm.style.display = 'none';
       card.newButton.style.display = 'block';
     });
+
+// Handle the feedback expansion 
+$(".is-expandable").on('click', function(){
+  const $that = $(this);
+  const $content = $that.find(".content");
+  const $contentSpan = $that.find(".content span");
+
+  if(!$that.hasClass("is-expanded")) {
+      gsap.set($content, {height:"auto"});
+      gsap.from($content, {height: 0, duration: 0.4, ease: "expo.out"});
+      $contentSpan.fadeIn('fast', function() {
+          $(this).css("display", "inline-block");
+      });
+      $that.addClass("is-expanded");
+  } else {
+      gsap.to($content, {height: 0, duration: 0.4, delay: 0.09, ease: "expo.out"});
+      $contentSpan.fadeOut('fast');
+      $that.removeClass("is-expanded");
+  }
+})
+
+document.getElementById('share-feedback').addEventListener('click', function() {
+  var link = document.getElementById('feedback-link');
+  link.style.display = 'block';
+  navigator.clipboard.writeText(link.textContent);
+  alert('Link copied to clipboard: ' + link.textContent);
+});

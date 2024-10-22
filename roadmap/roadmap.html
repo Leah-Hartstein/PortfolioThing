@@ -11,7 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-  
+  <!-- for feedback section -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+
   <!-- Link to CSS -->
   <link rel="stylesheet" href="roadmap.css">
 
@@ -36,7 +39,7 @@
     <!-- TimeLine Section -->
 
     <div class="TimeLine">
-        <h4>Roadmap</h4>
+        <h2>Roadmap</h2>
 
       <div class="timeline-container">
         <div class="milestones">
@@ -81,7 +84,43 @@
     <div class="Feedback">
       
       <h2>Feedback Hub</h2>
-      <p>Welcome to the Feedback Hub! Share your thoughts and suggestions here.</p>
+
+      <ul class="feedback">
+
+        <li class="feedback-milestone no-flicker is-completed feedback-start">
+            <div class="feedback-action">
+                <h2 class="title">Why there is no any project diversity?</h2>
+            </div>
+        </li>
+
+        <li class="feedback-milestone no-flicker is-current no-dot">
+            <div class="feedback-action is-expandable expanded">
+                <h2 class="title" tabindex="0" aria-controls="feedback-0-milestone-content-0">Showcase of Iterative Process</h2>
+                <div class="content no-flicker" id="feedback-0-milestone-content-0" role="region" aria-expanded="false">
+                    <span>The images and mockups should clearly represent your process and final deliverables. </span>
+                </div>
+            </div>
+        </li>
+
+        <li class="feedback-milestone no-flicker is-completed feedback-start">
+            <div class="feedback-action">
+                <h2 class="title">Case Study Depth</h2>
+            </div>
+        </li>
+
+        <li class="feedback-milestone no-flicker is-current">
+            <div class="feedback-action is-expandable expanded">
+                <h2 class="title" tabindex="0" aria-controls="feedback-0-milestone-content-1">Actionable Takeaways in Reflections</h2>
+                <div class="content no-flicker" id="feedback-0-milestone-content-1" role="region" aria-expanded="false">
+                    <span>In your project reflections, add concise lessons learned or how you'd apply new approaches in future projects.</span>
+                </div>
+            </div>
+        </li>
+      </ul>
+
+      <button id="share-feedback" class="share-feedback-btn">Sharing Link for More Feedbacks</button>
+    <p id="feedback-link" style="display: none;">https://yourportfolio.com/feedback</p>
+
     </div>
 
     <!-- TaskList Section -->
