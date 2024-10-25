@@ -6,6 +6,10 @@ const roadMap = document.querySelector(".roadMap");
 
 const taskList = document.querySelector(".taskList");
 
+const taskExpandButton = document.querySelector(".taskExpandButton");
+const taskExpandModal = document.querySelector(".taskExpandModal");
+const modalBackground = document.querySelector(".modalBackground");
+const taskExpandModalClose = document.querySelector(".taskExpandModalClose");
 
 // const task = document.getElementById("1");
 //all thats missing from opening tasks from the list here atm is a reference to the 
@@ -427,5 +431,40 @@ function openTask(id) {
 
 // }
 
-addTask ("Draft Case Study 1", "Case Study 1", "Drafting", "Draft that shit","","3");
+// addTask ("Draft Case Study 1", "Case Study 1", "Drafting", "Draft that shit","","3");
+
+function expandHeader(id) {
+    let element = document.getElementById(id);
+    if (element.classList.contains("taskItemsActive")) {
+        element.classList.remove("taskItemsActive");
+    } else {
+        element.classList.add("taskItemsActive");
+    }
+
+    element = document.getElementById(id + "Button");
+    if (element.classList.contains("taskHeaderExpandActive")) {
+        element.classList.remove("taskHeaderExpandActive");
+    } else {
+        element.classList.add("taskHeaderExpandActive");
+    }
+}
+
+
+
+//task modal
+taskExpandButton.onclick =  () => {
+    taskExpandModal.classList.add('active');
+    modalBackground.classList.add('active');
+
+}
+
+taskExpandModalClose.onclick = () => {
+    taskExpandModal.classList.remove('active');
+    modalBackground.classList.remove('active');
+}
+
+modalBackground.onclick = () => {
+    taskExpandModal.classList.remove('active');
+    modalBackground.classList.remove('active');
+}
 

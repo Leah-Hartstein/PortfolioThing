@@ -98,9 +98,8 @@ hr {
 }
 
 button:hover {
-  transform: translateY(-2px);
+  /*transform: translateY(-2px);*/
   transition: flex 0.5s ease;
-
 }
 
 button:active {
@@ -171,6 +170,8 @@ h4 {
 
 .container {
   display: flex;
+  grid-row: 1/999;
+  grid-column: 1/999;
   justify-content: center;
   background: rgb(233, 234, 242);
   height: 100%;
@@ -244,7 +245,7 @@ h4 {
   border-right: none;
   overflow: hidden;
   /* border-right: 1px black; */
-  
+
 
 }
 
@@ -320,11 +321,11 @@ h4 {
   justify-content: space-between; /* Space them vertically */
   align-items: flex-end; /* Align buttons to the right */
   width: 0;
-  z-index: 1;  
+  z-index: 1;
   height: 100%; /* Add height to occupy the full container, if needed */
   border: none;
   margin-right: 8px;
-  
+
 
 }
 
@@ -384,6 +385,30 @@ h4 {
   border-radius: 5px;
 }
 
+.myTasksHeader {
+  padding: 15px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.myTasksTitle {
+  margin: 0;
+  justify-self: left;
+}
+
+.taskExpandButton {
+  font-weight: bold;
+  width: 90px;
+  height: 40px;
+  background: none;
+  border-radius: 25px;
+  border: 2px solid black;
+  cursor: pointer;
+  justify-self: right;
+}
+
 .myTasksOpen {
   order: 2;
   display: flex;
@@ -399,33 +424,139 @@ h4 {
 
 }
 
-
 .taskList {
   display: flex;
   flex-direction: column;
-  margin: 0 0px;
   height: 100%;
   align-content: flex-start;
-  overflow-y:scroll;
-  margin-bottom: 20px;
-  margin-top: 4px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  margin-right: 6px;
   overflow-y: scroll;
-
+  margin: 0;
 }
+
+.taskGroup {
+  padding: 15px;
+  border-top: 1px solid black;
+  display: grid;
+}
+
+.taskHeader {
+  margin: 0;
+  font-style: normal;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.taskHeaderExpand {
+  justify-self: right;
+  background: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.taskHeaderExpandImage {
+  width: 30px;
+  height: 30px;
+}
+
+.taskHeaderExpandActive {
+  transform: scaleY(-1);
+}
+
+.taskItems {
+  grid-row: 2;
+  grid-column: 1 / 3;
+  display: grid;
+  grid-auto-flow: column;
+  /*grid-template-columns: min-content;
+  grid-column-gap: 15px;*/
+  justify-content: space-between;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.taskItemsActive {
+  max-height: 100%;
+}
+
+.taskItemTask {
+  background: white;
+  margin: 10px 0 10px 0;
+  width: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  box-shadow: #00000040 0 6px 6px;
+}
+
+.taskItemTaskImg {
+  height: 100px;
+  width: 200px;
+  grid-column: 1 / 4;
+}
+
+.taskItemTaskText {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.taskItemTaskTitle {
+  justify-self: left;
+  padding: 10px;
+  grid-row: 2;
+  grid-column: 1 / 4;
+}
+
+.taskItemTaskTime {
+  padding: 10px 0 10px 10px;
+  justify-self: left;
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.taskItemTaskStars {
+  padding: 10px 10px 10px 0;
+  grid-row: 3;
+  grid-column: 2;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.taskItemTaskStar {
+  height: 20px;
+  width: 20px;
+}
+
+.taskItemTaskTick {
+  justify-self: right;
+  grid-row: 3;
+  grid-column: 3;
+  width: 15px;
+  height: 15px;
+  margin: 0 10px 0 0;
+}
+
+
+
 
 .listTask {
   min-height: 80px;
-  width:fill;
   border-radius: 5px;
-  margin-bottom:4px;
-  margin-top:4px;
-  margin-left:12px;
-  margin-right:4px;
+  margin: 4px 4px 4px 12px;
   border: 1px solid black;
-  overflow: hidden;  
+  overflow: hidden;
   transition: flex 0.5s ease;
 
 
@@ -434,14 +565,10 @@ h4 {
 
 .listTaskOpen {
   min-height: fit-content;
-  width:fill;
   border-radius: 5px;
-  margin-bottom:4px;
-  margin-top:4px;
-  margin-left:12px;
-  margin-right:4px;
+  margin: 4px 4px 4px 12px;
   border: 1px solid black;
-  overflow: hidden; 
+  overflow: hidden;
   transition: flex 0.5s ease;
 
 }
@@ -501,15 +628,215 @@ h4 {
   border-bottom: 1px solid black;
 
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: black; 
+  background: black;
   border-radius: 10px;
   box-shadow: 0px 5px 5px 0px rgba(100, 100, 100, 0.3);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1d1d1d; 
+  background: #1d1d1d;
+}
+
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  height: 100%;
+
+}
+
+.modalBackground {
+  grid-row: 1/999;
+  grid-column: 1/999;
+  z-index: -1;
+  background-color: #404040;
+  opacity: 0;
+    transition: z-index 0.5s step-end, opacity 0.5s ease;
+}
+
+.modalBackground.active {
+  z-index: 2;
+  grid-row: 1/999;
+  grid-column: 1/999;
+  opacity: 70%;
+  transition: z-index 0.5s step-start, opacity 0.5s ease;
+}
+
+/*task modal on button click*/
+.taskExpandModal {
+  padding: 40px;
+  display: grid;
+  grid-template-rows: auto 1fr repeat(999, auto) 1fr; /*1fr at top below header, and at bottom, to center the Ideation etc elements. adjust fr to change proportion of spacing above and below*/
+  grid-template-columns: 1fr minmax(min-content, 850px) 1fr;
+  grid-row: 2;
+  grid-column: 2;
+  border-radius: 10px;
+  background: white;
+  opacity: 0;
+  z-index: 3;
+  overflow-y: scroll;
+  transform: scale(0);
+  transition: .3s ease;
+}
+
+.taskExpandModal.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.taskSubHeader {
+  font-size: 30px;
+  margin: 0;
+  padding-top: 25px;
+}
+
+.taskDescription {
+  margin: 0;
+  padding: 10px 0 10px 0;
+}
+
+.taskModalTasks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 250px));
+  grid-template-rows: repeat(999, auto) 1fr;
+  grid-column-gap: 50px;
+  /*justify-content: space-between;*/
+}
+
+.taskModalTask {
+  margin: 10px 0 10px 0;
+  width: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  box-shadow: #00000040 0 6px 6px;
+}
+
+.taskModalTaskImg {
+  height: 125px;
+  width: 250px;
+  grid-column: 1 / 4;
+}
+
+.taskModalTaskText {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.taskModalTaskTitle {
+  justify-self: left;
+  padding: 10px;
+  grid-row: 2;
+  grid-column: 1 / 4;
+}
+
+.taskModalTaskTick {
+  justify-self: right;
+  grid-row: 2;
+  grid-column: 3;
+  width: 15px;
+  height: 15px;
+  margin: 0 10px 0 0;
+}
+
+.taskModalTaskStars {
+  padding: 10px 0 10px 10px;
+  grid-row: 3;
+  grid-column: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-self: left;
+}
+
+.taskModalTaskStar {
+  height: 20px;
+  width: 20px;
+}
+
+.taskModalTaskTime {
+  padding: 10px 10px 10px 0;
+  justify-self: right;
+  grid-row: 3;
+  grid-column: 2 / 4;
+}
+
+
+
+.taskExpandModalHeader {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  margin: 0;
+}
+
+.taskExpandModalClose {
+  grid-row: 1;
+  grid-column: 4;
+  background-color: transparent;
+  font-size: 30px;
+  border: 0;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 50%;
+  transition: .1s ease;
+}
+
+.taskExpandModalClose:hover {
+  background-color: gray;
+}
+
+
+.taskSubHeaderIdeation {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.taskDescriptionIdeation {
+  grid-row: 4;
+  grid-column: 2;
+}
+
+.taskModalTasksIdeation {
+  grid-row: 5;
+  grid-column: 2;
+}
+
+.taskSubHeaderSecond {
+  grid-row: 6;
+  grid-column: 2;
+}
+
+.taskDescriptionSecond {
+  grid-row: 7;
+  grid-column: 2;
+}
+
+.taskModalTasksSecond {
+  grid-row: 8;
+  grid-column: 2;
+}
+
+.taskSubHeaderThird {
+  grid-row: 9;
+  grid-column: 2;
+}
+
+.taskDescriptionThird {
+  grid-row: 10;
+  grid-column: 2;
+}
+
+.taskModalTasksThird {
+  grid-row: 11;
+  grid-column: 2;
 }
