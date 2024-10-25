@@ -80,26 +80,31 @@ let card = {};
       card.newButton.style.display = 'block';
     });
 
-// Handle the feedback expansion 
-$(".is-expandable").on('click', function(){
-  const $that = $(this);
-  const $content = $that.find(".content");
-  const $contentSpan = $that.find(".content span");
+// Feedback Expansion
+$(document).ready(function() {
+  // Handle the feedback expansion
+  $(".is-expandable").on('click', function(){
+    const $that = $(this);
+    const $content = $that.find(".content");
+    const $contentSpan = $content.find("span"); // Select the span inside content
 
-  if(!$that.hasClass("is-expanded")) {
-      gsap.set($content, {height:"auto"});
-      gsap.from($content, {height: 0, duration: 0.4, ease: "expo.out"});
-      $contentSpan.fadeIn('fast', function() {
-          $(this).css("display", "inline-block");
-      });
-      $that.addClass("is-expanded");
-  } else {
-      gsap.to($content, {height: 0, duration: 0.4, delay: 0.09, ease: "expo.out"});
-      $contentSpan.fadeOut('fast');
-      $that.removeClass("is-expanded");
-  }
-})
+    if(!$that.hasClass("is-expanded")) {
+        // Set initial states
+        gsap.set($content, {height: "auto"});
+        gsap.set($contentSpan, {opacity: 1});
+        // Animate expansion
+        gsap.from($content, {height: 0, duration: 0.4, ease: "expo.out"});
+        gsap.from($contentSpan, {opacity: 0, duration: 0.4, ease: "expo.out"});
+        $that.addClass("is-expanded");
+    } else {
+        // Animate collapse
+        gsap.to($contentSpan, {opacity: 0, duration: 0.3, ease: "expo.inOut"});
+        gsap.to($content, {height: 0, duration: 0.4, ease: "expo.inOut"});
+        $that.removeClass("is-expanded");
+    }
+  });
 
+// Feedback sharing btn functionaility
 document.getElementById('share-feedback').addEventListener('click', function() {
   var link = document.getElementById('feedback-link');
   link.style.display = 'block';
