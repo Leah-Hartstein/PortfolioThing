@@ -76,3 +76,34 @@ body {
   color: #303030;
   border: 1px solid #303030;
 }
+
+/* Main screen layout */
+
+/* Left side: Form container styling */
+.form-container {
+  flex: 2; /* Two-thirds width */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Right side: Sections list container styling */
+.sections-list {
+  flex: 1; /* One-third width */
+  border-left: 2px solid #ccc;
+  padding-left: 20px;
+}
+
+/* Button and input styling */
+.button-group button,
+button {
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 15px;
+}
