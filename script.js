@@ -425,6 +425,51 @@ function openTask(id) {
   }
 }
 
+function openGroup(id) {
+  // Find the task element using data-id
+  var alreadyOpenTask = document.querySelector(".listTaskOpen");
+
+  // Find the task element by its data-id
+  var task = document.querySelector(`[data-id="${id}"]`);
+
+  // Reference to the scrollable container (replace with your actual div's ID or class)
+  var scrollContainer = document.querySelector(".taskList");
+
+  // Check if the scrollContainer and task element exist
+  if (scrollContainer && task) {
+      // Toggle the class for the task
+      if (task.classList.contains("listTask")) {
+          task.classList.remove("listTask");
+          task.classList.add("listTaskOpen");
+
+          // Close any already open tasks
+          if (alreadyOpenTask) {
+              alreadyOpenTask.classList.remove("listTaskOpen");
+              alreadyOpenTask.classList.add("listTask");
+          }
+
+          // Calculate the task's position relative to the container
+          const taskPosition = task.offsetTop - scrollContainer.offsetTop;
+
+          // Set the scroll position with a 10px offset
+          scrollContainer.scrollTo({
+              top: taskPosition - 8, // Subtract 10 for the offset
+              behavior: "smooth" // Smooth scrolling
+          });
+
+      } else {
+          task.classList.remove("listTaskOpen");
+          task.classList.add("listTask");
+      }
+  } else {
+      if (!scrollContainer) {
+          console.error("Scrollable container not found");
+      }
+      if (!task) {
+          console.error("Task element not found for id:", id);
+      }
+  }
+}
 
 
 // function closeOtherTasks(){
@@ -433,21 +478,71 @@ function openTask(id) {
 
 // addTask ("Draft Case Study 1", "Case Study 1", "Drafting", "Draft that shit","","3");
 
-function expandHeader(id) {
-    let element = document.getElementById(id);
-    if (element.classList.contains("taskItemsActive")) {
-        element.classList.remove("taskItemsActive");
-    } else {
-        element.classList.add("taskItemsActive");
-    }
+// function expandHeader(id) {
 
-    element = document.getElementById(id + "Button");
-    if (element.classList.contains("taskHeaderExpandActive")) {
-        element.classList.remove("taskHeaderExpandActive");
-    } else {
-        element.classList.add("taskHeaderExpandActive");
-    }
+//   var alreadyOpenGroup = document.querySelector("taskItemsActive");
+
+//     let element = document.getElementById(id);
+//     if (element.classList.contains("taskItemsActive")) {
+//         element.classList.remove("taskItemsActive");
+//     } else {
+//         element.classList.add("taskItemsActive");
+
+//       //   if (alreadyOpenGroup) {
+//       //     alreadyOpenGroup.classList.remove("taskItemsActive");
+//       //     alreadyOpenGroup.classList.add("taskItenms");
+//       // }
+//     }
+
+//     element = document.getElementById(id + "Button");
+//     if (element.classList.contains("taskHeaderExpandActive")) {
+//         element.classList.remove("taskHeaderExpandActive");
+//     } else {
+//         element.classList.add("taskHeaderExpandActive");
+//     }
+// }
+
+function expandHeader(id) {
+  // Find any already open group
+  var alreadyOpenGroup = document.querySelector(".taskItemsActive");
+
+  // Find the element by ID
+  let element = document.getElementById(id);
+  let scrollContainer = document.querySelector(".taskList"); // Replace with your scrollable container
+
+  if (element.classList.contains("taskItemsActive")) {
+      // Close the active group if it's already open
+      element.classList.remove("taskItemsActive");
+  } else {
+      // Open the selected group and close any others
+      element.classList.add("taskItemsActive");
+
+      // Close any already open groups
+      if (alreadyOpenGroup) {
+          alreadyOpenGroup.classList.remove("taskItemsActive");
+          alreadyOpenGroup.classList.add("taskItems"); // Assuming .taskItems is the default class
+      }
+
+      // Scroll to the selected group
+      if (scrollContainer && element) {
+          const groupPosition = element.offsetTop - scrollContainer.offsetTop;
+
+          scrollContainer.scrollTo({
+              top: groupPosition - 20, // Optional offset of 8px
+              behavior: "smooth"
+          });
+      }
+  }
+
+  // Toggle the button's active class
+  let buttonElement = document.getElementById(id + "Button");
+  if (buttonElement.classList.contains("taskHeaderExpandActive")) {
+      buttonElement.classList.remove("taskHeaderExpandActive");
+  } else {
+      buttonElement.classList.add("taskHeaderExpandActive");
+  }
 }
+
 
 
 
