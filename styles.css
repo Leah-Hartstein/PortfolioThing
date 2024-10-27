@@ -1208,3 +1208,227 @@ h4 {
 .slideshowDotActive {
   background: #bd93f9;
 }
+
+
+/* Roadmap styling TRIAL */
+
+/* Add Milestone Button Styles */
+.add-milestone-button {
+  margin: 10px 0;
+  padding: 8px 16px;
+  font-size: 11px;
+  background-color: #5a4b56;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-milestone-button:hover {
+  background-color: #846f7e;
+}
+
+/* New Milestone Form Styles */
+.new-milestone-form {
+  /* display: none; */
+  margin: 10px 0;
+  align-items: center;
+}
+
+.new-milestone-form input[type="text"] {
+  padding: 6px;
+  font-size: 14px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.new-milestone-form button {
+  padding: 6px 12px;
+  font-size: 14px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-milestone-form button[type="submit"] {
+  background-color: #5a4b56;
+  color: #fff;
+}
+
+.new-milestone-form .cancel-button {
+  background-color: #ccc;
+}
+
+.new-milestone-form button:hover {
+  opacity: 0.9;
+}
+
+
+/* Task Window and RoadMap Visibility */
+.taskWindow {
+  display: block;
+}
+
+.roadMap {
+  display: none;
+}
+
+/* Fixing Overlay Issues */
+.currentTask {
+  position: relative;
+  z-index: 1;
+}
+
+/* TimeLine Styles */
+.TimeLine {
+  background-color: #8d7687;
+  padding: 11.2px;
+  border-radius: 5.6px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure no unintended images */
+.timeline-container, .timeline-wrapper, .milestones {
+  background-image: none;
+}
+
+
+.timeline-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.timeline-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 30px;
+  height: 100%; */
+  justify-content: space-between;
+}
+
+.timeline-container .milestones {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  position: relative;
+}
+
+.TimeLine h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.84rem;
+  margin-bottom: 0.35rem;
+  margin-left: 24px;
+  font-weight: bold;
+}
+
+.milestones .timeline {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+
+.milestone {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  width: 84px;
+  height: 160px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.milestone .text {
+  display: table;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 9.8px;
+  color: #303030;
+  width: 100%;
+  height: 70px;
+  transition: 0.15s ease-out;
+}
+
+.milestone .text .align-bottom {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.milestone .point {
+  transform: scale(0);
+  width: 21px;
+  height: 21px;
+  background: rgba(59, 46, 53, 0.5);
+  border: none;
+  border-radius: 21px;
+  margin: 7px auto 0 auto;
+  position: relative;
+  transition: 0.105s ease-in;
+}
+
+.milestone .point::after {
+  content: '';
+  display: block;
+  width: 12.6px;
+  height: 12.6px;
+  border: 1.4px solid rgb(35, 40, 60);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgb(35, 40, 60);
+  border-radius: 21px;
+}
+
+.milestone .line {
+  margin: 0 auto;
+  width: 1.4px;
+  height: 70px;
+  background: rgb(35, 40, 60);
+  position: relative;
+  bottom: 0;
+  transition: 0.105s ease-out;
+}
+
+.milestone .line::after {
+  content: '';
+  width: 8.4px;
+  height: 8.4px;
+  border-radius: 8.4px;
+  background: #cbcbcd;
+  border: 1.4px solid #745a67;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 4.2px);
+  z-index: 10;
+}
+
+.milestone:hover .text {
+  height: 80px;
+}
+
+.milestone:hover .point {
+  transform: scale(1);
+  transform-origin: 50% 50%;
+}
+
+.milestone:hover .line {
+  height: 120px;
+}

@@ -119,7 +119,7 @@ $(document).ready(function() {
 // Close Button
 document.querySelector('.close-button').addEventListener('click', function() {
   if (confirm('Are you sure you want to return to the dashboard?')) {
-    window.location.href = 'index.html'; // Replace actual dashboard path
+    window.location.href = '../index.html'; //!! actual dashboard path
   }
 });
 

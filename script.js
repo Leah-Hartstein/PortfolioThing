@@ -666,3 +666,65 @@ function setSlideCategory(id) {
 }
 
 setSlideCategory("Ideation");
+
+// Toggle Task/Map
+function openMap() {
+  const taskWindow = document.querySelector('.taskWindow');
+  const roadMap = document.querySelector('.roadMap');
+  const toggleButton = document.querySelector('.openMap');
+
+  console.log(toggleButton);
+
+  if (taskWindow.style.display === 'block') {
+    taskWindow.style.display = 'none';
+    roadMap.style.display = 'block';
+    toggleButton.textContent = 'Task';
+  } else {
+    taskWindow.style.display = 'block';
+    roadMap.style.display = 'none';
+    toggleButton.textContent = 'Map';
+  }
+}
+
+
+// Handle the adding new milestone on roadmap
+document.addEventListener('DOMContentLoaded', function() {
+  const addMilestoneButton = document.querySelector('.add-milestone-button');
+  const newMilestoneForm = document.querySelector('.new-milestone-form');
+  const cancelButton = document.querySelector('.cancel-button');
+  const milestonesContainer = document.querySelector('.milestones');
+
+  console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
+
+  addMilestoneButton.addEventListener('click', function() {
+    console.log('Add Milestone Button Clicked');
+    newMilestoneForm.style.display = 'flex';
+    addMilestoneButton.style.display = 'none';
+  });
+
+
+  cancelButton.addEventListener('click', function() {
+    console.log('Cancel Button Clicked');
+    newMilestoneForm.style.display = 'none';
+    addMilestoneButton.style.display = 'inline-block';
+  });
+
+  newMilestoneForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const milestoneTitle = newMilestoneForm.elements['milestoneTitle'].value;
+
+    const newMilestone = document.createElement('div');
+    newMilestone.classList.add('milestone');
+    newMilestone.innerHTML = `
+      <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
+      <div class="point"></div>
+      <div class="line"></div>
+    `;
+
+    milestonesContainer.appendChild(newMilestone);
+
+    newMilestoneForm.reset();
+    newMilestoneForm.style.display = 'none';
+    addMilestoneButton.style.display = 'inline-block';
+  });
+});

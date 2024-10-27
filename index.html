@@ -225,13 +225,75 @@
                 <div class = "GoalPip"></div>
               </div>
             </div>
+
               <div class= "currentTask"> 
                 <h1>Task</h1>
                 <div class = "chosenTask">
                   <h2>Draft Case Study 1</h2>
                   <h3>'Second Year Studio'</h3>
                 </div>
-                <canvas class ="roadMap" id ="map"></canvas>
+
+            <!-- Task Window Content -->
+                <div class="taskWindow">
+            <!-- Place your task-related content here -->
+                <p>Your task details and descriptions go here.</p>
+                  </div>
+            <!-- Roadmap/Timeline (Hidden by default) --><!-- just a TRIAL -->
+                <div class="roadMap" id="map" style="display: none;">
+        
+          <div class="TimeLine">
+          <a href="roadmap/roadmap.html"><h2>Roadmap</h2></a>
+          <!-- Add Milestone Button -->
+          <button class="add-milestone-button">+ Add Milestone</button>
+
+          <!-- New Milestone Form (Initially Hidden) -->
+          <form class="new-milestone-form" style="display: none;">
+            <input type="text" name="milestoneTitle" placeholder="Milestone Title" required />
+            <button type="submit">Add</button>
+            <button type="button" class="cancel-button">Cancel</button>
+          </form>
+
+          <div class="timeline-container">
+            <div class="timeline-wrapper">
+            <div class="milestones">
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Prepare Moodboard</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Case Study 1</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Case Study 2</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Bio and About-me Page</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Finalize Case Studies</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Review and Peer-feedback Case Studies</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <!-- Add more milestones as needed -->
+              <div class="timeline"></div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
                 <div class = sideButtons>
                 <button class ="openList" onclick="expandList()"></button>
                 <div class ="zoomButtons">
