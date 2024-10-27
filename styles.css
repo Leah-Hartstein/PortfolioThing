@@ -1096,7 +1096,8 @@ h4 {
   grid-gap: 15px;
   justify-items: center;
   align-items: center;
-  padding: 0 15px 15px 15px;
+  padding: 0 0px  15px 0px;
+ width: 100%; 
 }
 
 .slideshowButton {
@@ -1144,7 +1145,8 @@ h4 {
 
 .slideshowItem {
   background: white;
-  width: 350px;
+  /* width: 350px; */
+  width: auto;
   height: 225px;
   border-radius: 15px;
   overflow: hidden;
