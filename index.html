@@ -9,8 +9,8 @@
 <body>
 
 
-<div class="modalGrid">
-
+<section class="modalGrid">
+<!-- modals that are hidden by default go here -->
   <div class="modalBackground">
         </div>
 
@@ -131,6 +131,9 @@
 
 <!--    taskExpand div-->
 </div>
+
+  <div class = "statsExpandModal">
+  </div>
 <!--    background div-->
 
 
@@ -143,7 +146,8 @@
       <section class="topRow" id = "topRow">
               <section class = "task"> 
               <div class ="userStats">
-             
+                <button type="button" class="statsExpandButton">Open</button>
+
               <div class ="statsPanelAvatar">
               </div>
               <div class ="statsPanelName">
@@ -151,13 +155,23 @@
               </div>
               <p class ="statName">Stat</h3>
               <div class = "statsPanelStat" id = "stat1" onclick ="move()">
-                <div class ="statPanelBar" id = "stat1Bar"></div><p class ="statPanelNumber" id="number1"></p>
+                <div class ="statPanelBar" id = "stat1Bar"></div><div class ="statPanelNumber" id="number1">0%</div>
               </div>
               <p class ="statName">Stat</h3>
               <div class = "statsPanelStat" id = "stat2"></div>
               <p class ="statName">Stat</h3>
               <div class = "statsPanelStat" id = "stat3"></div>
-              <div class = "statsPanelDaily"></div>
+              <p class ="statName">Weekly Goal</h3>
+              <div class = "statsPanelGoal">
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+                <div class = "GoalPip"></div>
+              </div>
             </div>
               <div class= "currentTask"> 
                 <h1>Task</h1>
@@ -183,7 +197,7 @@
         <section class= "myTasks">
           <section class="myTasksHeader">
             <h1 class="myTasksTitle">All Tasks</h1>
-            <button type="button" class="taskExpandButton">Expand</button>
+            <button type="button" class="taskExpandButton">Open</button>
           </section>
 
           <section class="taskList">
@@ -287,7 +301,7 @@
   </div>
 
 
-  </div>
+</section>
 <!--MODAL DIV-->
 
   <script src ="script.js"></script>

@@ -8,8 +8,15 @@ const taskList = document.querySelector(".taskList");
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
-const modalBackground = document.querySelector(".modalBackground");
 const taskExpandModalClose = document.querySelector(".taskExpandModalClose");
+
+const statsExpandButton = document.querySelector(".statsExpandButton");
+const statsExpandModal = document.querySelector(".statsExpandModal");
+const statsExpandModalClose = document.querySelector(".statsExpandModalClose");
+
+
+const modalBackground = document.querySelector(".modalBackground");
+
 
 // const task = document.getElementById("1");
 //all thats missing from opening tasks from the list here atm is a reference to the 
@@ -563,9 +570,27 @@ modalBackground.onclick = () => {
     modalBackground.classList.remove('active');
 }
 
+// stats modal
+
+statsExpandButton.onclick =  () => {
+  statsExpandModal.classList.add('active');
+  modalBackground.classList.add('active');
+
+}
+
+statsExpandModalClose.onclick = () => {
+  statsExpandModal.classList.remove('active');
+  modalBackground.classList.remove('active');
+}
+
+modalBackground.onclick = () => {
+  statsExpandModal.classList.remove('active');
+  modalBackground.classList.remove('active');
+}
+
 function move() {
   var elem = document.getElementById("stat1Bar");   
-  var width = 20;
+  var width = 0;
   var id = setInterval(frame, 10);
   function frame() {
     if (width >= 100) {
