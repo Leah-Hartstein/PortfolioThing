@@ -608,19 +608,20 @@ function setSlideCategory(id) {
     currentSlideCategoryId = id;
     slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
     slideCategory.classList.add("slideshowCategoryActive");
-    let slides = slideCategory.getElementById("slideshowDots");
+    let slides = slideCategory.getElementsByClassName("slideshowItem");
     let dots = document.getElementById("slideshowDots");
-
 
     let newDots = [];
     for (let i = 0; i < slides.length; i++) {
-        newDots.push('<button class="slideshowDot" onclick="setSlide(0)"></button>');
+        const button = document.createElement("button");
+        button.classList.add("slideshowDot");
+        button.onclick = () => setSlide(i);
+        newDots.push(button);
     }
-    dots.replaceChildren(newDots);
+    dots.replaceChildren(...newDots);
     setSlide(0);
 }
 
-setSlide(0);
 setSlideCategory("Ideation");
 
 // stats modal
