@@ -8,11 +8,15 @@ const taskList = document.querySelector(".taskList");
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
-const taskExpandModalClose = document.querySelector(".taskExpandModalClose");
+const taskExpandModalClose = document.querySelector(".taskModalClose");
+
+const guidesExpandButton = document.querySelector(".guidesExpandButton");
+const guidesExpandModal = document.querySelector(".guidesExpandModal");
+const guidesExpandModalClose = document.querySelector(".guidesModalClose");
 
 const statsExpandButton = document.querySelector(".statsExpandButton");
 const statsExpandModal = document.querySelector(".statsExpandModal");
-const statsExpandModalClose = document.querySelector(".statsExpandModalClose");
+const statsExpandModalClose = document.querySelector(".statsModalClose");
 
 
 const modalBackground = document.querySelector(".modalBackground");
@@ -561,21 +565,60 @@ function expandHeader(id) {
 
 
 
-//task modal
-taskExpandButton.onclick =  () => {
-    taskExpandModal.classList.add('active');
-    modalBackground.classList.add('active');
+modalBackground.onclick = () => {
+    taskExpandModal.classList.remove("active");
+    guidesExpandModal.classList.remove("active");
+    statsExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
 
-}
+// task modal
+taskExpandButton.onclick = () => {
+    taskExpandModal.classList.add("active");
+    modalBackground.classList.add("active");
+};
 
 taskExpandModalClose.onclick = () => {
-    taskExpandModal.classList.remove('active');
-    modalBackground.classList.remove('active');
-}
+    taskExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
 
-modalBackground.onclick = () => {
-    taskExpandModal.classList.remove('active');
-    modalBackground.classList.remove('active');
+// guides modal
+guidesExpandButton.onclick = () => {
+    guidesExpandModal.classList.add("active");
+    modalBackground.classList.add("active");
+};
+
+guidesExpandModalClose.onclick = () => {
+    guidesExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
+
+
+// stats modal
+statsExpandButton.onclick = () => {
+  statsExpandModal.classList.add("active");
+  modalBackground.classList.add("active");
+};
+
+statsExpandModalClose.onclick = () => {
+  statsExpandModal.classList.remove("active");
+  modalBackground.classList.remove("active");
+};
+
+function move() {
+  var elem = document.getElementById("stat1Bar");
+  var width = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      document.getElementById("number1").innerHTML = width * 1  + '%';
+    }
+  }
 }
 
 // slideshow
@@ -623,36 +666,3 @@ function setSlideCategory(id) {
 }
 
 setSlideCategory("Ideation");
-
-// stats modal
-
-statsExpandButton.onclick =  () => {
-  statsExpandModal.classList.add('active');
-  modalBackground.classList.add('active');
-
-}
-
-statsExpandModalClose.onclick = () => {
-  statsExpandModal.classList.remove('active');
-  modalBackground.classList.remove('active');
-}
-
-modalBackground.onclick = () => {
-  statsExpandModal.classList.remove('active');
-  modalBackground.classList.remove('active');
-}
-
-function move() {
-  var elem = document.getElementById("stat1Bar");   
-  var width = 0;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-      document.getElementById("number1").innerHTML = width * 1  + '%';
-    }
-  }
-}

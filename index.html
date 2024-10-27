@@ -11,13 +11,12 @@
 
 <section class="modalGrid">
 <!-- modals that are hidden by default go here -->
-  <div class="modalBackground">
-        </div>
+  <div class="modalBackground"></div>
 
 
-  <div class="taskExpandModal">
-    <button class="taskExpandModalClose">&times</button>
-    <h1 class="taskExpandModalHeader">Task Overview</h1>
+  <div class="modal taskExpandModal">
+    <button class="modalClose taskModalClose">&times</button>
+    <h1 class="modalHeader">Task Overview</h1>
 
     <h1 class="taskSubHeader taskSubHeaderIdeation">Ideation</h1>
     <p class="taskDescription taskDescriptionIdeation">Getting started is often the most intimidating part, so we will help you sort out the important areas so you can skip the struggle!</p>
@@ -128,12 +127,65 @@
         <p class="taskModalTaskText taskModalTaskTime">read if bald</p>
       </div>
     </div>
-
-<!--    taskExpand div-->
-</div>
-
-  <div class = "statsExpandModal">
   </div>
+
+  <div class ="statsExpandModal">
+    <button class="modalClose statsModalClose">&times</button>
+    <h1 class="modalHeader">Stats</h1>
+  </div>
+
+  <div class="modal guidesExpandModal">
+    <button class="modalClose guidesModalClose">&times</button>
+    <h1 class="modalHeader">Guides</h1>
+
+    <h1 class="guidesSubHeader guidesSubHeaderIdeation">Ideation</h1>
+
+    <div class="guideCategory guideCategoryIdeation">
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
+        <p class="guideItemTitle">What employers look for in Portfolio Case Studies</p>
+        <p class="guideItemAuthor">By Casey Studymann</p>
+      </div>
+
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://thumbs.dreamstime.com/b/nostalgic-man-comb-his-bald-head-morning-38528682.jpg">
+        <p class="guideItemTitle">Male baldness is often trivialised – our research shows it should be taken seriously</p>
+        <p class="guideItemAuthor">By Paul Hodkinson</p>
+      </div>
+
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsJ_3lgjQxkQDJ9sfz2Ltxn2D0A-gUNmAHg&s">
+        <p class="guideItemTitle">Male Androgenetic Alopecia</p>
+        <p class="guideItemAuthor">By Leila Asfour</p>
+      </div>
+
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://thumbs.dreamstime.com/b/young-funny-bald-man-16381922.jpg">
+        <p class="guideItemTitle">Cure for male pattern baldness given boost by sugar discovery</p>
+        <p class="guideItemAuthor">By Alice Fletcher</p>
+      </div>
+    </div>
+
+    <h1 class="guidesSubHeader guidesSubHeaderDrafting">Drafting</h1>
+    <div class="guideCategory guideCategoryDrafting">
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
+        <p class="guideItemTitle">What employers look for in Portfolio Case Studies 2</p>
+        <p class="guideItemAuthor">By Casey Studymann</p>
+      </div>
+    </div>
+
+    <h1 class="guidesSubHeader guidesSubHeaderInterviewPrep">Interview Prep</h1>
+    <div class="guideCategory guideCategoryInterviewPrep">
+      <div class="guideItem">
+        <img class="guideItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
+        <p class="guideItemTitle">What employers look for in Portfolio Case Studies 3</p>
+        <p class="guideItemAuthor">By Casey Studymann</p>
+      </div>
+    </div>
+
+  </div>
+
 <!--    background div-->
 
 
@@ -310,25 +362,25 @@
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
                 <p class="slideshowItemTitle">What employers look for in Portfolio Case Studies</p>
-                <p class="slideshowItemDesc">By Casey Studymann</p>
+                <p class="slideshowItemAuthor">By Casey Studymann</p>
               </div>
 
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://thumbs.dreamstime.com/b/nostalgic-man-comb-his-bald-head-morning-38528682.jpg">
                 <p class="slideshowItemTitle">Male baldness is often trivialised – our research shows it should be taken seriously</p>
-                <p class="slideshowItemDesc">By Paul Hodkinson</p>
+                <p class="slideshowItemAuthor">By Paul Hodkinson</p>
               </div>
 
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsJ_3lgjQxkQDJ9sfz2Ltxn2D0A-gUNmAHg&s">
                 <p class="slideshowItemTitle">Male Androgenetic Alopecia</p>
-                <p class="slideshowItemDesc">By Leila Asfour</p>
+                <p class="slideshowItemAuthor">By Leila Asfour</p>
               </div>
 
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://thumbs.dreamstime.com/b/young-funny-bald-man-16381922.jpg">
                 <p class="slideshowItemTitle">Cure for male pattern baldness given boost by sugar discovery</p>
-                <p class="slideshowItemDesc">By Alice Fletcher</p>
+                <p class="slideshowItemAuthor">By Alice Fletcher</p>
               </div>
             </div>
 
@@ -336,7 +388,7 @@
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
                 <p class="slideshowItemTitle">What employers look for in Portfolio Case Studies 2</p>
-                <p class="slideshowItemDesc">By Casey Studymann</p>
+                <p class="slideshowItemAuthor">By Casey Studymann</p>
               </div>
             </div>
 
@@ -344,7 +396,7 @@
               <div class="slideshowItem">
                 <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
                 <p class="slideshowItemTitle">What employers look for in Portfolio Case Studies 3</p>
-                <p class="slideshowItemDesc">By Casey Studymann</p>
+                <p class="slideshowItemAuthor">By Casey Studymann</p>
               </div>
             </div>
 
