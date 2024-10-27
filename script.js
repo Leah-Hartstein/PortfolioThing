@@ -27,7 +27,9 @@ const modalBackground = document.querySelector(".modalBackground");
 // i'ds that are generated when a new task is added
 
 var mapCanvas = document.getElementById("map");
-var ctx = mapCanvas.getContext("2d");
+
+// IF anyone need to use the canvas function just bring it back
+// var ctx = mapCanvas.getContext("2d");
 
 
 
