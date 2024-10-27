@@ -195,8 +195,8 @@
 
         </section>
         <section class= "myTasks">
-          <section class="myTasksHeader">
-            <h1 class="myTasksTitle">All Tasks</h1>
+          <section class="sectionHeader">
+            <h1 class="sectionTitle">All Tasks</h1>
             <button type="button" class="taskExpandButton">Open</button>
           </section>
 
@@ -288,13 +288,73 @@
               </section>
             </section>
           </section>
-
-
         </section>
       </section>
-      <section class ="bottomRow">
-        <div class = "myPortfolio"> <h1>My Portfolio</h1></div>
-        <div class = "guides"><h1>Guides and Examples</h1></div>
+
+      <section class="bottomRow">
+        <section class="myPortfolio">
+          <h1>My Portfolio</h1>
+        </section>
+
+        <section class="guides">
+          <section class="sectionHeader">
+            <h1 class="sectionTitle">Guides</h1>
+            <button type="button" class="guidesExpandButton">Open</button>
+          </section>
+          <section class="slideshow">
+            <button class="slideshowButton slideshowButtonPrev" onclick="augmentSlide(-1)">
+              <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+            </button>
+
+            <div id="slideshowIdeation" class="slideshowCategory">
+              <div class="slideshowItem">
+                <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
+                <p class="slideshowItemTitle">What employers look for in Portfolio Case Studies</p>
+                <p class="slideshowItemDesc">By Casey Studymann</p>
+              </div>
+
+              <div class="slideshowItem">
+                <img class="slideshowItemImg" src="https://thumbs.dreamstime.com/b/nostalgic-man-comb-his-bald-head-morning-38528682.jpg">
+                <p class="slideshowItemTitle">Male baldness is often trivialised – our research shows it should be taken seriously</p>
+                <p class="slideshowItemDesc">By Paul Hodkinson</p>
+              </div>
+
+              <div class="slideshowItem">
+                <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsJ_3lgjQxkQDJ9sfz2Ltxn2D0A-gUNmAHg&s">
+                <p class="slideshowItemTitle">Male Androgenetic Alopecia</p>
+                <p class="slideshowItemDesc">By Leila Asfour</p>
+              </div>
+
+              <div class="slideshowItem">
+                <img class="slideshowItemImg" src="https://thumbs.dreamstime.com/b/young-funny-bald-man-16381922.jpg">
+                <p class="slideshowItemTitle">Cure for male pattern baldness given boost by sugar discovery</p>
+                <p class="slideshowItemDesc">By Alice Fletcher</p>
+              </div>
+            </div>
+
+            <div id="slideshowDrafting" class="slideshowCategory">
+              <div class="slideshowItem">
+                <img class="slideshowItemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTp552uTWTPeENoD6C-QjHD0M7zHhkErB_mg&s">
+                <p class="slideshowItemTitle">What employers look for in Portfolio Case Studies</p>
+                <p class="slideshowItemDesc">By Casey Studymann</p>
+              </div>
+            </div>
+
+            <button class="slideshowButton slideshowButtonNext" onclick="augmentSlide(1)">
+              <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+            </button>
+
+            <div id="slideshowDots" class="slideshowDots">
+              <button class="slideshowDot" onclick="setSlide(0)"></button>
+              <button class="slideshowDot" onclick="setSlide(1)"></button>
+              <button class="slideshowDot" onclick="setSlide(2)"></button>
+              <button class="slideshowDot" onclick="setSlide(3)"></button>
+            </div>
+          </section>
+        </section>
+
+
+
       </section>
       <div class="bottombar"></div>
     </section>

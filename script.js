@@ -578,6 +578,51 @@ modalBackground.onclick = () => {
     modalBackground.classList.remove('active');
 }
 
+// slideshow
+
+let currentSlideIndex = 0;
+let currentSlideCategoryId = "Ideation";
+
+function augmentSlide(num) {
+    setSlide(currentSlideIndex + num);
+}
+
+function setSlide(num) {
+    let slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    let slides = slideCategory.getElementsByClassName("slideshowItem");
+    let dots = document.getElementsByClassName("slideshowDot");
+
+    slides[currentSlideIndex].classList.remove("slideshowItemActive");
+    dots[currentSlideIndex].classList.remove("slideshowDotActive");
+
+    currentSlideIndex = (num + dots.length) % dots.length;
+    slides[currentSlideIndex].classList.add("slideshowItemActive");
+    dots[currentSlideIndex].classList.add("slideshowDotActive");
+
+}
+
+function setSlideCategory(id) {
+    let slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    slideCategory.classList.remove("slideshowCategoryActive");
+
+    currentSlideCategoryId = id;
+    slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    slideCategory.classList.add("slideshowCategoryActive");
+    let slides = slideCategory.getElementById("slideshowDots");
+    let dots = document.getElementById("slideshowDots");
+
+
+    let newDots = [];
+    for (let i = 0; i < slides.length; i++) {
+        newDots.push('<button class="slideshowDot" onclick="setSlide(0)"></button>');
+    }
+    dots.replaceChildren(newDots);
+    setSlide(0);
+}
+
+setSlide(0);
+setSlideCategory("Ideation");
+
 // stats modal
 
 statsExpandButton.onclick =  () => {
