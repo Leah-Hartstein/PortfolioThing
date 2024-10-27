@@ -8,8 +8,19 @@ const taskList = document.querySelector(".taskList");
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
+const taskExpandModalClose = document.querySelector(".taskModalClose");
+
+const guidesExpandButton = document.querySelector(".guidesExpandButton");
+const guidesExpandModal = document.querySelector(".guidesExpandModal");
+const guidesExpandModalClose = document.querySelector(".guidesModalClose");
+
+const statsExpandButton = document.querySelector(".statsExpandButton");
+const statsExpandModal = document.querySelector(".statsExpandModal");
+const statsExpandModalClose = document.querySelector(".statsModalClose");
+
+
 const modalBackground = document.querySelector(".modalBackground");
-const taskExpandModalClose = document.querySelector(".taskExpandModalClose");
+
 
 // const task = document.getElementById("1");
 //all thats missing from opening tasks from the list here atm is a reference to the 
@@ -34,6 +45,9 @@ function expandList() {
 
         // Hide the userStats section
         userStatsSection.classList.add("userStatsClosed");
+
+        // Hide the userStats expand button
+        statsExpandButton.classList.add("statsExpandButtonClosed");
     } else {
         myTasksSection.classList.remove("myTasksOpen");
         myTasksSection.classList.add("myTasks");
@@ -43,6 +57,11 @@ function expandList() {
 
         // Show the userStats section
         userStatsSection.classList.remove("userStatsClosed");
+
+        // Show the userStats expand button
+        statsExpandButton.classList.remove("statsExpandButtonClosed");
+        statsExpandButton.classList.add("statsExpandButton");
+
     }
 }
 
@@ -528,7 +547,7 @@ function expandHeader(id) {
           const groupPosition = element.offsetTop - scrollContainer.offsetTop;
 
           scrollContainer.scrollTo({
-              top: groupPosition - 20, // Optional offset of 8px
+              top: groupPosition, // Optional offset of 8px
               behavior: "smooth"
           });
       }
@@ -546,20 +565,104 @@ function expandHeader(id) {
 
 
 
-//task modal
-taskExpandButton.onclick =  () => {
-    taskExpandModal.classList.add('active');
-    modalBackground.classList.add('active');
+modalBackground.onclick = () => {
+    taskExpandModal.classList.remove("active");
+    guidesExpandModal.classList.remove("active");
+    statsExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
 
-}
+// task modal
+taskExpandButton.onclick = () => {
+    taskExpandModal.classList.add("active");
+    modalBackground.classList.add("active");
+};
 
 taskExpandModalClose.onclick = () => {
-    taskExpandModal.classList.remove('active');
-    modalBackground.classList.remove('active');
+    taskExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
+
+// guides modal
+guidesExpandButton.onclick = () => {
+    guidesExpandModal.classList.add("active");
+    modalBackground.classList.add("active");
+};
+
+guidesExpandModalClose.onclick = () => {
+    guidesExpandModal.classList.remove("active");
+    modalBackground.classList.remove("active");
+};
+
+
+// stats modal
+statsExpandButton.onclick = () => {
+  statsExpandModal.classList.add("active");
+  modalBackground.classList.add("active");
+};
+
+statsExpandModalClose.onclick = () => {
+  statsExpandModal.classList.remove("active");
+  modalBackground.classList.remove("active");
+};
+
+function move() {
+  var elem = document.getElementById("stat1Bar");
+  var width = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      document.getElementById("number1").innerHTML = width * 1  + '%';
+    }
+  }
 }
 
-modalBackground.onclick = () => {
-    taskExpandModal.classList.remove('active');
-    modalBackground.classList.remove('active');
+// slideshow
+
+let currentSlideIndex = 0;
+let currentSlideCategoryId = "Ideation";
+
+function augmentSlide(num) {
+    setSlide(currentSlideIndex + num);
 }
 
+function setSlide(num) {
+    let slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    let slides = slideCategory.getElementsByClassName("slideshowItem");
+    let dots = document.getElementsByClassName("slideshowDot");
+
+    slides[currentSlideIndex].classList.remove("slideshowItemActive");
+    dots[currentSlideIndex].classList.remove("slideshowDotActive");
+
+    currentSlideIndex = (num + dots.length) % dots.length;
+    slides[currentSlideIndex].classList.add("slideshowItemActive");
+    dots[currentSlideIndex].classList.add("slideshowDotActive");
+
+}
+
+function setSlideCategory(id) {
+    let slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    slideCategory.classList.remove("slideshowCategoryActive");
+
+    currentSlideCategoryId = id;
+    slideCategory = document.getElementById("slideshow" + currentSlideCategoryId);
+    slideCategory.classList.add("slideshowCategoryActive");
+    let slides = slideCategory.getElementsByClassName("slideshowItem");
+    let dots = document.getElementById("slideshowDots");
+
+    let newDots = [];
+    for (let i = 0; i < slides.length; i++) {
+        const button = document.createElement("button");
+        button.classList.add("slideshowDot");
+        button.onclick = () => setSlide(i);
+        newDots.push(button);
+    }
+    dots.replaceChildren(...newDots);
+    setSlide(0);
+}
+
+setSlideCategory("Ideation");

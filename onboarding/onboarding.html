@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortfolioThing Onboarding</title>
+  <link rel="stylesheet" href="onboarding.css">
+</head>
+
+<style>
+  body {
+    background: #EDEBEB;
+  }
+</style>
+
+<body>
+  <!-- Initial Welcome Screen -->
+  <div class="screen" id="welcomeScreen">
+    <h1>Welcome to Your Design Journey!</h1>
+    <p>Track your progress, work on your portfolio, and get closer to your dream job role!</p>
+    <button onclick="nextScreen('portfolioProgressScreen')">Get started</button>
+  </div>
+
+  <!-- Portfolio Progress Screen -->
+  <div class="screen" id="portfolioProgressScreen" style="display: none;">
+    <h2>How complete is your portfolio?</h2>
+    <button onclick="nextScreen('addSectionScreen')" style="user-select: text;margin-top: 50px;">Haven’t started yet</button>
+    <button onclick="nextScreen('addSectionScreen')">In progress</button>
+    <button onclick="nextScreen('addSectionScreen')">Complete, but needs polishing</button>
+    <button onclick="nextScreen('addSectionScreen')">Finished!</button>
+  </div>
+
+  
+ <!-- Add Portfolio Section Screen 
+  <div class="screen" id="addSectionScreen" style="display: none;">
+    <div class="form-container">
+      <h3>Add New Portfolio Sections</h3>
+      <label for="title">Title:</label>
+      <input type="text" id="title" placeholder="Enter section title">
+
+      <label>Section Type:</label>
+      <div class="button-group">
+        <button onclick="selectType('Resume')">Resume</button>
+        <button onclick="selectType('Case study')">Case study</button>
+        <button onclick="selectType('Wireframes')">Wireframes</button>
+        <button onclick="selectType('Prototypes')">Prototypes</button>
+        <button onclick="selectType('About me')">About me</button>
+      </div>
+
+      <label>Completion Level:</label>
+      <input type="range" id="completionLevel" min="0" max="100" value="0">
+
+      <label for="fileUpload">Upload Files:</label>
+      <input type="file" id="fileUpload">
+
+      <button onclick="addSection()">Add Section</button>
+    </div>
+    <div class="sections-list">
+      <h3>Sections</h3>
+      <ul id="sectionsList"></ul>
+    </div>
+  </div> -->
+
+<!-- Add Portfolio Section Screen -->
+<div class="screen" id="addSectionScreen" style="display: none;">
+  <!-- Left Column: Form Container -->
+  <div class="form-container">
+    <h3>Add New Portfolio Sections</h3>
+    <label for="title">Title:</label>
+    <input type="text" id="title" placeholder="Enter section title">
+
+    <label>Section Type:</label>
+    <div class="button-group">
+      <button onclick="selectType('Resume')">Resume</button>
+      <button onclick="selectType('Case study')">Case study</button>
+      <button onclick="selectType('Wireframes')">Wireframes</button>
+      <button onclick="selectType('Prototypes')">Prototypes</button>
+      <button onclick="selectType('About me')">About me</button>
+    </div>
+
+    <label>Completion Level:</label>
+    <input type="range" id="completionLevel" min="0" max="100" value="0">
+
+    <label for="fileUpload">Upload Files:</label>
+    <input type="file" id="fileUpload">
+
+    <button onclick="addSection()">Add Section</button>
+  </div>
+
+  <!-- Right Column: Sections List Container -->
+  <div class="sections-list">
+    <h3>Sections</h3>
+    <ul id="sectionsList"></ul>
+  </div>
+</div>
+
+
+  <script src="onboarding.js"></script>
+</body>
+</html>
+
+
