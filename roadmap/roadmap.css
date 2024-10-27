@@ -95,6 +95,7 @@ html, body {
 
   .milestones .timeline {
     width: 100%;
+    overflow-y: auto;
     height: 2px;
     background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
     position: absolute;
@@ -360,6 +361,7 @@ html, body {
     margin-top: 1rem;
     border-radius: 0 0 1.5rem 1.5rem;
     display: none;
+    /* overflow-y: auto; */
   }
 
   .new-task-form h3 {
@@ -476,16 +478,6 @@ html, body {
   }
   
   .feedback-milestone:before {
-    /* border-radius: 50%;
-    content: "";
-    display: block;
-    position: absolute;
-    left: -9px;
-    width: 14px;
-    height: 14px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box; */
     border-radius: 35%;
     content: "";
     display: block;
@@ -554,22 +546,11 @@ html, body {
   }
 
   .feedback-action .content {
-    /* font-size: 0.98px;
-    line-height:1.5em;
-    max-width:90%;
-    font-weight:100; */
-
     height: 0;
     overflow: hidden;
     /* transition: max-height 0.3s ease, opacity 0.3s ease; */
   }
   
-  /* .feedback-action.is-expanded .content {
-    max-height: 500px;
-    opacity: 1;
-  } */
-
-
   .feedback-action .content span {
     display: block;
     opacity: 1;
@@ -606,68 +587,6 @@ html, body {
     margin-left: 110px;
   }
 
-
-/* new added for testing grid */
-/* Overlay covers the screen */
-.overlay {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-/* Main content box that holds everything */
-.content-box {
-  width: 90%; /* Adjust this percentage to match dashboard's spacing */
-  max-width: 1400px; /* Set a maximum width */
-  background-color: white;
-  padding: 30px; /* Space inside the box */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  overflow: hidden;
-}
-
-/* Flex container for Timeline, TaskList, and Feedback */
-.flex-container {
-  display: grid;
-  grid-template-areas: 
-    "TimeLine TaskList"
-    "Feedback TaskList";
-  grid-template-columns: 2fr 1fr; /* Larger left column, smaller right */
-  gap: 20px;
-}
-
-/* section inside the box */
-.TimeLine, .Feedback, .TaskList {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Specific Grid Areas */
-.TimeLine {
-  grid-area: TimeLine;
-}
-
-.Feedback {
-  grid-area: Feedback;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.TaskList {
-  grid-area: TaskList;
-  overflow-y: auto; /* Allow scroll for long task lists */
-}
-
-
 /* Close Button Styles */
 .close-button {
   position: absolute;
@@ -696,7 +615,121 @@ html, body {
 }
 
 
-  /* Responsive Adjustments */
+/* new added for testing grid */
+/* Overlay covers the screen */
+.overlay {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Main content box that holds everything */
+.content-box {
+  width: 90%; /* Adjust this percentage to match dashboard's spacing */
+  max-width: 1400px;
+  background-color: white;
+  padding: 30px; /* Space inside the box */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Flex container for Timeline, TaskList, and Feedback */
+.flex-container {
+  display: grid;
+  grid-template-areas: 
+    "TimeLine TaskList"
+    "Feedback TaskList";
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* section inside the box */
+.TimeLine, .Feedback, .TaskList {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific Grid Areas */
+.TimeLine {
+  grid-area: TimeLine;
+}
+
+.Feedback {
+  grid-area: Feedback;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.TaskList {
+  grid-area: TaskList;
+  overflow-y: auto;
+}
+
+
+/* Add Milestone Button Styles */
+.add-milestone-button {
+  margin: 10px 0;
+  padding: 8px 16px;
+  font-size: 11px;
+  background-color: #5a4b56;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-milestone-button:hover {
+  background-color: #846f7e;
+}
+
+/* New Milestone Form Styles */
+.new-milestone-form {
+  /* display: none; */
+  margin: 10px 0;
+  align-items: center;
+}
+
+.new-milestone-form input[type="text"] {
+  padding: 6px;
+  font-size: 14px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.new-milestone-form button {
+  padding: 6px 12px;
+  font-size: 14px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-milestone-form button[type="submit"] {
+  background-color: #5a4b56;
+  color: #fff;
+}
+
+.new-milestone-form .cancel-button {
+  background-color: #ccc;
+}
+
+.new-milestone-form button:hover {
+      opacity: 0.9;
+}
+
+
+/* Responsive Adjustments */
   @media screen and (max-width: 768px) {
     .layout {
       grid-template-areas:

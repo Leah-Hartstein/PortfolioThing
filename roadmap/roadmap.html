@@ -5,131 +5,132 @@
   <title>Portfolio Planner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Used external fonts -->
+  <!-- External Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-  <!-- for feedback section -->
+
+  <!-- Feedback Section Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
 
   <!-- Link to CSS -->
   <link rel="stylesheet" href="roadmap.css">
-
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div classs="logo">PortfolioThing.</div>
-        <nav class="nav">
-          <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">My Tasks</a></li>
-            <li><a href="#">My Portfolio</a></li>
-            <li><a href="#">Guides</a></li>
-          </ul>
-        </nav>
-      </header>
+  <div class="overlay">
+    <!-- Close Button -->
+    <button class="close-button">&times;</button>
+    
+    <!-- Main Container for Content -->
+    <div class="content-box"> 
+      <div class="flex-container">
 
-  <div class="layout">
+        <!-- TimeLine Section -->
+        <div class="TimeLine">
+          <h2>Roadmap</h2>
+          <!-- Add Milestone Button -->
+            <button class="add-milestone-button">+ Add Milestone</button>
+            <!-- New Milestone Form (Initially Hidden) -->
+            <form class="new-milestone-form" style="display: none;">
+              <input type="text" name="milestoneTitle" placeholder="Milestone Title" required />
+              <button type="submit">Add</button>
+              <button type="button" class="cancel-button">Cancel</button>
+            </form>
 
-    <!-- TimeLine Section -->
-
-    <div class="TimeLine">
-        <h2>Roadmap</h2>
-
-      <div class="timeline-container">
-        <div class="milestones">
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Prepare Moodboard</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
+          <div class="timeline-container">
+            <div class="timeline-wrapper">
+            <div class="milestones">
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Prepare Moodboard</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Case Study 1</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Case Study 2</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Draft Bio and About-me Page</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Finalize Case Studies</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="milestone">
+                <div class="text"><div class="align-bottom">Review and Peer-feedback Case Studies</div></div>
+                <div class="point"></div>
+                <div class="line"></div>
+              </div>
+              <div class="timeline"></div>
+            </div>
           </div>
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Draft Case Study 1</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
           </div>
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Draft Case Study 2</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
-          </div>
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Draft Bio and About-me Page</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
-          </div>
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Finalize Case Studies</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
-          </div>
-          <div class="milestone">
-            <div class="text"><div class="align-bottom">Review and Peer-feedback Case Studies</div></div>
-            <div class="point"></div>
-            <div class="line"></div>
-          </div>
-          <!-- Can add more milestones as needed -->
-          
-          <div class="timeline"></div>
         </div>
-      </div>
-    </div>
 
-    <!-- Feedback Hub Section -->
-    <div class="Feedback">
-      
-      <h2>Feedback Hub</h2>
-
-      <ul class="feedback">
-
-        <li class="feedback-milestone no-flicker is-completed feedback-start">
-            <div class="feedback-action">
-                <h2 class="title">Just wondering like...why there is no any project diversity?</h2>
-            </div>
-        </li>
-
-        <li class="feedback-milestone no-flicker is-current no-dot">
-            <div class="feedback-action is-expandable expanded">
-                <h2 class="title" tabindex="0" aria-controls="feedback-0-milestone-content-0">Showcase of Iterative Process</h2>
-                <div class="content no-flicker" id="feedback-0-milestone-content-0" role="region" aria-expanded="false">
-                    <span>The images and mockups should clearly represent your process and final deliverables. </span>
+        <!-- Feedback Hub Section -->
+        <div class="Feedback">
+          <h2>Feedback Hub</h2>
+          <ul class="feedback">
+            <li class="feedback-milestone no-flicker is-completed feedback-start">
+              <div class="feedback-action">
+                <h2 class="title">Why there is no any project diversity?</h2>
+              </div>
+            </li>
+            <li class="feedback-milestone no-flicker is-current no-dot">
+              <div class="feedback-action is-expandable">
+                <h2 class="title">Showcase of Iterative Process</h2>
+                <div class="content no-flicker" role="region" aria-expanded="false">
+                  <span>The images and mockups should clearly represent your process and final deliverables.</span>
                 </div>
-            </div>
-        </li>
-
-        <li class="feedback-milestone no-flicker is-completed feedback-start">
-            <div class="feedback-action">
+              </div>
+            </li>
+            <li class="feedback-milestone no-flicker is-completed feedback-start">
+              <div class="feedback-action">
                 <h2 class="title">Case Study Depth</h2>
-            </div>
-        </li>
-
-        <li class="feedback-milestone no-flicker is-current">
-            <div class="feedback-action is-expandable expanded">
-                <h2 class="title" tabindex="0" aria-controls="feedback-0-milestone-content-1">Actionable Takeaways in Reflections</h2>
-                <div class="content no-flicker" id="feedback-0-milestone-content-1" role="region" aria-expanded="false">
-                    <span>In your project reflections, add concise lessons learned or how you'd apply new approaches in future projects.</span>
+              </div>
+            </li>
+            <li class="feedback-milestone no-flicker is-current">
+              <div class="feedback-action is-expandable">
+                <h2 class="title">Actionable Takeaways in Reflections</h2>
+                <div class="content no-flicker" role="region" aria-expanded="false">
+                  <span>In your project reflections, it would be beneficial to include clear and actionable takeaways. Think about what you learned from the process and how you would approach similar challenges differently in the future. These reflections give insight into your growth as a designer and your ability to apply lessons to future projects. Employers want to know not only what you did, but what you have learned from each experience.</span>
                 </div>
-            </div>
-        </li>
-      </ul>
+              </div>
+            </li>
+            <li class="feedback-milestone no-flicker is-current">
+              <div class="feedback-action is-expandable">
+                <h2 class="title">You might need to consider using stronger visual styles</h2>
+                <div class="content no-flicker" role="region" aria-expanded="false">
+                  <span>One suggestion for improving your portfolio is to simplify the layout and avoid overwhelming your audience with too much information at once. Remember, recruiters often skim through portfolios quickly. Try to make your portfolio structure clear, intuitive, and focused. Each project should be easy to navigate, with brief descriptions upfront and more detailed breakdowns as they scroll. Highlight key outcomes and learnings from each project to keep viewers engaged without overwhelming them.</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button id="share-feedback" class="share-feedback-btn">Sharing Link for More Feedbacks</button>
+          <p id="feedback-link" style="display: none;">https://yourportfolio.com/feedback</p>
+        </div>
 
-      <button id="share-feedback" class="share-feedback-btn">Sharing Link for More Feedbacks</button>
-    <p id="feedback-link" style="display: none;">https://yourportfolio.com/feedback</p>
+        <!-- TaskList Section -->
+        <div class="TaskList">
+          <h1 class="intro">Portfolio Task List</h1>
+          <div class="box">
+            <div class="cards">
+              <!-- Task Cards -->
 
-    </div>
-
-    <!-- TaskList Section -->
-    <div class="TaskList">
-      <h1 class="intro">Portfolio Task List</h1>
-
-      <div class="box">
-        <div class="cards">
-          <!-- Existing Task Cards -->
+              <!-- Existing Task Cards -->
           <!-- Task Card 1 -->
           <div class="card">
             <div class="card__header">
@@ -217,31 +218,31 @@
               <p class="task-description">Share your portfolio on professional networks and social media.</p>
             </div>
           </div>
+              <!-- Add more task cards as needed -->
+            </div>
+
+            <!-- Button to add new task -->
+            <button class="new-card">+ Add New Task</button>
+            <form id="new-task-form" class="new-task-form">
+              <h3>Add New Task</h3>
+              <label for="task-title">Title:</label>
+              <input type="text" id="task-title" name="task-title" required>
+              <label for="task-description">Description:</label>
+              <textarea id="task-description" name="task-description" required></textarea>
+              <label for="task-priority">Priority Level:</label>
+              <select id="task-priority" name="task-priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+              <button type="submit">Add Task</button>
+            </form>
+          </div>
         </div>
 
-        <button class="new-card">+ Add New Task</button>
-
-        <!-- New Task Form -->
-        <form id="new-task-form" class="new-task-form">
-          <h3>Add New Task</h3>
-          <label for="task-title">Title:</label>
-          <input type="text" id="task-title" name="task-title" required>
-
-          <label for="task-description">Description:</label>
-          <textarea id="task-description" name="task-description" required></textarea>
-
-          <label for="task-priority">Priority Level:</label>
-          <select id="task-priority" name="task-priority">
-            <option value="High">High</option>
-            <option value="Medium" selected>Medium</option>
-            <option value="Low">Low</option>
-          </select>
-
-          <button type="submit">Add Task</button>
-        </form>
-      </div>
-    </div>
-  </div>
+      </div> <!-- End of Flex Container -->
+    </div> <!-- End of Content Box -->
+  </div> <!-- End of Overlay -->
 
   <script src="roadmap.js"></script>
 </body>
