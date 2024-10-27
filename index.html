@@ -129,10 +129,40 @@
     </div>
   </div>
 
-  <div class ="statsExpandModal">
-    <button class="modalClose statsModalClose">&times</button>
-    <h1 class="modalHeader">Stats</h1>
-  </div>
+  <section class ="statsExpandModal">
+    <h1 class="modalHeader">Stats    <button class="modalClose statsModalClose">&times</button>
+    </h1>
+    <section class = "statsModalContent">
+      
+      <div class ="userStats">
+      <div class ="statsPanelAvatar">
+      </div>
+      <div class ="statsPanelName">
+        {name}
+      </div>
+      <p class ="statName">Stat</h3>
+      <div class = "statsPanelStat" id = "stat1" onclick ="move()">
+        <div class ="statPanelBar" id = "stat1Bar"></div><div class ="statPanelNumber" id="number1">0%</div>
+      </div>
+      <p class ="statName">Stat</h3>
+      <div class = "statsPanelStat" id = "stat2"></div>
+      <p class ="statName">Stat</h3>
+      <div class = "statsPanelStat" id = "stat3"></div>
+      <p class ="statName">Weekly Goal</h3>
+      <div class = "statsPanelGoal">
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+      </div>
+    </div>
+
+    </section>
+  </section>
 
   <div class="modal guidesExpandModal">
     <button class="modalClose guidesModalClose">&times</button>
@@ -233,11 +263,6 @@
                   <h3>'Second Year Studio'</h3>
                 </div>
 
-            <!-- Task Window Content -->
-                <div class="taskWindow">
-            <!-- Place your task-related content here -->
-                <p>Your task details and descriptions go here.</p>
-                  </div>
             <!-- Roadmap/Timeline (Hidden by default) --><!-- just a TRIAL -->
                 <div class="roadMap" id="map">
         
