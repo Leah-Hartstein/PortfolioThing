@@ -528,7 +528,7 @@ function expandHeader(id) {
           const groupPosition = element.offsetTop - scrollContainer.offsetTop;
 
           scrollContainer.scrollTo({
-              top: groupPosition - 20, // Optional offset of 8px
+              top: groupPosition, // Optional offset of 8px
               behavior: "smooth"
           });
       }
@@ -563,3 +563,17 @@ modalBackground.onclick = () => {
     modalBackground.classList.remove('active');
 }
 
+function move() {
+  var elem = document.getElementById("stat1Bar");   
+  var width = 20;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+      document.getElementById("number1").innerHTML = width * 1  + '%';
+    }
+  }
+}
