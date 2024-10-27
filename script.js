@@ -669,24 +669,24 @@ function setSlideCategory(id) {
 
 setSlideCategory("Ideation");
 
-// Toggle Task/Map
-function openMap() {
-  const taskWindow = document.querySelector('.taskWindow');
-  const roadMap = document.querySelector('.roadMap');
-  const toggleButton = document.querySelector('.openMap');
+// // Toggle Task/Map
+// function openMap() {
+//   const taskWindow = document.querySelector('.taskWindow');
+//   const roadMap = document.querySelector('.roadMap');
+//   const toggleButton = document.querySelector('.openMap');
 
-  console.log(toggleButton);
+//   console.log(toggleButton);
 
-  if (taskWindow.style.display === 'block') {
-    taskWindow.style.display = 'none';
-    roadMap.style.display = 'block';
-    toggleButton.textContent = 'Task';
-  } else {
-    taskWindow.style.display = 'block';
-    roadMap.style.display = 'none';
-    toggleButton.textContent = 'Map';
-  }
-}
+//   if (taskWindow.style.display === 'block') {
+//     taskWindow.style.display = 'none';
+//     roadMap.style.display = 'block';
+//     toggleButton.textContent = 'Task';
+//   } else {
+//     taskWindow.style.display = 'block';
+//     roadMap.style.display = 'none';
+//     toggleButton.textContent = 'Map';
+//   }
+// }
 
 
 // Handle the adding new milestone on roadmap
