@@ -233,7 +233,7 @@ h4 {
   
   color: rgb(0, 0, 0);
   overflow: hidden;
-
+  opacity: 1;
 }
 
 .userStatsClosed {
@@ -248,6 +248,8 @@ h4 {
   border-right: none;
   overflow: hidden;
   /* border-right: 1px black; */
+  opacity: 0;
+  transition: flex 0.5s ease;
 
 
 }
@@ -280,6 +282,25 @@ h4 {
   align-self: flex-end;
   position: fixed;
   margin: 8px 8px;
+  opacity: 1;
+  transition: flex 0.5s ease;
+
+}
+
+.statsExpandButtonClosed {
+  font-weight: bold;
+  width: 50px;
+  height: 30px;
+  background: none;
+  border-radius: 25px;
+  border: 2px solid black;
+  cursor: pointer;
+  align-self: flex-end;
+  position: fixed;
+  margin: 8px 8px;
+  opacity: 0;
+  transition: flex 0.5s ease;
+
 }
 
 

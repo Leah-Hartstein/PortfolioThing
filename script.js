@@ -41,6 +41,9 @@ function expandList() {
 
         // Hide the userStats section
         userStatsSection.classList.add("userStatsClosed");
+
+        // Hide the userStats expand button
+        statsExpandButton.classList.add("statsExpandButtonClosed");
     } else {
         myTasksSection.classList.remove("myTasksOpen");
         myTasksSection.classList.add("myTasks");
@@ -50,6 +53,11 @@ function expandList() {
 
         // Show the userStats section
         userStatsSection.classList.remove("userStatsClosed");
+
+        // Show the userStats expand button
+        statsExpandButton.classList.remove("statsExpandButtonClosed");
+        statsExpandButton.classList.add("statsExpandButton");
+
     }
 }
 
