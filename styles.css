@@ -282,11 +282,11 @@ h4 {
 
 .statsExpandButton {
   font-weight: bold;
-  width: 50px;
-  height: 30px;
+  width: 80px;
+  height: 35px;
   background: none;
   border-radius: 25px;
-  border: 2px solid black;
+  border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
   position: fixed;
@@ -294,21 +294,32 @@ h4 {
   opacity: 1;
   transition: opacity 0.5s ;
 
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .statsExpandButtonClosed {
   font-weight: bold;
-  width: 50px;
-  height: 30px;
+  width: 80px;
+  height: 35px;
   background: none;
   border-radius: 25px;
-  border: 2px solid black;
+  border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
   position: fixed;
   margin: 8px 8px;
   opacity: 0;
   transition: opacity 0.3s ;
+
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
@@ -458,17 +469,21 @@ h4 {
 
 .chosenTaskOpen {
   font-weight: bold;
-  width: 50px;
-  height: 30px;
+  width: 80px;
+  height: 35px;
   background: none;
   border-radius: 25px;
-  border: 2px solid black;
+  border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
-  /* position: fixed; */
   margin: 8px 8px;
   opacity: 1;
   transition: opacity 0.5s ;
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
@@ -546,7 +561,7 @@ h4 {
 }
 
 .sectionHeader {
-  padding: 15px;
+  padding: 0 15px 0 15px;
   height: 45px;
   display: grid;
   grid-auto-flow: column;
@@ -560,12 +575,17 @@ h4 {
 }
 
 .taskExpandButton, .guidesExpandButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8px 0px 8px;
   font-weight: bold;
-  width: 90px;
-  height: 40px;
+  width: 80px;
+  height: 35px;
   background: none;
   border-radius: 25px;
-  border: 2px solid black;
+  border: 1px solid black;
   cursor: pointer;
   justify-self: right;
 }
