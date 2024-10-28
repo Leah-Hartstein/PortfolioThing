@@ -1070,6 +1070,21 @@ h4 {
   transition: .3s ease;
 }
 
+.modalUserStats {
+  display: flex;
+  flex-direction: column;
+  flex: 0.4; /* Adjust width as needed */
+  margin: 0 0px;
+  height: 500px;
+  align-self: center;
+  transition: flex 0.5s ease;
+  border-right: 1px solid black;
+  
+  color: rgb(0, 0, 0);
+  overflow: hidden;
+
+}
+
 .statsExpandModal .modalClose{
   align-self: center;
 }
