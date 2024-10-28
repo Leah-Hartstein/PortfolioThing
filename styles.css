@@ -285,19 +285,23 @@ h4 {
   width: 80px;
   height: 35px;
   background: none;
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
   position: fixed;
-  margin: 8px 8px;
+  margin: 4px 8px;
   opacity: 1;
   transition: opacity 0.5s ;
+  padding: 0px 8px 0px 8px;
+
 
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  background-color: white;
 
 }
 
@@ -306,14 +310,15 @@ h4 {
   width: 80px;
   height: 35px;
   background: none;
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
   position: fixed;
-  margin: 8px 8px;
+  margin: 4px 8px;
   opacity: 0;
   transition: opacity 0.3s ;
+  padding: 0px 8px 0px 8px;
 
 
   display: flex;
@@ -584,7 +589,7 @@ h4 {
   width: 80px;
   height: 35px;
   background: none;
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
   justify-self: right;
