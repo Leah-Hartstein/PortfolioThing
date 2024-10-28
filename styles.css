@@ -1483,13 +1483,14 @@ align-self:flex-end;
 
 .timeline-container {
   width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 30px;
-  height: 100%; */
   justify-content: space-between;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content; */
 }
 
 .timeline-container .milestones {
@@ -1508,19 +1509,24 @@ align-self:flex-end;
 }
 
 .milestones .timeline {
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 150%;
+  height: 2px;
+  background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
   z-index: 1;
-  box-sizing: content-box;
-  padding: 0;
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 .milestones {
+  
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  position: relative;
   margin-bottom: 40px;
 }
 
