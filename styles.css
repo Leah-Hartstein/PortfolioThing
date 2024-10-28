@@ -233,7 +233,7 @@ h4 {
   flex-direction: column;
   flex: 0.4; /* Adjust width as needed */
   margin: 0 0px;
-  height: 500px;
+  height: 100%;
   align-self: center;
   transition: flex 0.5s ease;
   border-right: 1px solid black;
@@ -269,7 +269,7 @@ h4 {
 
 .statsPanelAvatar {
   /* flex: 0.4; Adjust width as needed */
-  margin: 4px 0 10 0px;
+  margin: 8px 0 10 0px;
   height: 45%;
   width: 95%;
   align-self: center;
@@ -291,7 +291,7 @@ h4 {
   cursor: pointer;
   align-self: flex-end;
   position: fixed;
-  margin: 4px 8px;
+  margin: 8px 8px;
   opacity: 1;
   transition: opacity 0.5s ;
   padding: 0px 8px 0px 8px;
