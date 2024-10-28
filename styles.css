@@ -1149,9 +1149,42 @@ align-self:flex-end;
 
 .avatarEquipment {
   width: 90%;
-  height: 40%;
-  border: 1px solid black;
+  height: 20%;
+  /* border: 1px solid black; */
+  margin-top: 10px;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
+
+.slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #bd93f9;
+  align-items: center;
+
+}
+
+#slot1 {
+  background: #acc1f8 url(head.png) center no-repeat;
+}
+
+#slot2 {
+  background: #acc1f8 url(shirt.png) center no-repeat;
+}
+
+#slot3 {
+  background: #acc1f8 url(legs.png) center no-repeat;
+}
+
+/* .itemName {
+  width: 100%;
+} */
 /* SLIDESHOW */
 
 .slideshow {
