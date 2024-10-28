@@ -243,20 +243,23 @@ h4 {
   
   color: rgb(0, 0, 0);
   overflow: hidden;
+  white-space: nowrap;
+
 
 }
 
 .userStatsClosed {
   display: flex;
   flex-direction: column;
-  flex: 0; /* Adjust width as needed */
+  flex: 0 1; /* Adjust width as needed */
   margin: 0 0px;
   height: 500px;
-  width: 0px;
+  /* width: 0px; */
   align-self: center;
   transition: flex 0.5s ease;
   border-right: none;
   overflow: hidden;
+  white-space: nowrap;
   /* border-right: 1px black; */
 
 }
@@ -268,9 +271,9 @@ h4 {
 
 .statsPanelAvatar {
   /* flex: 0.4; Adjust width as needed */
-  margin: 8px 0 10 0px;
+  margin: 4px 0 10 0px;
   height: 45%;
-  width: 90%;
+  width: 95%;
   align-self: center;
   overflow: hidden;
   /* border: 1px solid black; */
@@ -332,6 +335,8 @@ h4 {
 .statsPanelName{
   align-self: center;
   text-align: center;
+  white-space: nowrap;
+
 }
 
 .statsPanelStat{
