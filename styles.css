@@ -577,6 +577,7 @@ h4 {
   grid-auto-flow: column;
   grid-template-columns: 1fr;
   align-items: center;
+  
 }
 
 .sectionTitle {
@@ -623,6 +624,12 @@ h4 {
   align-content: flex-start;
   overflow-y: scroll;
   margin: 0;
+  background: rgb(233, 234, 242);
+  padding: 4px;
+}
+
+.myTasks .sectionHeader {
+  border-bottom: 1px solid black;
 }
 
 .taskGroup {
