@@ -314,7 +314,7 @@ h4 {
   height:20px;
   width: 90%;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
   /* margin-top: 10px; */
   margin-bottom: 4px;
 }
@@ -326,6 +326,7 @@ h4 {
   color: white;
   text-align: right;
   z-index: 0;
+  border-radius: 15px;
 }
 
 .statsPanelGoal {
@@ -350,7 +351,7 @@ h4 {
   text-align: right;
   z-index: 0;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .statPanelNumber {
@@ -1073,8 +1074,8 @@ h4 {
 .modalUserStats {
   display: flex;
   flex-direction: column;
-  flex: 0.4; /* Adjust width as needed */
-  margin: 0 0px;
+  flex: 1; /* Adjust width as needed */
+  /* margin: 0 0px; */
   height: 500px;
   align-self: center;
   transition: flex 0.5s ease;
@@ -1110,6 +1111,47 @@ h4 {
   height: 90%;
 }
 
+.additionalBars {
+  margin-left: 20px;
+  margin-right: 20px;
+  flex: 1.5;
+  height: 100%;
+  align-self: center;
+  align-content: center;
+}
+
+.statsModalStat{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-between;
+
+  height:25px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+  /* margin-top: 10px; */
+  margin-bottom: 8px;
+}
+
+.statsExpandModal .statsPanelGoal {
+  width: 100%;
+}
+
+.statsExpandModal  .statName {
+  margin-bottom: 8px;
+align-content: space-between
+}
+
+.statsModalStat .statPanelNumber {
+align-self:flex-end;
+}
+
+.avatarEquipment {
+  width: 90%;
+  height: 40%;
+  border: 1px solid black;
+}
 /* SLIDESHOW */
 
 .slideshow {
