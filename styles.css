@@ -50,6 +50,11 @@ hr {
   margin-bottom: 60px;
 }
 
+ul {
+  margin-left: 0px;
+  padding: 4;
+}
+
 /* Side panel buttons */
 
 .openList {
@@ -380,8 +385,8 @@ h4 {
   height: 100%;
   width: 100%;
   justify-content: center;
-  position: static;
-
+  position: relative;
+  z-index: 1;
 }
 
 .currentTask h1 {
@@ -391,17 +396,45 @@ h4 {
 
 
 .chosenTask {
+  display: flex;
+  flex-direction: column;
   height: 320px;
   width: 380px;
   align-self: center;
   position: fixed;
   background-color: white;
+  box-shadow: #00000040 0 6px 6px;
+  border-radius: 10px;
+  padding: 8px;
+
 }
 
 .chosenTaskHidden {
   width: 0px;
   height: 0px;
   overflow: hidden;
+}
+
+.chosenTaskButtons{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.chosenTaskOpen {
+  font-weight: bold;
+  width: 50px;
+  height: 30px;
+  background: none;
+  border-radius: 25px;
+  border: 2px solid black;
+  cursor: pointer;
+  align-self: flex-end;
+  /* position: fixed; */
+  margin: 8px 8px;
+  opacity: 1;
+  transition: opacity 0.5s ;
+
 }
 
 
@@ -1385,10 +1418,6 @@ align-self:flex-end;
 
 
 /* Fixing Overlay Issues */
-.currentTask {
-  position: relative;
-  z-index: 1;
-}
 
 /* TimeLine Styles */
 .TimeLine {
