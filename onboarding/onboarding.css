@@ -160,6 +160,12 @@ button {
   border-radius: 10px;
 }
 
+.button-group button:hover {
+  background: #EDEBEB;
+  color: #303030;
+  border: 1px solid #303030;
+}
+
 input[type="text"],
 input[type="file"] {
   padding: 10px;
