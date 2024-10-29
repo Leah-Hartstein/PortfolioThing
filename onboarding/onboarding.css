@@ -176,7 +176,9 @@ input[type="file"] {
   padding: 15px; /* Added padding for a nicer look */
   margin: 10px 0;
   border-radius: 5px;
-  display: flex; /* Ensure text is aligned nicely */
-  justify-content: space-between; /* Optional: adjust alignment */
+  width: 350px; /* Set a fixed width */
+  overflow-wrap: break-word; /* Ensure text wraps within the set width */
+  height: auto; /* Allow height to adjust based on content */
+  word-wrap: break-word; /* Ensures long words break to the next line if necessary */
+  list-style-type: none; /* Remove default bullet points */
 }
-
