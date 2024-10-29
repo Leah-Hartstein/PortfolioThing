@@ -1110,6 +1110,7 @@ h4 {
   height: 125px;
   width: 250px;
   grid-column: 1 / 4;
+  object-fit: contain;
 }
 
 .taskModalTaskText {
