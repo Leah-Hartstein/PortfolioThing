@@ -728,6 +728,94 @@ html, body {
       opacity: 0.9;
 }
 
+/* Style for the Add Feedback button */
+#show-feedback-form {
+  background-color: #5a4b56;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#show-feedback-form:hover {
+  background-color: #5a4b56;
+}
+
+/* Style for the feedback form */
+#feedback-form {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title label */
+#feedback-form label {
+  font-size: 14px;
+  /* font-weight: bold; */
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Title input styling */
+#feedback-title {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#feedback-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  resize: vertical;
+  min-height: 80px;
+  margin-bottom: 10px;
+}
+
+#feedback-form button[type="submit"] {
+  background-color: #6a5966;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#feedback-form button[type="submit"]:hover {
+  background-color: #6a5966;
+}
+
+/* Style for the Share Link button */
+#share-feedback {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#share-feedback:hover {
+  background-color: #333;
+}
+
 
 /* Responsive Adjustments */
   @media screen and (max-width: 768px) {

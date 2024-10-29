@@ -119,49 +119,64 @@ $(document).ready(function() {
 // Close Button
 document.querySelector('.close-button').addEventListener('click', function() {
   if (confirm('Are you sure you want to return to the dashboard?')) {
-    window.location.href = '../index.html'; //!! actual dashboard path
+    window.location.href = 'index.html'; // Replace actual dashboard path
   }
 });
 
 
-// Handle the adding new milestone on roadmap
-document.addEventListener('DOMContentLoaded', function() {
-  const addMilestoneButton = document.querySelector('.add-milestone-button');
-  const newMilestoneForm = document.querySelector('.new-milestone-form');
-  const cancelButton = document.querySelector('.cancel-button');
-  const milestonesContainer = document.querySelector('.milestones');
 
-  console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
-
-  addMilestoneButton.addEventListener('click', function() {
-    console.log('Add Milestone Button Clicked');
-    newMilestoneForm.style.display = 'flex';
-    addMilestoneButton.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function() {
+  // Toggle feedback form visibility
+  document.getElementById("show-feedback-form").addEventListener("click", function() {
+    const form = document.getElementById("feedback-form");
+    form.style.display = form.style.display === "none" ? "block" : "none";
   });
 
-
-  cancelButton.addEventListener('click', function() {
-    console.log('Cancel Button Clicked');
-    newMilestoneForm.style.display = 'none';
-    addMilestoneButton.style.display = 'inline-block';
-  });
-
-  newMilestoneForm.addEventListener('submit', function(event) {
+  // Handle new feedback submission
+  document.getElementById("feedback-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    const milestoneTitle = newMilestoneForm.elements['milestoneTitle'].value;
 
-    const newMilestone = document.createElement('div');
-    newMilestone.classList.add('milestone');
-    newMilestone.innerHTML = `
-      <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
-      <div class="point"></div>
-      <div class="line"></div>
-    `;
+    const feedbackTitle = document.getElementById("feedback-title").value.trim();
+    const feedbackText = document.getElementById("new-feedback").value.trim();
 
-    milestonesContainer.appendChild(newMilestone);
+    // Create a new feedback list item
+    const newFeedback = document.createElement("li");
+    newFeedback.className = "feedback-milestone no-flicker is-current";
 
-    newMilestoneForm.reset();
-    newMilestoneForm.style.display = 'none';
-    addMilestoneButton.style.display = 'inline-block';
+    if (feedbackTitle && feedbackText) {
+      // Expandable item if both title and description are provided
+      newFeedback.innerHTML = `
+        <div class="feedback-action is-expandable">
+          <h2 class="title">${feedbackTitle}</h2>
+          <div class="content no-flicker" role="region" aria-expanded="false">
+            <span>${feedbackText}</span>
+          </div>
+        </div>
+      `;
+
+      // Toggle expand/collapse functionality
+      newFeedback.querySelector(".feedback-action").addEventListener("click", function() {
+        const content = this.querySelector(".content");
+        const expanded = content.getAttribute("aria-expanded") === "true";
+        content.setAttribute("aria-expanded", !expanded);
+        content.style.display = expanded ? "none" : "block";
+      });
+    } else {
+      // Simple item if only description is provided
+      newFeedback.innerHTML = `
+        <div class="feedback-action">
+          <h2 class="title">${feedbackText}</h2>
+        </div>
+      `;
+    }
+
+    // Append the new feedback to the feedback list
+    const feedbackList = document.querySelector(".feedback");
+    feedbackList.appendChild(newFeedback);
+
+    // Clear the form and hide it
+    document.getElementById("feedback-title").value = "";
+    document.getElementById("new-feedback").value = "";
+    document.getElementById("feedback-form").style.display = "none";
   });
 });

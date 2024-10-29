@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Planner</title>
+  <title>Portfolio Roadmap/Feedback</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- External Fonts -->
@@ -83,7 +83,7 @@
         <!-- Feedback Hub Section -->
         <div class="Feedback">
           <h2>Feedback Hub</h2>
-          <ul class="feedback">
+          <ul class="feedback" id="feedback-list">
             <li class="feedback-milestone no-flicker is-completed feedback-start">
               <div class="feedback-action">
                 <h2 class="title">Why there is no any project diversity?</h2>
@@ -119,6 +119,18 @@
               </div>
             </li>
           </ul>
+
+          <!-- Button to show/hide feedback form -->
+          <button id="show-feedback-form" class="share-feedback-btn">Add New Feedback</button>
+
+          <!-- Feedback form, initially hidden -->
+          <form id="feedback-form" style="display: none;">
+            <label for="feedback-title">Feedback Title (optional)</label>
+            <input type="text" id="feedback-title" placeholder="Enter title (optional)" />
+            <textarea id="new-feedback" placeholder="Enter your feedback" required></textarea>
+            <button type="submit">Submit Feedback</button>
+          </form>
+
           <button id="share-feedback" class="share-feedback-btn">Sharing Link for More Feedbacks</button>
           <p id="feedback-link" style="display: none;">https://yourportfolio.com/feedback</p>
         </div>
