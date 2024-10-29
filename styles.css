@@ -844,6 +844,8 @@ h4 {
 
 .portfolioHeader {
   display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .portfolioModalOpenButton {
@@ -860,7 +862,7 @@ h4 {
     border: 1px solid black;
     cursor: pointer;
     justify-self: right;
-    margin: 8px 8px 8px 8px;
+    margin: 4px 8px 8px 8px;
     align-self: flex-end;
     position: relative;
 }
