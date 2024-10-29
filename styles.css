@@ -725,9 +725,7 @@ h4 {
   margin: 10px 10px 10px 10px;
 
   flex: 1 0 200px;
-
-  /*changed max-width from 380px to 46% ||| temp solution because idk how to use flexbox*/
-
+    /*changed max-width from 380px to 46% ||| temp solution because idk how to use flexbox*/
   max-width: 46%;
   /* width: 200px; to revert back to previous preset size just comment this part in and the two lines above out */
   border-radius: 15px;
@@ -1872,4 +1870,12 @@ align-self:flex-end;
 
 .milestone:hover .line {
   height: 120px;
+}
+
+
+@media(max-width: 2114px) {
+  .taskItemTask {
+      max-width: 380px;
+  }
+
 }
