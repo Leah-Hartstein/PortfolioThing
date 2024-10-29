@@ -180,3 +180,47 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("feedback-form").style.display = "none";
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const addMilestoneButton = document.querySelector(".add-milestone-button");
+  const milestoneForm = document.querySelector(".new-milestone-form");
+  const milestoneInput = milestoneForm.querySelector("input[name='milestoneTitle']");
+  const timelineContainer = document.querySelector(".milestones");
+
+  // Show the form when "Add Milestone" button is clicked
+  addMilestoneButton.addEventListener("click", function() {
+    milestoneForm.style.display = "block";
+    milestoneInput.focus();
+  });
+
+  // Hide the form when "Cancel" button is clicked
+  milestoneForm.querySelector(".cancel-button").addEventListener("click", function() {
+    milestoneForm.style.display = "none";
+    milestoneInput.value = ""; // Clear the input
+  });
+
+  // Add a new milestone to the timeline when the form is submitted
+  milestoneForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent page reload
+    const milestoneTitle = milestoneInput.value.trim();
+
+    // Only proceed if there's input
+    if (milestoneTitle) {
+      // Create new milestone element
+      const newMilestone = document.createElement("div");
+      newMilestone.className = "milestone";
+      newMilestone.innerHTML = `
+        <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
+        <div class="point"></div>
+        <div class="line"></div>
+      `;
+
+      // Append new milestone to the timeline
+      timelineContainer.appendChild(newMilestone);
+
+      // Clear the form and hide it
+      milestoneInput.value = "";
+      milestoneForm.style.display = "none";
+    }
+  });
+});
