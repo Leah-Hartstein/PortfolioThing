@@ -38,3 +38,10 @@ function addSection() {
     alert('Please fill out all fields.');
   }
 }
+
+function dashboardPage(screen) {
+  if (screen === 'dashboardScreen') {
+    // Adjust the path below to match the location of your other index.html file
+    window.location.href = '/index.html';
+  }
+}
