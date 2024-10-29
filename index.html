@@ -207,6 +207,85 @@ Leah Hartstein
     </section>
   </section>
 
+  <section class ="portfolioExpandModal">
+    <h1 class="modalHeader">Stats    <button class="modalClose statsModalClose">&times</button>
+    </h1>
+    <section class = "statsModalContent">
+      
+      <section class ="modalUserStats">
+      <div class ="statsModalAvatar">
+      </div>
+      <div class ="statsPanelName">
+Leah Hartstein
+<br>UI Designer
+      </div>
+      <div class ="avatarEquipment">
+        <div class ="slot" id = "slot1"><p class ="itemname" id = "slot1Name">Cool Face</p></div>
+        <div class ="slot" id = "slot2"><p class ="itemname" id = "slot2Name">Normal Shirt</p></div>
+        <div class ="slot" id = "slot3"><p class ="itemname" id = "slot3Name">Normal Pants</p></div>
+
+      </div>
+
+    </section>
+
+    <section class = additionalBars>
+      <div class ="statName"><p>Visual Design</p> <p>30/90</p>
+      </div>
+
+      <div class = "statsModalStat" id = "stat1" onclick ="move()">
+        <div class ="statPanelBar" id = "stat1Bar"></div>
+        <div class ="statPanelNumber" id="number1">0%</div>
+      </div>
+      <div class ="statName"><p>Time Management</p> <p>40/80</p>
+      </div>
+      <div class = "statsModalStat" id = "stat2">
+        <div class ="statPanelBar" id = "stat2Bar"></div>
+
+      </div>
+      <div class ="statName"><p>Communication</p> <p>10/50</p>
+      </div>      
+      <div class = "statsModalStat" id = "stat3">
+        <div class ="statPanelBar" id = "stat3Bar"></div>
+
+      </div>
+      <div class ="statName"><p>Teamwork</p> <p>15/50</p>
+      </div>
+
+      <div class = "statsModalStat" id = "stat4">
+        <div class ="statPanelBar" id = "stat4Bar"></div>
+
+      </div>
+      <div class ="statName"><p>Problem Solving</p> <p>12/50</p>
+      </div>
+
+      <div class = "statsModalStat" id = "stat5">
+        <div class ="statPanelBar" id = "stat5Bar"></div>
+
+      </div>
+      <div class ="statName"><p>Presentation</p> <p>12/50</p>
+      </div>
+      <div class = "statsModalStat" id = "stat6">
+        <div class ="statPanelBar" id = "stat6Bar"></div>
+
+      </div>
+      <div class ="statName"><p>Weekly Goal</p> <p>3/8</p>
+      </div>
+      <div class = "statsPanelGoal">
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "GoalPip"></div>
+        <div class = "emptyGoalPip"></div>
+        <div class = "emptyGoalPip"></div>
+        <div class = "emptyGoalPip"></div>
+        <div class = "emptyGoalPip"></div>
+        <div class = "emptyGoalPip"></div>
+      </div>
+    </section>
+    
+    </section>
+  </section>
+
+
   <div class="modal guidesExpandModal">
     <button class="modalClose guidesModalClose">&times</button>
     <h1 class="modalHeader">Guides</h1>
@@ -504,7 +583,11 @@ Leah Hartstein
 
       <section class="bottomRow">
           <section class="myPortfolio">
-            <div class ="Portfolioheader"><h1>My Portfolio</h1></div>
+            <div class ="Portfolioheader">
+              <h1>My Portfolio</h1>
+              <button type="button" class="portfolioModalOpenButton">Open <img src="new window.png"> </button>
+
+            </div>
             <section class = "portfolioSections">
             <div class = "portfolioSection">
               <div class = "portfolioSectionHeader">

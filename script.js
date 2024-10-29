@@ -18,6 +18,10 @@ const statsExpandButton = document.querySelector(".statsExpandButton");
 const statsExpandModal = document.querySelector(".statsExpandModal");
 const statsExpandModalClose = document.querySelector(".statsModalClose");
 
+const portfolioExpandButton = document.querySelector(".portfolioModalOpenButton");
+const portfolioExpandModal = document.querySelector(".portfolioExpandModal");
+const portfolioExpandModalClose = document.querySelector(".portfolioModalClose");
+
 
 const modalBackground = document.querySelector(".modalBackground");
 
@@ -607,6 +611,19 @@ statsExpandModalClose.onclick = () => {
   statsExpandModal.classList.remove("active");
   modalBackground.classList.remove("active");
 };
+
+// my portfolio Modal
+
+portfolioExpandButton.onclick = () => {
+  portfolioExpandModal.classList.add("active");
+  modalBackground.classList.add("active");
+};
+
+portfolioExpandModalClose.onclick = () => {
+  portfolioExpandModal.classList.remove("active");
+  modalBackground.classList.remove("active");
+};
+
 
 function move() {
   var elem = document.getElementById("stat1Bar");
