@@ -614,15 +614,15 @@ statsExpandModalClose.onclick = () => {
 
 // my portfolio Modal
 
-portfolioExpandButton.onclick = () => {
-  portfolioExpandModal.classList.add("active");
-  modalBackground.classList.add("active");
-};
+// portfolioExpandButton.onclick = () => {
+//   portfolioExpandModal.classList.add("active");
+//   modalBackground.classList.add("active");
+// };
 
-portfolioExpandModalClose.onclick = () => {
-  portfolioExpandModal.classList.remove("active");
-  modalBackground.classList.remove("active");
-};
+// portfolioExpandModalClose.onclick = () => {
+//   portfolioExpandModal.classList.remove("active");
+//   modalBackground.classList.remove("active");
+// };
 
 
 function move() {
