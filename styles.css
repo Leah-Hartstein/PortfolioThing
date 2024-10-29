@@ -461,7 +461,7 @@ h4 {
 
 .currentTask h1 {
   width: 0;
-  z-index: 1;
+  z-index: 0;
   margin-left: 10px;
 }
 
@@ -1659,7 +1659,7 @@ align-self:flex-end;
   border-radius: 5.6px;
   overflow: hidden;
   position: static;
-  z-index: 1;
+  z-index: 2;
   height: 90%;
   align-self: center;
   margin-top: 10px;
@@ -1714,7 +1714,7 @@ align-self:flex-end;
   width: 150%;
   height: 2px;
   background: linear-gradient(-37deg, #F82585 0%, #3900ED 100%);
-  z-index: 1;
+  z-index: 2;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
