@@ -1424,8 +1424,50 @@ align-self:flex-end;
   transform: scale(1);
 }
 
+.portfolioExpandModal .modalClose{
+  align-self: center;
+}
 
+.portfolioExpandModal .modalHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.portfolioExpandModal.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.portfolioModalContent {
+  display: flex;
+  flex-direction: row;
+  /* justify-self: center; */
+  width: 100%;
+  height: 90%;
+  flex-wrap: wrap;
+  gap: 8px
+}
+
+.portfolioExpandModal .portfolioSection{
+flex: 1 1 49%;
+height: 500px;
+}
+
+.portfolioExpandModal .portfolioSectionContent{
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+  }
+
+  .portfolioExpandModal .portfolioSectionContentThumbnailLarge {
+flex: 2 0 60%;
+  }
+
+  .portfolioExpandModal .portfolioSectionContentThumbnailSmall {
+    flex: 1 0 33%;
+  }
 /* GUIDES MODAL */
 
 
