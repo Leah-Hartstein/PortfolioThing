@@ -529,42 +529,40 @@ function openGroup(id) {
 
 function expandHeader(id) {
   // Find any already open group
-  var alreadyOpenGroup = document.querySelector(".taskItemsActive");
+  let expandedGroups = document.querySelector(".taskItemsActive");
+  let expandedButtons = document.querySelector(".taskHeaderExpandActive");
 
   // Find the element by ID
-  let element = document.getElementById(id);
+  let group = document.getElementById(id);
+  let button = document.getElementById(id + "Button");
+
   let scrollContainer = document.querySelector(".taskList"); // Replace with your scrollable container
 
-  if (element.classList.contains("taskItemsActive")) {
+  if (group.classList.contains("taskItemsActive")) {
       // Close the active group if it's already open
-      element.classList.remove("taskItemsActive");
+      group.classList.remove("taskItemsActive");
+      button.classList.remove("taskHeaderExpandActive");
   } else {
       // Open the selected group and close any others
-      element.classList.add("taskItemsActive");
+      group.classList.add("taskItemsActive");
+      button.classList.add("taskHeaderExpandActive");
+
 
       // Close any already open groups
-      if (alreadyOpenGroup) {
-          alreadyOpenGroup.classList.remove("taskItemsActive");
-          alreadyOpenGroup.classList.add("taskItems"); // Assuming .taskItems is the default class
+      if (expandedGroups) {
+          expandedGroups.classList.remove("taskItemsActive");
+          expandedButtons.classList.remove("taskHeaderExpandActive")
       }
 
       // Scroll to the selected group
-      if (scrollContainer && element) {
-          const groupPosition = element.offsetTop - scrollContainer.offsetTop;
+      if (scrollContainer && group) {
+          const groupPosition = group.offsetTop - scrollContainer.offsetTop;
 
           scrollContainer.scrollTo({
               top: groupPosition, // Optional offset of 8px
               behavior: "smooth"
           });
       }
-  }
-
-  // Toggle the button's active class
-  let buttonElement = document.getElementById(id + "Button");
-  if (buttonElement.classList.contains("taskHeaderExpandActive")) {
-      buttonElement.classList.remove("taskHeaderExpandActive");
-  } else {
-      buttonElement.classList.add("taskHeaderExpandActive");
   }
 }
 
