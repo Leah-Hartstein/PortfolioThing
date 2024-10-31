@@ -746,3 +746,49 @@ document.addEventListener('DOMContentLoaded', function() {
     addMilestoneButton.style.display = 'inline-block';
   });
 });
+
+// Array of messages
+const cheerfulMessages = [
+  "You're doing an amazing job! Keep it up! 🌟",
+  "Embrace today’s little joys—they all add up to something big! 🎉",
+  "Celebrate every small victory. Each step forward is worth celebrating! 🎈",
+  "The best is yet to come, and you’re right on track. Keep shining! ✨", 
+  "One step at a time, and you'll reach places you never imagined!", 
+  "Every tiny action counts. Keep going—you’re making progress, even if it’s , little by little! 💪",
+  "You’re closer to finishing than you think. Just keep that momentum going!",
+  "It’s all about small wins. One checkbox at a time—let’s get it done! ✔️"
+];
+
+// Get references to elements
+const cheerfulIcon = document.getElementById('cheerfulIcon');
+const cheerfulMessageContainer = document.getElementById('cheerfulMessageContainer');
+const cheerfulMessageText = document.getElementById('cheerfulMessageText');
+const closeCheerfulMessage = document.getElementById('closeCheerfulMessage');
+
+// Function to show message
+function showCheerfulMessage() {
+  // Prevent multiple clicks
+  cheerfulIcon.style.pointerEvents = 'none';
+
+  // Get random message
+  const randomIndex = Math.floor(Math.random() * cheerfulMessages.length);
+  const message = cheerfulMessages[randomIndex];
+
+  // Display message
+  cheerfulMessageText.innerText = message;
+  cheerfulMessageContainer.classList.add('show');
+  cheerfulMessageContainer.style.display = 'block';
+
+  // Hide after 5 seconds
+  setTimeout(() => {
+    cheerfulMessageContainer.style.display = 'none';
+    cheerfulIcon.style.pointerEvents = 'auto';
+  }, 5000);
+}
+
+// Event listeners
+cheerfulIcon.addEventListener('click', showCheerfulMessage);
+closeCheerfulMessage.addEventListener('click', () => {
+  cheerfulMessageContainer.style.display = 'none';
+  cheerfulIcon.style.pointerEvents = 'auto';
+});
