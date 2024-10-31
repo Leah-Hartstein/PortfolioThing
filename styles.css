@@ -450,9 +450,11 @@ h4 {
 
 .currentTask{
   display: flex;
+  flex-direction: row;
   flex: 1; /* Adjust width as needed */
   height: 100%;
   width: 100%;
+  align-items: center;
   justify-content: center;
   position: relative;
   z-index: 1;
@@ -477,7 +479,8 @@ h4 {
   box-shadow: #00000040 0 6px 6px;
   border-radius: 10px;
   padding: 8px;
-
+  align-self: center;
+  margin-bottom: 50px;
 }
 
 .chosenTaskHidden {
@@ -486,10 +489,43 @@ h4 {
   overflow: hidden;
 }
 
-.chosenTaskButtons{
+.chosenTaskFooter{
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.chosenTaskButtons{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 8px;
+  align-items: center;
+  box-shadow: #00000040 0 6px 6px;
+  align-self: center;
+  padding: 0px 8px 0px 8px;
+  margin-top: 16px;
+
+}
+
+.chosenTaskNext {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  align-content: center;
+  background-color: white;
+}
+
+.chosenTaskPrev{
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  align-content: center;
+  background-color: white;
 }
 
 .chosenTaskOpen {
@@ -526,6 +562,7 @@ h4 {
 
 .sidebuttons {
   display: flex;
+  flex: 1 1;
   flex-direction: column; /* Stack buttons vertically */
   justify-content: space-between; /* Space them vertically */
   align-items: flex-end; /* Align buttons to the right */
@@ -534,7 +571,7 @@ h4 {
   height: 100%; /* Add height to occupy the full container, if needed */
   border: none;
   margin-right: 8px;
-
+  align-self: flex-end;
 
 }
 
