@@ -4,7 +4,7 @@ const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
-const taskList = document.querySelector(".taskGroup");
+const taskItems = document.querySelector(".taskItems");
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
@@ -277,92 +277,93 @@ ctx.clearRect(0, 0, mapCanvas.width, mapCanvas.height);
 
 
 function displayTasks() {
-  // Clear the task list before displaying
-  taskList.innerHTML = "";
+    // Clear the task list before displaying
+    taskItems.innerHTML = "";
 
-  // Get tasks from localStorage
-  let localTasks = JSON.parse(localStorage.getItem('tasks'));
+    // Get tasks from localStorage
+    let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
-  // Check if localTasks is not empty or null
-  if (localTasks) {
-      localTasks.forEach((task) => {
-        
-          // Create a task item for the DOM
-          let item = document.createElement("div");
-          item.className = "taskItemTask";
-          item.setAttribute("data-id", task.id);
-          item.innerHTML = `
-
-                  <img class="taskItemTaskImg" src="assets/working.jpg">
-                  <p class="taskItemTaskText taskItemTaskTitle">
-                  ${task.taskName}</p>
-                  <em>${task.taskSection}</em>
-                  <p>${task.taskDescription}</p>
-                  <p>${task.taskMainTask}</p>
-                  <p>${task.taskSubTask}</p>
-                  <input type="checkbox" class="taskItemTaskTick" >
-                  <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime}</p>
-                  <div class="taskItemTaskStars">${task.taskDifficulty}
+    // Check if localTasks is not empty or null
+    if (localTasks) {
+        localTasks.forEach((task) => {
+            // Create a task item for the DOM
+            let item = document.createElement("div");
+            item.className = "taskItemTask";
+            item.setAttribute("data-id", task.id);
+            item.innerHTML = `
+                <img class="taskItemTaskImg" src="assets/working.jpg">
+                <p class="taskItemTaskBoldText taskItemTaskTitle">${task.taskName}</p>
+                <input type="checkbox" class="taskItemTaskTick" >
+                <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} mins</p>
+                <div class="taskItemTaskStars">${task.taskDifficulty}
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
-                  
-          `;
+                </div>
+                <div class="taskItemTaskExpandable">
+                    <p class="taskItemTaskBoldText">${task.taskSection}</p>
+                    <p class="taskItemTaskText">${task.taskDescription}</p>
+                    <ul class="taskItemTaskList">
+                        <li class="taskItemTaskText">${task.taskMainTask}</li>
+                        <li class="taskItemTaskText">${task.taskSubTask}</li>
+                    </ul>
+                </div>
+            `;
 
-          // Append the task item to the list
-          taskList.appendChild(item);
+            // Append the task item to the list
+            taskItems.appendChild(item);
 
-          // Handle task difficulty rating and add icons if necessary
-          // let taskRatingIcon = null;
-          // switch (task.taskDifficulty) {
-          //     case '1': taskRatingIcon = icons['half']; break;
-          //     case '2': taskRatingIcon = icons['1']; break;
-          //     case '3': taskRatingIcon = icons['1half']; break;
-          //     case '4': taskRatingIcon = icons['2']; break;
-          //     case '5': taskRatingIcon = icons['2half']; break;
-          //     case '6': taskRatingIcon = icons['3']; break;
-          //     case '7': taskRatingIcon = icons['3half']; break;
-          //     case '8': taskRatingIcon = icons['4']; break;
-          //     case '9': taskRatingIcon = icons['4half']; break;
-          //     case '10': taskRatingIcon = icons['5']; break;
-          //     default: break;
-          // }
+            // Handle task difficulty rating and add icons if necessary
+            // let taskRatingIcon = null;
+            // switch (task.taskDifficulty) {
+            //     case '1': taskRatingIcon = icons['half']; break;
+            //     case '2': taskRatingIcon = icons['1']; break;
+            //     case '3': taskRatingIcon = icons['1half']; break;
+            //     case '4': taskRatingIcon = icons['2']; break;
+            //     case '5': taskRatingIcon = icons['2half']; break;
+            //     case '6': taskRatingIcon = icons['3']; break;
+            //     case '7': taskRatingIcon = icons['3half']; break;
+            //     case '8': taskRatingIcon = icons['4']; break;
+            //     case '9': taskRatingIcon = icons['4half']; break;
+            //     case '10': taskRatingIcon = icons['5']; break;
+            //     default: break;
+            // }
 
-          // Append rating icon to the task item, if available
-          // if (taskRatingIcon) {
-          //     let ratingIcon = document.createElement("img");
-          //     ratingIcon.src = taskRatingIcon;
-          //     ratingIcon.id = "dbRating";
-          //     item.appendChild(ratingIcon);
-          // }
+            // Append rating icon to the task item, if available
+            // if (taskRatingIcon) {
+            //     let ratingIcon = document.createElement("img");
+            //     ratingIcon.src = taskRatingIcon;
+            //     ratingIcon.id = "dbRating";
+            //     item.appendChild(ratingIcon);
+            // }
 
-          // Optionally add genre stickers (if task.filmGenre has values)
-          let genreIcon1 = task.genreImage || "";
-          if (genreIcon1) {
-              let genreIcon = document.createElement("img");
-              genreIcon.src = genreIcon1;
-              genreIcon.id = "sticker1";
-              item.appendChild(genreIcon);
-          }
+            // Optionally add genre stickers (if task.filmGenre has values)
+            let genreIcon1 = task.genreImage || "";
+            if (genreIcon1) {
+                let genreIcon = document.createElement("img");
+                genreIcon.src = genreIcon1;
+                genreIcon.id = "sticker1";
+                item.appendChild(genreIcon);
+            }
 
-          let genreIcon2 = task.genreImage2 || "";
-          if (genreIcon2) {
-              let genreIconTwo = document.createElement("img");
-              genreIconTwo.src = genreIcon2;
-              genreIconTwo.id = "sticker2";
-              item.appendChild(genreIconTwo);
-          }
+            let genreIcon2 = task.genreImage2 || "";
+            if (genreIcon2) {
+                let genreIconTwo = document.createElement("img");
+                genreIconTwo.src = genreIcon2;
+                genreIconTwo.id = "sticker2";
+                item.appendChild(genreIconTwo);
+            }
 
-          // Add click event to open the task details
-          item.addEventListener("click", function () {
-              openTask(task.id);
-          });
-      });
-  }
+            // Add click event to open the task details
+            item.addEventListener("click", function () {
+                openTask(task.id);
+            });
+        });
+    }
 }
 
 
 function addSection(sectionName, sectionType, sectionCompletion) {
-    
-  
+
+
 
     // Creating the object, directly passing in the input parameters. 
     // This is kept the same from the first time its introduced in the tutorial.
@@ -380,19 +381,19 @@ function addSection(sectionName, sectionType, sectionCompletion) {
       let localSections = JSON.parse(localStorage.getItem('sections'));
 
 
-    //then place the value into a JS data structure 
-    //then check to see if its a null value (if localstorage is empty). If it is then add task. 
+    //then place the value into a JS data structure
+    //then check to see if its a null value (if localstorage is empty). If it is then add task.
 
       if (localSections == null) {
 
-        localSections = [section];        
+        localSections = [section];
       } else {
         //check for existing task. in this case using the ID bc u could have multiple tasks with the same name
         if (localSections.find(element => element.id === section.id)){
           console.log('Section ID already exists.');
         } else {
           //if theres no existing task then push the element to the array. this is a temporary array instead of the global one at the top
-          localSections.push(section); 
+          localSections.push(section);
         }
       }
 
