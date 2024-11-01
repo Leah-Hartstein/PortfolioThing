@@ -289,7 +289,7 @@ function displayTasks() {
         
           // Create a task item for the DOM
           let item = document.createElement("div");
-          item.className = "taskItemTask";
+          item.className = "listTask";
           item.setAttribute("data-id", task.id);
           item.innerHTML = `
 
