@@ -400,7 +400,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
     // and add if not
 
 
-    if (sectionType = 'casestudy') {
+    if (sectionType === 'casestudy') {
 
       // Ideation
 
@@ -416,6 +416,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Communication",
         2,
+        20,
       )
 
       addTask(
@@ -432,6 +433,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Communication",
         1,
+        10,
       )
 
       addTask(
@@ -446,6 +448,9 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Communication",
         1,
+        "",
+        0,
+        10,
       )
 
       // Drafting
@@ -464,6 +469,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        15,
       )
 
       addTask(
@@ -478,6 +484,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Communication",
         1,
+        15,
       )
       
       addTask(
@@ -494,6 +501,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        15,
       )
       
       addTask(
@@ -510,6 +518,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        15,
       )
 
       addTask(
@@ -526,6 +535,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Problem Solving",
         1,
+        20,
       )
 
       addTask(
@@ -542,6 +552,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        15,
       )
 
       addTask(
@@ -556,6 +567,9 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Problem Solving",
         1,
+        "Visual Design",
+        1,
+        15,
       )
 
       addTask(
@@ -572,6 +586,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        20,
       )
       
       addTask(
@@ -588,6 +603,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        20,
       )
       
       addTask(
@@ -604,6 +620,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Problem Solving",
         1,
+        25,
       )
       
       addTask(
@@ -620,6 +637,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        15,
       )
       
       addTask(
@@ -634,6 +652,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Visual Design",
         3,
+        30,
       )
 
       // Finalisation
@@ -653,6 +672,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        25,
       )
 
       addTask(
@@ -667,6 +687,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Communication",
         1,
+        25,
       )
       
       addTask(
@@ -683,6 +704,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        25,
       )
       
       addTask(
@@ -699,6 +721,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         1,
         "Teamwork",
         1,
+        25,
       )
 
       addTask(
@@ -715,6 +738,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Problem Solving",
         1,
+        25,
       )
 
       addTask(
@@ -731,6 +755,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        25,
       )
 
       addTask(
@@ -745,6 +770,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Problem Solving",
         1,
+        25,
       )
 
       addTask(
@@ -761,6 +787,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        25,
       )
       
       addTask(
@@ -777,6 +804,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        25,
       )
       
       addTask(
@@ -793,6 +821,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Problem Solving",
         1,
+        25,
       )
       
       addTask(
@@ -809,6 +838,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         2,
         "Teamwork",
         1,
+        20,
       )
 
       addTask(
@@ -823,12 +853,229 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         3,
         "Visual Design",
         4,
+        "Communication",
+        1,
+        30
       )
+
+      // INTERVIEW PREP
+
+      addTask(
+        'Prepare alternative case study versions.',
+        sectionName,
+        sectionType,
+        'Interview',
+        "Now that you've prepared your case study, it's a good idea to think about how you'll present it in an interview, where you might need to talk about some aspects in very exacting detail while quickly summarising others. You've already done this a bit, but it's good to do another pass.",
+        "Think of a high-level summary of your piece that you can deliver if you are pressed for time.",
+        "Prepare a quick overview of your role in the team.",
+        "./legs.png",
+        3,
+        "Communication",
+        4,
+        "Visual Design",
+        2,
+        30,
+      )
+
+    } if (sectionType === 'aboutme') {
+
+      // IDEATION
+
+      addTask(
+        'Compile your past designer statements',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "Talkling about yourself can be scary, but you've probably had to do it before. Find past examples of times when you've described yourself as a designer and your design process.",
+        "Compile previous designer and personal statements",
+        "Think about your strengths as a designer",
+        "./legs.png",
+        3,
+        "Communication",
+        2,
+        "Time Management",
+        1,
+        15,
+      )
+
+      addTask(
+        'Make a personal moodboard',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "What inspires you as a designer? choose images of designs by yourself and other people",
+        "Compile images of your favourite designs",
+        "Think about why you enjoy your favourite designers",
+        "./legs.png",
+        3,
+        "Visual design",
+        1,
+        "Communication",
+        2,
+        30,
+      )
+
+      // Drafting
+
+      addTask(
+        'Draft About me page',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Take your moodboard and past statements and use them to draft your About Me page",
+        "Draft About Me page",
+        "",
+        "./legs.png",
+        3,
+        "Communication",
+        2,
+        "Time Management",
+        1,
+        20,
+
+      )
+
+      // Finalisation
+
+      addTask(
+        'Finalise About me page',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your drafted About me page",
+        "Finalise about me page from drafts",
+        "Prepare a brief summary for interviews",
+        "./legs.png",
+        3,
+        "Communication",
+        2,
+        "Problem Solving",
+        1,
+        30,
+      )
+      
+      addTask(
+        'Finalise visual design for About Me page',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Design the visuals for your about me page. You should have a pretty good idea of how you want your portfolio to look at this point, but it might be a good idea to go back to that first moodboard you made.",
+        "Finalise visual design for About me page",
+        "Refer to past moodboard",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Time Management",
+        1,
+        30,
+      )
+    } if (sectionType === 'index') {
+      // Ideation
+      
+      addTask(
+        'Prepare a moodboard for your index/landing page',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "An index/landing page can be crucial for tying all of the different parts of your portfolio together, and to sell yourself as a designer. Before you get going, take a few moments to review some examples and other material to help inform the approach you'd like to take.",
+        "Find example portfolio index/landing pages, as well as other designed material that inspires you.",
+        "Combine materials into a moodboard.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Communication",
+        1,
+        30,
+      )
+
+      // Drafting
+
+            
+      addTask(
+        'Create a draft layout for your index/landing page',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Take the moodboard you made earlier and create a draft layout for your index/landing page.",
+        "Create a draft layout for your index/landing pages.",
+        "Consider alternate layouts for different screen sizes, if necessary.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Communication",
+        1,
+        30,
+      )
+
+      // Finalisation
+
+                  
+      addTask(
+        'Finalise your index/landing page',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your drafted index/landing page.",
+        "Create the final layout for your index/landing pages.",
+        "Create alternate layouts for different screen sizes, if necessary.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Communication",
+        1,
+        30,
+      )
+    } if (sectionType === 'resume') {
+
+      // Ideation
+
+                  
+      addTask(
+        'Prepare initial resume',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "Hiring managers love it when your resume ties into the design and content of your portfolio. Trust us! For now, let's just make a draft version.",
+        "Write a rough draft of your resume.",
+        "Consider alternate versions that convey different skills",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+        "Time Management",
+        1,
+        30,
+      )
+
+      // Finalisation
+
+                  
+      addTask(
+        'Finalise resume',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Now that you've done all that other stuff, lets go back to that resume you drafted before! Try to make it match the design you've landed on for the rest of your portfolio.",
+        "Create a final resume layout.",
+        "Prepare alternate resumes for different roles, if necessary.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Communication",
+        1,
+        30,
+      )
+
     }
 
 }
 
-function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescription, taskMain, taskSubTask, taskImage, taskDifficulty, taskStatsReward1, taskStatsReward1Percentage, taskStatsReward2, taskStatsReward2Percentage) {
+function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescription, taskMainTask, taskSubTask, taskImage, taskDifficulty, taskStatsReward1, taskStatsReward1Percentage, taskStatsReward2, taskStatsReward2Percentage, taskCompletionTime) {
     
   
 
@@ -841,7 +1088,7 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
       taskStage, 
       // stage as in whether its ideation or drafting or finalisation etc - maybe a number?
       taskDescription,
-      taskMain,
+      taskMainTask,
       taskSubTask,
       taskImage,
       taskDifficulty,
@@ -849,6 +1096,7 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
       taskStatsReward1Percentage,
       taskStatsReward2,
       taskStatsReward2Percentage,
+      taskCompletionTime,
       id: Date.now(),
       date: new Date().toISOString(),
   }
@@ -1276,3 +1524,7 @@ closeCheerfulMessage.addEventListener('click', () => {
 });
 
 addSection('peepee','casestudy',10);
+addSection('poopoo','casestudy',20);
+addSection('weewee','casestudy',69);
+addSection('thatsme','resume',69);
+addSection('yep','index',69);
