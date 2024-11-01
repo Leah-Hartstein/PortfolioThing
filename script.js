@@ -289,21 +289,24 @@ function displayTasks() {
         
           // Create a task item for the DOM
           let item = document.createElement("div");
-          item.className = "taskItemTask";
+          item.className = "listTask";
           item.setAttribute("data-id", task.id);
           item.innerHTML = `
 
-                  <img class="taskItemTaskImg" src="assets/working.jpg">
-                  <p class="taskItemTaskText taskItemTaskTitle">
-                  ${task.taskName}</p>
-                  <em>${task.taskSection}</em>
-                  <p>${task.taskDescription}</p>
-                  <p>${task.taskMainTask}</p>
-                  <p>${task.taskSubTask}</p>
+                  <img class="taskItemTaskImg" src="${task.taskImage}">
+                  <h3>${task.taskSection}</h3>
+                  <br>
+                  ${task.taskName}<br>
+                  <ul><li class = "taskMainTask">${task.taskMainTask}</li>
+                  <ul><li class = "taskSubTask">${task.taskSubTask}</li>
+                  </ul>
+                  </ul>
+                  <div class = "taskFooter">
                   <input type="checkbox" class="taskItemTaskTick" >
-                  <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime}</p>
+                  <p class="taskItemTaskTime">${task.taskCompletionTime}</p>
                   <div class="taskItemTaskStars">${task.taskDifficulty}
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                  </div>
                   
           `;
 
@@ -420,6 +423,8 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "./legs.png",
         3,
         "Communication",
+        2,
+        "Time Management",
         2,
         20,
       )
