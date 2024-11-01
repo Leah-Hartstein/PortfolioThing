@@ -4,7 +4,7 @@ const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
-const taskList = document.querySelector(".taskList");
+const taskList = document.querySelector(".taskGroup");
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
@@ -289,17 +289,22 @@ function displayTasks() {
         
           // Create a task item for the DOM
           let item = document.createElement("div");
-          item.className = "listTask";
+          item.className = "taskItemTask";
           item.setAttribute("data-id", task.id);
           item.innerHTML = `
-              <p id="text">
-                  <strong>${task.taskName}</strong><br>
+
+                  <img class="taskItemTaskImg" src="assets/working.jpg">
+                  <p class="taskItemTaskText taskItemTaskTitle">
+                  ${task.taskName}</p>
                   <em>${task.taskSection}</em>
                   <p>${task.taskDescription}</p>
-                  <p>${task.taskDescription}</p>
-                  <p>${task.taskDescription}</p>
+                  <p>${task.taskMainTask}</p>
+                  <p>${task.taskSubTask}</p>
+                  <input type="checkbox" class="taskItemTaskTick" >
+                  <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime}</p>
+                  <div class="taskItemTaskStars">${task.taskDifficulty}
+                    <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
                   
-              </p>
           `;
 
           // Append the task item to the list
@@ -1523,8 +1528,14 @@ closeCheerfulMessage.addEventListener('click', () => {
   cheerfulIcon.style.pointerEvents = 'auto';
 });
 
-addSection('peepee','casestudy',10);
-addSection('poopoo','casestudy',20);
-addSection('weewee','casestudy',69);
-addSection('thatsme','resume',69);
-addSection('yep','index',69);
+localStorage.clear();
+
+addSection('CoolProduct','casestudy',10);
+addSection('FunCube','casestudy',20);
+addSection('SmartClog','casestudy',69);
+addSection('Main Resume','resume',69);
+addSection('Website Landing','index',69);
+addSection('My Design Philosophy','aboutme',69);
+
+
+displayTasks();
