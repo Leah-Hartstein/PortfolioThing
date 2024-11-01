@@ -882,13 +882,12 @@ h4 {
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 16px 0px 16px;
-  align-items:center;
+  align-items: center;
 }
 
 .listTaskOpen {
   display: flex;
   flex-direction: column;
-
   min-height: fit-content;
   border-radius: 5px;
   margin: 4px 4px 4px 12px;

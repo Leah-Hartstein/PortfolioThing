@@ -619,7 +619,7 @@ Leah Hartstein
             <button type="button" class="taskExpandButton">Open <img src="new window.png"> </button>
           </section>
 
-          <section class="taskList">
+          <!-- <section class="taskList">
             <section class="taskGroup">
               <h4 class="taskHeader">Ideation</h4>
               <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
@@ -660,9 +660,10 @@ Leah Hartstein
 
 
               </section>
+
             </section>
 
-            <section class="taskGroup">
+            <section class="taskItems" id="taskItemsDrafting">
               <h4 class="taskHeader">Drafting</h4>
               <button class="taskHeaderExpand" id="taskItemsDraftingButton" onclick="expandHeader('taskItemsDrafting')">
                 <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
@@ -708,29 +709,30 @@ Leah Hartstein
               </section>
             </section>
 
-            <section class="taskGroup">
-              <h4 class="taskHeader">Interview Prep</h4>
-              <button class="taskHeaderExpand" id="taskItemsInterviewPrepButton" onclick="expandHeader('taskItemsInterviewPrep')">
+            <section class="taskItems" id="taskItemsDrafting">
+              <h4 class="taskHeader">Drafting</h4>
+              <button class="taskHeaderExpand" id="taskItemsDraftingButton" onclick="expandHeader('taskItemsDrafting')">
                 <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
               </button>
 
-              <section class="taskItems" id="taskItemsInterviewPrep">
+              <section class="taskItems" id="taskItemsFinalisation">
                 <div class="taskItemTask">
-                  <img class="taskItemTaskImg" src="assets/CV.jpg">
-                  <p class="taskItemTaskBoldText taskItemTaskTitle">Making a CV</p>
-                  <input type="checkbox" class="taskItemTaskTick">
-                  <p class="taskItemTaskBoldText taskItemTaskTime">20 mins</p>
-                  <div class="taskItemTaskStars">
-                    <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
-                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
-                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
-                  </div>
-                </div>
-                <div class="taskItemTask">
-                  <img class="taskItemTaskImg" src="assets/coverletter.jpg">
-                  <p class="taskItemTaskBoldText taskItemTaskTitle">Making a cover letter</p>
+                  <img class="taskItemTaskImg" src="assets/refining.jpg">
+                  <p class="taskItemTaskBoldText taskItemTaskTitle">Refining what you have</p>
                   <input type="checkbox" class="taskItemTaskTick" >
-                  <p class="taskItemTaskBoldText taskItemTaskTime">20 mins</p>
+                  <p class="taskItemTaskBoldText taskItemTaskTime">25 mins</p>
+                  <div class="taskItemTaskStars">
+                    <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                  </div>
+
+                </div>
+                <div class="taskItemTask">
+                  <img class="taskItemTaskImg" src="assets/miscellaneous.jpg">
+                  <p class="taskItemTaskBoldText taskItemTaskTitle">Miscellaneous work</p>
+                  <input type="checkbox" class="taskItemTaskTick" >
+                  <p class="taskItemTaskBoldText taskItemTaskTime">15 mins</p>
                   <div class="taskItemTaskStars">
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
@@ -738,21 +740,67 @@ Leah Hartstein
                 </div>
 
                 <div class="taskItemTask">
-                  <img class="taskItemTaskImg" src="assets/interview.jpg">
-                  <p class="taskItemTaskBoldText taskItemTaskTitle">Interview preparation</p>
-                  <input type="checkbox" class="taskItemTaskTick">
-                  <p class="taskItemTaskBoldText taskItemTaskTime">20 mins</p>
+                  <img class="taskItemTaskImg" src="assets/drafting.jpg">
+                  <p class="taskItemTaskBoldText taskItemTaskTitle">Final draft</p>
+                  <input type="checkbox" class="taskItemTaskTick" >
+                  <p class="taskItemTaskBoldText taskItemTaskTime">40 mins</p>
                   <div class="taskItemTaskStars">
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                         <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
                   </div>
                 </div>
-
 
               </section>
             </section>
-          </section>
+
+          </section> -->
+
+            <section class = "taskList">
+
+                <div class ="stageHeader">
+                  <h4 class="taskHeader">Ideation</h4>
+                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                    <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
+                  </button>
+                </div>
+
+                <div class ="taskItemsIdeation"></div>
+
+                <div class ="stageHeader">
+                  <h4 class="taskHeader">Drafting</h4>
+                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                    <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
+                  </button>
+                </div>
+
+                <div class ="taskItemsDrafting"></div>
+
+                <div class ="stageHeader">
+                  <h4 class="taskHeader">Finalisation</h4>
+                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                    <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
+                  </button>
+                </div>
+
+                <div class ="taskItemsFinalisation"></div>
+
+                <div class ="stageHeader">
+                  <h4 class="taskHeader">Interview Prep</h4>
+                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                    <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
+                  </button>
+                </div>
+
+                <div class ="taskItemsInterview"></div>
+
+
+            </section>
+
         </section>
+
+        
       </section>
 
       <section class="bottomRow">

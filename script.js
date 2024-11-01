@@ -4,7 +4,12 @@ const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
-const taskItems = document.querySelector(".taskItems");
+const taskIdeation = document.querySelector(".taskItemsIdeation");
+const taskDrafting = document.querySelector(".taskItemsDrafting");
+const taskFinalisation = document.querySelector(".taskItemsFinalisation");
+const taskInterview = document.querySelector(".taskItemsInterview");
+
+
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
@@ -278,7 +283,13 @@ ctx.clearRect(0, 0, mapCanvas.width, mapCanvas.height);
 
 function displayTasks() {
     // Clear the task list before displaying
-    taskItems.innerHTML = "";
+    taskIdeation.innerHTML = "";
+    taskDrafting.innerHTML = "";
+    taskFinalisation.innerHTML = "";
+    taskInterview.innerHTML = "";
+
+
+
 
     // Get tasks from localStorage
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -294,61 +305,32 @@ function displayTasks() {
           item.innerHTML = `
 
                   <img class="taskItemTaskImg" src="assets/working.jpg">
-                  <p class="taskItemTaskText taskItemTaskTitle">
+                  <p class="taskItemTaskTitle">
                   ${task.taskName}</p>
                   <em>${task.taskSection}</em>
-                  <p>${task.taskDescription}</p>
-                  <p>${task.taskMainTask}</p>
-                  <p>${task.taskSubTask}</p>
+                  <p class = "taskDescription" >${task.taskDescription}</p>
+                  <ul>
+                  <li class = "taskMainTask>${task.taskMainTask}</li>
+                  <ul>
+                  <li class = "taskSubTask">${task.taskSubTask}</li>
+                  </ul>
+                  </ul>
+                  <div class = "taskFooter">
                   <input type="checkbox" class="taskItemTaskTick" >
                   <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime}</p>
                   <div class="taskItemTaskStars">${task.taskDifficulty}
                     <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
+                  </div>
                   
           `;
 
             // Append the task item to the list
-            taskItems.appendChild(item);
-
-            // Handle task difficulty rating and add icons if necessary
-            // let taskRatingIcon = null;
-            // switch (task.taskDifficulty) {
-            //     case '1': taskRatingIcon = icons['half']; break;
-            //     case '2': taskRatingIcon = icons['1']; break;
-            //     case '3': taskRatingIcon = icons['1half']; break;
-            //     case '4': taskRatingIcon = icons['2']; break;
-            //     case '5': taskRatingIcon = icons['2half']; break;
-            //     case '6': taskRatingIcon = icons['3']; break;
-            //     case '7': taskRatingIcon = icons['3half']; break;
-            //     case '8': taskRatingIcon = icons['4']; break;
-            //     case '9': taskRatingIcon = icons['4half']; break;
-            //     case '10': taskRatingIcon = icons['5']; break;
-            //     default: break;
-            // }
-
-            // Append rating icon to the task item, if available
-            // if (taskRatingIcon) {
-            //     let ratingIcon = document.createElement("img");
-            //     ratingIcon.src = taskRatingIcon;
-            //     ratingIcon.id = "dbRating";
-            //     item.appendChild(ratingIcon);
-            // }
-
-            // Optionally add genre stickers (if task.filmGenre has values)
-            let genreIcon1 = task.genreImage || "";
-            if (genreIcon1) {
-                let genreIcon = document.createElement("img");
-                genreIcon.src = genreIcon1;
-                genreIcon.id = "sticker1";
-                item.appendChild(genreIcon);
-            }
-
-            let genreIcon2 = task.genreImage2 || "";
-            if (genreIcon2) {
-                let genreIconTwo = document.createElement("img");
-                genreIconTwo.src = genreIcon2;
-                genreIconTwo.id = "sticker2";
-                item.appendChild(genreIconTwo);
+            switch (task.taskStage) {
+              case 'Ideation' :  taskIdeation.appendChild(item);
+              case 'Drafting' :  taskDrafting.appendChild(item);
+              case 'Finalisation' :  taskFinalisation.appendChild(item);
+              case 'Interview' :  taskInterview.appendChild(item);
+              default : break;
             }
 
             // Add click event to open the task details
