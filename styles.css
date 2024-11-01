@@ -1548,12 +1548,14 @@ flex: 2 0 60%;
   grid-template-rows: 125px;
   justify-items: left;
   box-shadow: #00000040 0 6px 6px;
+  text-decoration: none;
+  color: black;
 }
 
 .guideItemImg {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .guideItemTitle {
