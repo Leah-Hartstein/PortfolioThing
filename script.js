@@ -355,54 +355,536 @@ function displayTasks() {
 }
 
 
-function addTask(taskName, taskSection, taskStage, taskDescription, taskImage, taskDifficulty) {
+function addSection(sectionName, sectionType, sectionCompletion) {
     
   
 
     // Creating the object, directly passing in the input parameters. 
     // This is kept the same from the first time its introduced in the tutorial.
-    let task = {
-        taskName,
-        taskSection,
+    let section = {
+        sectionName,
+        sectionType,
+        sectionCompletion,
         id: Date.now(),
         date: new Date().toISOString(),
-        taskStage, 
-        // stage as in whether its ideation or drafting or finalisation etc - maybe a number?
-        taskDescription,
-        taskImage,
-        taskDifficulty,
     }
 
     //first check localstorage to see if an item exists
       //fetching and parsing the localstorage value
 
-      let localTasks = JSON.parse(localStorage.getItem('tasks'));
+      let localSections = JSON.parse(localStorage.getItem('sections'));
 
 
     //then place the value into a JS data structure 
     //then check to see if its a null value (if localstorage is empty). If it is then add task. 
 
-      if (localTasks == null) {
+      if (localSections == null) {
 
-        localTasks = [task];        
+        localSections = [section];        
       } else {
         //check for existing task. in this case using the ID bc u could have multiple tasks with the same name
-        if (localTasks.find(element => element.id === task.id)){
-          console.log('Task ID already exists.');
+        if (localSections.find(element => element.id === section.id)){
+          console.log('Section ID already exists.');
         } else {
           //if theres no existing task then push the element to the array. this is a temporary array instead of the global one at the top
-          localTasks.push(task); 
+          localSections.push(section); 
         }
       }
 
       //set the new item into localstorage
-      localStorage.setItem('tasks', JSON.stringify(localTasks));
+      localStorage.setItem('sections', JSON.stringify(localSections));
+      console.log(section);
 
+ 
     // if it isnt then check if the task is already there 
     // and add if not
 
-    displayTasks();
+
+    if (sectionType = 'casestudy') {
+
+      // Ideation
+
+      addTask(
+        'Compile your existing documentation',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "Before you get started on your case study, it's a good idea to look over the material you wrote with your original work.",
+        "Compile your documentation from your original work",
+        "Select your favourite pieces of writing",
+        "./legs.png",
+        3,
+        "Communication",
+        2,
+      )
+
+      addTask(
+        'Compile your best images',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "Now let's think about the visuals. Go through your work and choose the most eyecatching and interesting parts.",
+        "Choose your best visual material from your original work",
+        "Select the most important visuals from your original work",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Communication",
+        1,
+      )
+
+      addTask(
+        'Look over the feedback you originally received',
+        sectionName,
+        sectionType,
+        'Ideation',
+        "Nice work! now let's go over the feedback you recieved for your work.",
+        "Review the original feedback for your case study.",
+        "Find examples of work that contributed to iterations",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+      )
+
+      // Drafting
+
+      addTask(
+        'Draft case study overview.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Write a brief draft overview for your case study. Just a few sentences is fine at this stage!",
+        "Describe the core premise of your project.",
+        "Describe your role in your team",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Draft research overview.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Write a brief draft overview for your initial research.",
+        "Describe your research approach.",
+        "Outline your research methods.",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+      )
+      
+      addTask(
+        'Draft ideation overview.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Write a brief draft overview for your ideation process.",
+        "Describe your ideation methods.",
+        "Outline your role in ideation.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Describe your first solution.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Describe your first solution for your product.",
+        "Outline initial key features.",
+        "Compare with other solutions that weren't chosen.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Outline initial design process.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Summarise your initial design process, where you decided on the basic flow of your design.",
+        "Compile the best sketches.",
+        "Outline your role in sketching.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Problem Solving",
+        1,
+      )
+
+      addTask(
+        'Summarise Low-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Talk about how you developed your sketches into your first wireframes.",
+        "Summarise key iterations.",
+        "Outline your role in wireframing.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Describe your first prototype.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Describe how you made your first prototype.",
+        "Outline your goals in prototyping.",
+        "Outline your initial testing results.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+      )
+
+      addTask(
+        'Summarise Mid-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Talk about how you iterated to Mid-Fidelity mockups.",
+        "Summarise key iterations from prototyping.",
+        "Outline your role in creating mockups.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Summarise High-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Talk about how you iterated from your Mid-Fidelity mockups into your final High-Fidelity designs.",
+        "Summarise key iterations from Mid-Fidelity mockups.",
+        "Outline your role in High-Fidelity mockups.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Describe your final prototype.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Describe how you made your final prototype.",
+        "Summarise major iterations from first prototypes.",
+        "Outline changes from High-Fidelity mockups.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Problem Solving",
+        1,
+      )
+      
+      addTask(
+        'Write a draft conclusion.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Great work! almost there now. Just write a draft conclusion for your case study.",
+        "Reflect on your final prototype, and how your team worked together.",
+        "Outline changes that could be made to future iterations.",
+        "./legs.png",
+        3,
+        "Problem solving",
+        2,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Consider the visual design of your case study.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Nice one! now it's time for you to start thinking about how you will present this visually in your portfolio. Remember, this is design too!",
+        "Consider a basic visual design for your case study and what elements you want to emphasise.",
+        "Prepare some initial sketches for the layout of your case study.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        3,
+      )
+
+      // Finalisation
+
+      
+      addTask(
+        'Finalise case study overview.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Now its time to go over your drafted case study and write a more final iteration!",
+        "Refine draft overview of your case study to a final iteration.",
+        "Consider a shorter version you can deliver in an interview if necessary",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Finalise research overview.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Turn your drafted research overview into a final iteraton.",
+        "Finalise your research overview.",
+        "Prepare a brief summary of your methods for interviews.",
+        "./legs.png",
+        3,
+        "Communication",
+        1,
+      )
+      
+      addTask(
+        'Finalise ideation overview.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your drafted overview of your ideation methods.",
+        "Finalise ideation overview",
+        "Choose an ideation method to focus on that contributed the most to your first solution.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Finalise first solution.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your drafted summary of first solution for your product.",
+        "Finalise first solution summary.",
+        "Consider how to talk about your solution compared to other options.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Finalise summary of initial design process.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your summary of your initial design process.",
+        "Write a final description of your sketching process.",
+        "Choose a final set of sketches to show.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Problem Solving",
+        1,
+      )
+
+      addTask(
+        'Finalise summary of Low-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your draft summary of the wireframing process.",
+        "Write a final description of your wireframing process.",
+        "Choose a final set of wireframes to show.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Finalise description of first prototype.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your draft description of your first prototype.",
+        "Finalise summary of prototyping.",
+        "Choose key insights from the prototyping process.",
+        "./legs.png",
+        3,
+        "Problem Solving",
+        1,
+      )
+
+      addTask(
+        'Finalise description of Mid-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your draft description of your Mid-Fidelity mockups.",
+        "Finalise summary of mockup creation.",
+        "Choose Mid-Fidelity mockups to show in your portfolios.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Finalise description of High-Fidelity Iterations.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Finalise your draft description of your High-Fidelity mockups.",
+        "Finalise summary of mockup creation.",
+        "Choose High-Fidelity mockups to show in your portfolios.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Teamwork",
+        1,
+      )
+      
+      addTask(
+        'Finalise description of your final prototype.',
+        sectionName,
+        sectionType,
+        'Drafting',
+        "Finalise your draft description of your final prototype.",
+        "Finalise summary of prototyping concept.",
+        "Choose key insights from final prototype for interview.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        2,
+        "Problem Solving",
+        1,
+      )
+      
+      addTask(
+        'Write a Final conclusion.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Wowee! that's so much finalisation you've just done. Almost there. Finalise your draft conclusion for your case study and you're done writing!.",
+        "Finalise draft conclusion.",
+        "Prepare concluding remarks for interview.",
+        "./legs.png",
+        3,
+        "Problem solving",
+        2,
+        "Teamwork",
+        1,
+      )
+
+      addTask(
+        'Prepare final visual design.',
+        sectionName,
+        sectionType,
+        'Finalisation',
+        "Great work! Now that you've got all the writing ready, it's time for you to finalise the visual presentation.",
+        "Finalise layout of case study.",
+        "Prepare a 'Hero' Image for your case study.",
+        "./legs.png",
+        3,
+        "Visual Design",
+        4,
+      )
+    }
+
 }
+
+function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescription, taskMain, taskSubTask, taskImage, taskDifficulty, taskStatsReward1, taskStatsReward1Percentage, taskStatsReward2, taskStatsReward2Percentage) {
+    
+  
+
+  // Creating the object, directly passing in the input parameters. 
+  // This is kept the same from the first time its introduced in the tutorial.
+  let task = {
+      taskName,
+      taskSection,
+      taskSectionType,
+      taskStage, 
+      // stage as in whether its ideation or drafting or finalisation etc - maybe a number?
+      taskDescription,
+      taskMain,
+      taskSubTask,
+      taskImage,
+      taskDifficulty,
+      taskStatsReward1,
+      taskStatsReward1Percentage,
+      taskStatsReward2,
+      taskStatsReward2Percentage,
+      id: Date.now(),
+      date: new Date().toISOString(),
+  }
+
+  //first check localstorage to see if an item exists
+    //fetching and parsing the localstorage value
+
+    let localTasks = JSON.parse(localStorage.getItem('tasks'));
+
+
+  //then place the value into a JS data structure 
+  //then check to see if its a null value (if localstorage is empty). If it is then add task. 
+
+    if (localTasks == null) {
+
+      localTasks = [task];        
+    } else {
+      //check for existing task. in this case using the ID bc u could have multiple tasks with the same name
+      if (localTasks.find(element => element.id === task.id)){
+        console.log('Task ID already exists.');
+      } else {
+        //if theres no existing task then push the element to the array. this is a temporary array instead of the global one at the top
+        localTasks.push(task); 
+      }
+    }
+
+    //set the new item into localstorage
+    localStorage.setItem('tasks', JSON.stringify(localTasks));
+
+  // if it isnt then check if the task is already there 
+  // and add if not
+
+  // displayTasks();
+  console.log(task);
+}
+
 
 function openTask(id) {
   // Find the task element using data-id
@@ -792,3 +1274,5 @@ closeCheerfulMessage.addEventListener('click', () => {
   cheerfulMessageContainer.style.display = 'none';
   cheerfulIcon.style.pointerEvents = 'auto';
 });
+
+addSection('peepee','casestudy',10);
