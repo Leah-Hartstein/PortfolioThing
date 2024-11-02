@@ -243,7 +243,7 @@ function openMap(){
     
             roadMap.classList.remove("roadMap");
             roadMap.classList.add("roadMapOpen");
-            drawMap();
+            // drawMap();
     
         } else {
             chosenTask.classList.remove("chosenTaskHidden");
@@ -263,13 +263,13 @@ function openMap(){
 
 // just whacking some bullshit on the frame atm
 
-function drawMap(){
+// function drawMap(){
 
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
+// ctx.beginPath();
+// ctx.arc(95,50,40,0,2*Math.PI);
 
-ctx.stroke();
-}
+// ctx.stroke();
+// }
 
 // and u can call this one whenever u need to clean the thing off :)
 
