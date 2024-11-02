@@ -816,6 +816,27 @@ html, body {
   background-color: #333;
 }
 
+.progress-container {
+  width: 100%;
+  background-color: #e0e0de;
+  border-radius: 13px;
+  margin: 15px 0;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #5a4b56;
+  width: 0%;
+  border-radius: 13px;
+  transition: width 0.3s ease; /* Smooth transition */
+}
+
+.progress-text {
+  font-size: 12px;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
 
 /* Responsive Adjustments */
   @media screen and (max-width: 768px) {
