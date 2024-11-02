@@ -4,10 +4,10 @@ const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const roadMap = document.querySelector(".roadMap");
 
-const taskIdeation = document.querySelector(".taskItemsIdeation");
-const taskDrafting = document.querySelector(".taskItemsDrafting");
-const taskFinalisation = document.querySelector(".taskItemsFinalisation");
-const taskInterview = document.querySelector(".taskItemsInterview");
+const taskIdeation = document.getElementById("taskItemsIdeation");
+const taskDrafting = document.getElementById("taskItemsDrafting");
+const taskFinalisation = document.getElementById("taskItemsFinalisation");
+const taskInterview = document.getElementById("taskItemsInterview");
 
 
 
@@ -302,34 +302,41 @@ function displayTasks() {
           let item = document.createElement("div");
           item.className = "listTask";
           item.setAttribute("data-id", task.id);
-          item.innerHTML = `
 
-                  <img class="taskItemTaskImg" src="assets/working.jpg">
-                  <p class="taskItemTaskTitle">
-                  ${task.taskName}</p>
-                  <em>${task.taskSection}</em>
-                  <p class = "taskDescription" >${task.taskDescription}</p>
-                  <ul>
-                  <li class = "taskMainTask>${task.taskMainTask}</li>
-                  <ul>
-                  <li class = "taskSubTask">${task.taskSubTask}</li>
-                  </ul>
-                  </ul>
-                  <div class = "taskFooter">
-                  <input type="checkbox" class="taskItemTaskTick" >
-                  <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime}</p>
-                  <div class="taskItemTaskStars">${task.taskDifficulty}
-                    <img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">
-                  </div>
-                  
-          `;
+          let starsHTML = '';
+for (let i = 0; i < task.taskDifficulty; i++) {
+    starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+}
+
+        item.innerHTML = `
+      <img class="taskItemTaskImg" src="assets/working.jpg">
+      <p class="taskItemTaskTitle">${task.taskName}</p>
+      <em>${task.taskSection}</em>
+      <p class="taskDescription">${task.taskDescription}</p>
+      <ul>
+          <li class="taskMainTask">${task.taskMainTask}</li>
+          <ul>
+              <li class="taskSubTask">${task.taskSubTask}</li>
+          </ul>
+      </ul>
+      <div class="taskFooter">
+          <input type="checkbox" class="taskItemTaskTick">
+          <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+          <div class="taskItemTaskStars">${starsHTML}</div>
+      </div>
+  `;
+
 
             // Append the task item to the list
             switch (task.taskStage) {
               case 'Ideation' :  taskIdeation.appendChild(item);
+              break;
               case 'Drafting' :  taskDrafting.appendChild(item);
+              break;
               case 'Finalisation' :  taskFinalisation.appendChild(item);
+              break;
               case 'Interview' :  taskInterview.appendChild(item);
+              break;
               default : break;
             }
 
@@ -1071,24 +1078,24 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
   // Creating the object, directly passing in the input parameters. 
   // This is kept the same from the first time its introduced in the tutorial.
   let task = {
-      taskName,
-      taskSection,
-      taskSectionType,
-      taskStage, 
-      // stage as in whether its ideation or drafting or finalisation etc - maybe a number?
-      taskDescription,
-      taskMainTask,
-      taskSubTask,
-      taskImage,
-      taskDifficulty,
-      taskStatsReward1,
-      taskStatsReward1Percentage,
-      taskStatsReward2,
-      taskStatsReward2Percentage,
-      taskCompletionTime,
-      id: Date.now(),
-      date: new Date().toISOString(),
-  }
+    taskName,
+    taskSection,
+    taskSectionType,
+    taskStage, 
+    taskDescription,
+    taskMainTask,
+    taskSubTask,
+    taskImage,
+    taskDifficulty,
+    taskStatsReward1,
+    taskStatsReward1Percentage,
+    taskStatsReward2,
+    taskStatsReward2Percentage,
+    taskCompletionTime,
+    id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    // Previously in advanced web dev it was fine to just use the current time to make task IDs. However right now I'm trying to make more than a hundred of these at once, so chatgpt suggested adding some randomness to it to ensure uniqueness.
+    date: new Date().toISOString(),
+ }
 
   //first check localstorage to see if an item exists
     //fetching and parsing the localstorage value
@@ -1216,74 +1223,22 @@ function openGroup(id) {
 }
 
 
-// function closeOtherTasks(){
+function expandHeader(stage) { 
 
-// }
+  let stageGroup = document.getElementById(stage);
+  let button = document.getElementById(stage + "Button");
 
-// addTask ("Draft Case Study 1", "Case Study 1", "Drafting", "Draft that shit","","3");
-
-// function expandHeader(id) {
-
-//   var alreadyOpenGroup = document.querySelector("taskItemsActive");
-
-//     let element = document.getElementById(id);
-//     if (element.classList.contains("taskItemsActive")) {
-//         element.classList.remove("taskItemsActive");
-//     } else {
-//         element.classList.add("taskItemsActive");
-
-//       //   if (alreadyOpenGroup) {
-//       //     alreadyOpenGroup.classList.remove("taskItemsActive");
-//       //     alreadyOpenGroup.classList.add("taskItenms");
-//       // }
-//     }
-
-//     element = document.getElementById(id + "Button");
-//     if (element.classList.contains("taskHeaderExpandActive")) {
-//         element.classList.remove("taskHeaderExpandActive");
-//     } else {
-//         element.classList.add("taskHeaderExpandActive");
-//     }
-// }
-
-function expandHeader(id) {
-  // Find any already open group
-  let expandedGroups = document.querySelector(".taskItemsActive");
-  let expandedButtons = document.querySelector(".taskHeaderExpandActive");
-
-  // Find the element by ID
-  let group = document.getElementById(id);
-  let button = document.getElementById(id + "Button");
-
-  let scrollContainer = document.querySelector(".taskList"); // Replace with your scrollable container
-
-  if (group.classList.contains("taskItemsActive")) {
-      // Close the active group if it's already open
-      group.classList.remove("taskItemsActive");
-      button.classList.remove("taskHeaderExpandActive");
-  } else {
-      // Open the selected group and close any others
-      group.classList.add("taskItemsActive");
-      button.classList.add("taskHeaderExpandActive");
+  let scrollContainer = document.querySelector(".taskList");
 
 
-      // Close any already open groups
-      if (expandedGroups) {
-          expandedGroups.classList.remove("taskItemsActive");
-          expandedButtons.classList.remove("taskHeaderExpandActive")
-      }
+              const groupPosition = stageGroup.offsetTop - scrollContainer.offsetTop;
+              scrollContainer.scrollTo({
+                  top: groupPosition - 72,
+                  behavior: "smooth"
 
-      // Scroll to the selected group
-      if (scrollContainer && group) {
-          const groupPosition = group.offsetTop - scrollContainer.offsetTop;
-
-          scrollContainer.scrollTo({
-              top: groupPosition, // Optional offset of 8px
-              behavior: "smooth"
-          });
-      }
-  }
+  });
 }
+
 
 
 
@@ -1512,7 +1467,16 @@ closeCheerfulMessage.addEventListener('click', () => {
   cheerfulIcon.style.pointerEvents = 'auto';
 });
 
+
+
+
+
+
+
+
+
 localStorage.clear();
+
 
 addSection('CoolProduct','casestudy',10);
 addSection('FunCube','casestudy',20);

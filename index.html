@@ -614,7 +614,7 @@ Leah Hartstein
 
         </section>
         <section class= "myTasks">
-          <section class="sectionHeader">
+          <section class="taskSectionHeader">
             <h1 class="sectionTitle">All Tasks</h1>
             <button type="button" class="taskExpandButton">Open <img src="new window.png"> </button>
           </section>
@@ -759,44 +759,60 @@ Leah Hartstein
 
             <section class = "taskList">
 
-                <div class ="stageHeader">
+                <div class ="taskStageHeader">
                   <h4 class="taskHeader">Ideation</h4>
                   <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
                     <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
                   </button>
                 </div>
 
-                <div class ="taskItemsIdeation"></div>
+                <div class = "taskStage" id ="taskItemsIdeation"></div>
 
-                <div class ="stageHeader">
+                <div class ="taskStageHeader">
                   <h4 class="taskHeader">Drafting</h4>
-                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                  <button class="taskHeaderExpand" id="taskItemsDraftingButton" onclick="expandHeader('taskItemsDrafting')">
                     <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
                   </button>
                 </div>
 
-                <div class ="taskItemsDrafting"></div>
+                <div class = "taskStage" id ="taskItemsDrafting"></div>
 
-                <div class ="stageHeader">
+                <div class ="taskStageHeader">
                   <h4 class="taskHeader">Finalisation</h4>
-                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                  <button class="taskHeaderExpand" id="taskItemsFinalisationButton" onclick="expandHeader('taskItemsFinalisation')">
                     <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
                   </button>
                 </div>
 
-                <div class ="taskItemsFinalisation"></div>
+                <div class = "taskStage" id ="taskItemsFinalisation"></div>
 
-                <div class ="stageHeader">
+                <div class ="taskStageHeader">
                   <h4 class="taskHeader">Interview Prep</h4>
-                  <button class="taskHeaderExpand" id="taskItemsIdeationButton" onclick="expandHeader('taskItemsIdeation')">
+                  <button class="taskHeaderExpand" id="taskItemsInterviewButton" onclick="expandHeader('taskItemsInterview')">
                     <img class="taskHeaderExpandImage" src="https://static.thenounproject.com/png/136308-200.png">
                   </button>
                 </div>
 
-                <div class ="taskItemsInterview"></div>
+                <div class = "taskStage" id ="taskItemsInterview"></div>
+              </section>
 
 
-            </section>
+                <div class = "taskListFooter">
+                  <button class="taskHeaderExpand" id="taskItemsInterviewButton" onclick="expandHeader('taskItemsIdeation')">
+                    Ideation
+                  </button>
+                  <button class="taskHeaderExpand" id="taskItemsInterviewButton" onclick="expandHeader('taskItemsDrafting')">
+                    Drafting
+                  </button>
+                  <button class="taskHeaderExpand" id="taskItemsInterviewButton" onclick="expandHeader('taskItemsFinalisation')">
+                    Finalisation
+                  </button>
+                  <button class="taskHeaderExpand" id="taskItemsInterviewButton" onclick="expandHeader('taskItemsInterview')">
+                    Interviewing
+                  </button>
+                  
+                </div>
+
 
         </section>
 

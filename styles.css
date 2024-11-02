@@ -631,6 +631,7 @@ h4 {
   border-radius: 5px;
   background-color: white;
   padding-bottom: 8px;
+  /* align-items: center; */
 
 }
 
@@ -640,6 +641,18 @@ h4 {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.taskSectionHeader {
+  padding: 0 8px 0 8px;
+  height: 47px;
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+/* width: 100%; */
   align-items: center;
   background-color: white;
   border-bottom: 1px solid black;
@@ -693,6 +706,7 @@ h4 {
   background: rgb(233, 234, 242);
   padding: 4px;
   border-bottom: 1px solid black;
+  align-items: center;
 }
 
 .myTasks .sectionHeader {
@@ -711,12 +725,22 @@ h4 {
   /*align-items: center;*/
 }
 
-.taskHeader {
-  margin: 0;
-  font-style: normal;
-  grid-row: 1;
-  grid-column: 1;
+
+
+
+
+.taskStageHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  z-index: 1;
+  background-color: white;
 }
+
 
 .taskHeaderExpand {
   justify-self: right;
@@ -753,6 +777,14 @@ h4 {
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
+
+.taskStage {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  width: 100%;
+}
+
 
 .taskItemsActive {
   max-height: 100%;
@@ -842,7 +874,28 @@ h4 {
 
 
 
+.taskListFooter {
+  display: flex;                  /* Flexbox layout */
+  flex-direction: row;           /* Arrange items in a row */
+  justify-content: space-between; /* Space between items */
+  position: sticky;              /* Sticky positioning */
+  z-index: 10;                   /* Layer order */
+  background-color: white;       /* Background color */
+  border-top: 1px solid #ccc;    /* Top border */
+  height: 30px;                  /* Fixed height */
+  padding: 8px 16px 0px 16px;
+}
 
+.taskListFooter button {
+  cursor: pointer;                /* Change cursor to pointer for buttons */
+  display: flex;                 /* Allow flex properties in buttons if needed */
+  align-items: center;           /* Center text vertically */
+  justify-content: center;       /* Center text horizontally */
+  border-radius: 10px;
+  width: 80px;
+  background-color: black;
+  color: white;
+}
 
 
 
@@ -850,9 +903,10 @@ h4 {
   display: flex;
   flex-direction: column;
   min-height: min-content;
+  width: 90%;
   border-radius: 5px;
   margin: 4px 4px 4px 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: flex 0.5s ease;
   background: white;
   margin: 10px 10px 10px 10px;
@@ -891,7 +945,7 @@ h4 {
   min-height: fit-content;
   border-radius: 5px;
   margin: 4px 4px 4px 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: flex 0.5s ease;
   background: white;
   margin: 10px 10px 10px 10px;
