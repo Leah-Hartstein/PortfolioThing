@@ -55,6 +55,9 @@ ul {
   padding-left: 16px;
 }
 
+button {
+  font-family: "Proxima Nova", sans-serif;
+}
 /* Side panel buttons */
 
 .openList {
@@ -561,10 +564,10 @@ h5 {
   border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
-  margin: 4px 4px 8px 8px;
+  margin: 4px 8px 4px 8px;
   opacity: 1;
   transition: opacity 0.5s ;
-  padding: 0px 8px 0px 8px;
+  padding: 0 8px 0 8px;
   
 
   display:flex;
