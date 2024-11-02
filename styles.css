@@ -1190,6 +1190,30 @@ margin-bottom: 8px;
   margin-bottom: 8px;
   margin-left: 8px;
   background: rgb(233, 234, 242);
+  text-align: end;
+  text-wrap: nowrap;
+}
+
+.portfolioSectionProgressBarNumber {
+  /* position: static; */
+  width: 0;
+  /* justify-self: flex-end; */
+  /* align-self:flex-end; */
+  /* text-align: right; */
+  z-index: 1;
+  /* margin-left: -20px; */
+  /* right: 200px; */
+  transform: translateX(-100px);
+
+}
+
+
+.porfolioSectionProgress {
+  height: 100%;
+  text-align: right;
+  z-index: 10;
+  border-radius: 15px;
+  background-color:#745a67;
 }
 
 /* GUIDES WIDGET */
