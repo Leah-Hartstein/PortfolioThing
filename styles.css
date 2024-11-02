@@ -55,6 +55,10 @@ ul {
   padding-left: 16px;
 }
 
+button {
+    font-family: proxima-nova, sans-serif;
+}
+
 /* Side panel buttons */
 
 .openList {
@@ -488,6 +492,7 @@ h4 {
   margin-bottom: 50px;
 }
 
+
 .chosenTaskContainer {
   display: flex;
   flex-direction: column;
@@ -518,11 +523,10 @@ h4 {
   justify-content: space-between;
   background-color: white;
   border-radius: 15px;
-  margin-top: 8px;
   align-items: center;
   box-shadow: #00000040 0 6px 6px;
   align-self: center;
-  padding: 0px 8px 0px 8px;
+  padding: 0 8px 0 8px;
   margin-top: 16px;
 
 }
@@ -532,7 +536,7 @@ h4 {
   border-radius: 20px;
   width: 30px;
   height: 30px;
-  align-content: center;
+  /*align-content: center;*/
   background-color: white;
 }
 
@@ -541,7 +545,7 @@ h4 {
   border-radius: 20px;
   width: 30px;
   height: 30px;
-  align-content: center;
+  /*align-content: center;*/
   background-color: white;
 }
 
@@ -549,15 +553,15 @@ h4 {
   font-weight: bold;
   width: 120px;
   height: 35px;
-  background: none;
+  /*background: none;*/
   border-radius: 15px;
   border: 1px solid black;
   cursor: pointer;
   align-self: flex-end;
-  margin: 4px 4px 8px 8px;
+  margin: 4px 8px 4px 8px;
   opacity: 1;
   transition: opacity 0.5s ;
-  padding: 0px 8px 0px 8px;
+  padding: 0 10px 0 10px;
   
 
   display:flex;
@@ -577,7 +581,7 @@ h4 {
 }
 
 
-.sidebuttons {
+.sideButtons {
   display: flex;
   flex: 1 1;
   flex-direction: column; /* Stack buttons vertically */
