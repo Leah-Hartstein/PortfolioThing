@@ -196,17 +196,16 @@ document.addEventListener("DOMContentLoaded", function() {
   // Hide the form when "Cancel" button is clicked
   milestoneForm.querySelector(".cancel-button").addEventListener("click", function() {
     milestoneForm.style.display = "none";
-    milestoneInput.value = ""; // Clear the input
+    milestoneInput.value = "";
   });
 
   // Add a new milestone to the timeline when the form is submitted
   milestoneForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault();
     const milestoneTitle = milestoneInput.value.trim();
 
     // Only proceed if there's input
     if (milestoneTitle) {
-      // Create new milestone element
       const newMilestone = document.createElement("div");
       newMilestone.className = "milestone";
       newMilestone.innerHTML = `
@@ -225,14 +224,79 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-// local storage of tasklist item
+
+
+
+
+// const taskCheckboxes = document.querySelectorAll('.task-checkbox');
+// const progressBar = document.querySelector('.progress-bar');
+// const progressText = document.querySelector('.progress-text');
+
+// function updateProgress() {
+//   let completedTasks = 0;
+//   taskCheckboxes.forEach((checkbox, index) => {
+//     // Save checkbox state
+//     localStorage.setItem(`taskCheckbox${index}`, checkbox.checked);
+//     if (checkbox.checked) completedTasks++;
+//   });
+//   const totalTasks = taskCheckboxes.length;
+//   const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+
+//   // Debugging statements
+//   console.log(`Completed Tasks: ${completedTasks}`);
+//   console.log(`Total Tasks: ${totalTasks}`);
+//   console.log(`Progress Percentage: ${progressPercentage}%`);
+
+//   // Store progress data in localStorage
+//   localStorage.setItem('taskProgress', JSON.stringify({
+//     completedTasks,
+//     totalTasks,
+//     progressPercentage
+//   }));
+
+//   // Update progress bar and text
+//   const progressBar = document.querySelector('.progress-bar');
+//   const progressText = document.querySelector('.progress-text');
+
+//   if (progressBar) {
+//     progressBar.style.width = `${progressPercentage}%`;
+//     console.log(`Updated progress bar width to ${progressPercentage}%`);
+//   } else {
+//     console.error('Progress bar element not found.');
+//   }
+
+//   if (progressText) {
+//     progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
+//     console.log(`Updated progress text.`);
+//   } else {
+//     console.error('Progress text element not found.');
+//   }
+// }
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const taskCheckboxes = document.querySelectorAll('.task-checkbox');
 
+  // Load saved checkbox states
+  taskCheckboxes.forEach((checkbox, index) => {
+    const savedState = localStorage.getItem(`taskCheckbox${index}`);
+    checkbox.checked = savedState === 'true';
+  });
+
   function updateProgress() {
-    const completedTasks = Array.from(taskCheckboxes).filter(checkbox => checkbox.checked).length;
+    let completedTasks = 0;
+    taskCheckboxes.forEach((checkbox, index) => {
+      // Save checkbox state
+      localStorage.setItem(`taskCheckbox${index}`, checkbox.checked);
+      if (checkbox.checked) completedTasks++;
+    });
     const totalTasks = taskCheckboxes.length;
-    const progressPercentage = (completedTasks / totalTasks) * 100;
+    const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+
+    // Debugging statements
+    console.log(`Completed Tasks: ${completedTasks}`);
+    console.log(`Total Tasks: ${totalTasks}`);
+    console.log(`Progress Percentage: ${progressPercentage}%`);
 
     // Store progress data in localStorage
     localStorage.setItem('taskProgress', JSON.stringify({
@@ -240,13 +304,31 @@ document.addEventListener("DOMContentLoaded", () => {
       totalTasks,
       progressPercentage
     }));
+
+    // Update progress bar and text
+    const progressBar = document.querySelector('.progress-bar');
+    const progressText = document.querySelector('.progress-text');
+
+    if (progressBar) {
+      progressBar.style.width = `${progressPercentage}%`;
+      console.log(`Updated progress bar width to ${progressPercentage}%`);
+    } else {
+      console.error('Progress bar element not found.');
+    }
+
+    if (progressText) {
+      progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
+      console.log(`Updated progress text.`);
+    } else {
+      console.error('Progress text element not found.');
+    }
   }
 
   taskCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', updateProgress);
   });
 
-  // Initial call to set progress if tasks are pre-checked
+  // Initial call to set progress
   updateProgress();
 });
 
