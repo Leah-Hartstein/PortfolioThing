@@ -291,57 +291,57 @@ function displayTasks() {
     taskFinalisation.innerHTML = "";
     taskInterview.innerHTML = "";
 
-
-
-
     // Get tasks from localStorage
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
-  // Check if localTasks is not empty or null
-  if (localTasks) {
-      localTasks.forEach((task) => {
-        
-          // Create a task item for the DOM
-          let item = document.createElement("div");
-          item.className = "listTask";
-          item.setAttribute("data-id", task.id);
+    // Check if localTasks is not empty or null
+    if (localTasks) {
+        localTasks.forEach((task) => {
+            // Create a task item for the DOM
+            let item = document.createElement("div");
+            item.className = "listTask";
+            item.setAttribute("data-id", task.id);
 
-          let starsHTML = '';
-for (let i = 0; i < task.taskDifficulty; i++) {
-    starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
-}
+            let starsHTML = '';
+            for (let i = 0; i < task.taskDifficulty; i++) {
+                starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+            }
 
-        item.innerHTML = `
-              <em class ="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
-
-      <div class = "taskHeader">
-      <b class="listTaskTitle">${task.taskName}</b>
-            <img class="listTaskImg" src="assets/working.jpg">
-
-      </div>
-      <p class="taskDescription">${task.taskDescription}</p>
-      <ul>
-          <li class="taskMainTask"><em>${task.taskMainTask}</em</li>
-      </ul>
-      <div class="taskFooter">
-          <input type="checkbox" class="taskItemTaskTick">
-          <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-          <div class="taskItemTaskStars">${starsHTML}</div>
-      </div>
-  `;
-
+            item.innerHTML = `
+                <em class ="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
+                
+                <div class = "taskHeader">
+                <b class="listTaskTitle">${task.taskName}</b>
+                <img class="listTaskImg" src="assets/working.jpg">
+                
+                </div>
+                <p class="taskDescription">${task.taskDescription}</p>
+                <ul>
+                <li class="taskMainTask"><em>${task.taskMainTask}</em</li>
+                </ul>
+                <div class="taskFooter">
+                <input type="checkbox" class="taskItemTaskTick">
+                <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+                <div class="taskItemTaskStars">${starsHTML}</div>
+                </div>
+            `;
 
             // Append the task item to the list
             switch (task.taskStage) {
-              case 'Ideation' :  taskIdeation.appendChild(item);
-              break;
-              case 'Drafting' :  taskDrafting.appendChild(item);
-              break;
-              case 'Finalisation' :  taskFinalisation.appendChild(item);
-              break;
-              case 'Interview' :  taskInterview.appendChild(item);
-              break;
-              default : break;
+                case 'Ideation':
+                    taskIdeation.appendChild(item);
+                    break;
+                case 'Drafting':
+                    taskDrafting.appendChild(item);
+                    break;
+                case 'Finalisation':
+                    taskFinalisation.appendChild(item);
+                    break;
+                case 'Interview':
+                    taskInterview.appendChild(item);
+                    break;
+                default:
+                    break;
             }
 
             // Add click event to open the task details
@@ -445,6 +445,7 @@ function displayChosenTask(taskId) {
       item.innerHTML = `
         <h3>${task.taskSection}</h3>
         <h2>${task.taskName}</h2>
+        <div class ="chosenTaskText">
         <p>${task.taskDescription}</p>
         <ul>
           <li><b>${task.taskMainTask}</b></li>
@@ -452,6 +453,7 @@ function displayChosenTask(taskId) {
             <li>${task.taskSubTask}</li>
           </ul>
         </ul>
+        </div>
         <div class="chosenTaskFooter">
           <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
           <p class="chosenTaskType">${task.taskStage}</p>
@@ -1366,19 +1368,42 @@ function openGroup(id) {
 
 
 function expandHeader(stage) { 
+ // Find any already open group
+  let expandedGroups = document.querySelector(".taskItemsActive");
+  let expandedButtons = document.querySelector(".taskHeaderExpandActive");
 
-  let stageGroup = document.getElementById(stage);
+  // Find the element by ID
+  let group = document.getElementById(stage);
   let button = document.getElementById(stage + "Button");
 
-  let scrollContainer = document.querySelector(".taskList");
+  let scrollContainer = document.querySelector(".taskList"); // Replace with your scrollable container
+
+  if (group.classList.contains("taskItemsActive")) {
+      // Close the active group if it's already open
+      group.classList.remove("taskItemsActive");
+      button.classList.remove("taskHeaderExpandActive");
+  } else {
+      // Open the selected group and close any others
+      group.classList.add("taskItemsActive");
+      button.classList.add("taskHeaderExpandActive");
 
 
-              const groupPosition = stageGroup.offsetTop - scrollContainer.offsetTop;
-              scrollContainer.scrollTo({
-                  top: groupPosition - 72,
-                  behavior: "smooth"
+      // Close any already open groups
+      if (expandedGroups) {
+          expandedGroups.classList.remove("taskItemsActive");
+          expandedButtons.classList.remove("taskHeaderExpandActive")
+      }
 
-  });
+      // Scroll to the selected group
+      if (scrollContainer && group) {
+          const groupPosition = group.offsetTop - scrollContainer.offsetTop;
+
+          scrollContainer.scrollTo({
+              top: groupPosition - 72,
+              behavior: "smooth"
+          });
+      }
+  }
 }
 
 
