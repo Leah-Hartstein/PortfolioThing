@@ -416,63 +416,72 @@ function displayChosenTask(id) {
 }
 */
 
-function displayChosenTask() {
+function displayChosenTask(taskId) {
   // Clear the task display area before adding the chosen task
   chosenTaskContainer.innerHTML = "";
 
   // Get tasks from localStorage
   let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
-  // Check if there is at least one task to display
+  // Check if there are tasks to display
   if (localTasks && localTasks.length > 0) {
-    // Choose the first task (or any specific task you want to display)
-    let task = localTasks[0];
+    // If taskId is provided, find the task with that ID; otherwise, use the first task
+    let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
 
-    // Create a task item for the DOM
-    let item = document.createElement("div");
-    item.className = "chosenTask";
-    item.setAttribute("data-id", task.id + "infocus");
+    // If the task is found, display it
+    if (task) {
+      // Create a task item for the DOM
+      let item = document.createElement("div");
+      item.className = "chosenTask";
+      item.setAttribute("data-id", task.id + "infocus");
 
-    // Generate stars based on task difficulty
-    let starsHTML = '';
-    for (let i = 0; i < task.taskDifficulty; i++) {
-      starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
-    }
+      // Generate stars based on task difficulty
+      let starsHTML = '';
+      for (let i = 0; i < task.taskDifficulty; i++) {
+        starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+      }
 
-    // Set the inner HTML for the task item
-    item.innerHTML = `
-      <h3>${task.taskSection}</h3>
-      <h2>${task.taskName}</h2>
-      <p>${task.taskDescription}</p>
-      <ul>
-        <li><b>${task.taskMainTask}</b></li>
+      // Set the inner HTML for the task item
+      item.innerHTML = `
+        <h3>${task.taskSection}</h3>
+        <h2>${task.taskName}</h2>
+        <p>${task.taskDescription}</p>
         <ul>
-          <li>${task.taskSubTask}</li>
+          <li><b>${task.taskMainTask}</b></li>
+          <ul>
+            <li>${task.taskSubTask}</li>
+          </ul>
         </ul>
-      </ul>
-      <div class="chosenTaskFooter">
-        <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-        <p class="chosenTaskType">${task.taskStage}</p>
-        <div class="taskItemTaskStars">${starsHTML}</div>
-      </div>
-      <div class="chosenTaskButtons">
-        <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
-          <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-        </button>
-        <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">
-          Begin Task<img src="edit.png">
-        </button>
-        <button class="chosenTaskNext" onclick="nextTask(${task.id})">
-          <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-        </button>
-      </div>
-    `;
+        <div class="chosenTaskFooter">
+          <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+          <p class="chosenTaskType">${task.taskStage}</p>
+          <div class="taskItemTaskStars">${starsHTML}</div>
+        </div>
+        <div class="chosenTaskButtons">
+          <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
+            <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+          </button>
+          <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">
+            Begin Task<img src="edit.png">
+          </button>
+          <button class="chosenTaskNext" onclick="nextTask(${task.id})">
+            <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+          </button>
+        </div>
+      `;
 
-    // Append the task item to the chosenTask container
-    chosenTaskContainer.appendChild(item);
+      // Append the task item to the chosenTask container
+      chosenTaskContainer.appendChild(item);
 
-    // Optionally open the task if needed
-    openTask(task.id);
+      // Optionally open the task if needed
+      // openTask(task.id);
+    } else {
+      // Task with the given ID was not found
+      chosenTaskContainer.innerHTML = "<p>Task not found.</p>";
+    }
+  } else {
+    // No tasks available
+    chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
   }
 }
 
@@ -1273,10 +1282,12 @@ function openTask(id) {
 
   // Check if the scrollContainer and task element exist
   if (scrollContainer && task) {
+
       // Toggle the class for the task
       if (task.classList.contains("listTask")) {
           task.classList.remove("listTask");
           task.classList.add("listTaskOpen");
+          displayChosenTask(id);
 
           // Close any already open tasks
           if (alreadyOpenTask) {
@@ -1671,5 +1682,5 @@ addSection('My Design Philosophy','About Me',69);
 
 
 displayTasks();
-displayChosenTask();
+displayChosenTask(0);
 
