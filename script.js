@@ -492,13 +492,13 @@ function displayChosenTask(taskId) {
         </div>
         <div class="chosenTaskButtons">
           <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
-            <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+            <img class="chosenTaskImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
           </button>
           <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">
             Begin Task<img src="edit.png">
           </button>
           <button class="chosenTaskNext" onclick="nextTask(${task.id})">
-            <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+            <img class="chosenTaskImg chosenTaskImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
           </button>
         </div>
       `;
