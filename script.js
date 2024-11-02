@@ -246,7 +246,7 @@ function openMap(){
     
             roadMap.classList.remove("roadMap");
             roadMap.classList.add("roadMapOpen");
-            drawMap();
+            // drawMap();
     
         } else {
             chosenTask.classList.remove("chosenTaskHidden");
@@ -266,13 +266,13 @@ function openMap(){
 
 // just whacking some bullshit on the frame atm
 
-function drawMap(){
+// function drawMap(){
 
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
+// ctx.beginPath();
+// ctx.arc(95,50,40,0,2*Math.PI);
 
-ctx.stroke();
-}
+// ctx.stroke();
+// }
 
 // and u can call this one whenever u need to clean the thing off :)
 
@@ -1538,9 +1538,60 @@ closeCheerfulMessage.addEventListener('click', () => {
 });
 
 
+// load item from tasklist of roadmap page
+document.addEventListener("DOMContentLoaded", () => {
+  // Retrieve task progress data from localStorage
+  const progressData = JSON.parse(localStorage.getItem('taskProgress'));
+
+  if (progressData) {
+    const { completedTasks, totalTasks, progressPercentage } = progressData;
+
+    // Update the dashboard progress bar
+    const progressBar = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text'); // Optional, for displaying text
+
+    if (progressBar) {
+      progressBar.style.width = `${progressPercentage}%`;
+    }
+
+    if (progressText) {
+      progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
+    }
+  }
+});
+
+const goalProgress = 3; // Current progress
+const totalGoals = 8; // Total goals
+const goalPips = document.querySelectorAll(".GoalPip, .emptyGoalPip");
+
+goalPips.forEach((pip, index) => {
+  if (index < goalProgress) {
+    pip.classList.add("filled-goal"); // Add a filled class to indicate progress
+    pip.classList.remove("emptyGoalPip");
+  } else {
+    pip.classList.add("emptyGoalPip");
+  }
+});
 
 
+const stats = [
+  { id: "stat1", value: 30, max: 90 },
+  { id: "stat2", value: 40, max: 80 },
+  { id: "stat3", value: 10, max: 50 },
+  { id: "stat4", value: 15, max: 50 },
+  { id: "stat5", value: 12, max: 50 },
+  { id: "stat6", value: 12, max: 50 },
+];
 
+stats.forEach(stat => {
+  const percentage = (stat.value / stat.max) * 100;
+  const bar = document.getElementById(`${stat.id}Bar`);
+  const numberDisplay = document.getElementById(`number${stat.id.charAt(stat.id.length - 1)}`);
+  
+  // Update bar width and number display
+  bar.style.width = `${percentage}%`;
+  if (numberDisplay) numberDisplay.textContent = `${Math.round(percentage)}%`;
+});
 
 
 
@@ -1559,4 +1610,5 @@ addSection('My Design Philosophy','About Me',69);
 
 
 displayTasks();
-displayChosenTask(0);
+
+

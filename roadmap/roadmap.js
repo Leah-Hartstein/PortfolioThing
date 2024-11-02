@@ -119,7 +119,7 @@ $(document).ready(function() {
 // Close Button
 document.querySelector('.close-button').addEventListener('click', function() {
   if (confirm('Are you sure you want to return to the dashboard?')) {
-    window.location.href = '../index.html'; // Replace actual dashboard path
+    window.location.href = '../index.html'; //current dashboard path
   }
 });
 
@@ -224,3 +224,29 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+// local storage of tasklist item
+document.addEventListener("DOMContentLoaded", () => {
+  const taskCheckboxes = document.querySelectorAll('.task-checkbox');
+
+  function updateProgress() {
+    const completedTasks = Array.from(taskCheckboxes).filter(checkbox => checkbox.checked).length;
+    const totalTasks = taskCheckboxes.length;
+    const progressPercentage = (completedTasks / totalTasks) * 100;
+
+    // Store progress data in localStorage
+    localStorage.setItem('taskProgress', JSON.stringify({
+      completedTasks,
+      totalTasks,
+      progressPercentage
+    }));
+  }
+
+  taskCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateProgress);
+  });
+
+  // Initial call to set progress if tasks are pre-checked
+  updateProgress();
+});
+
