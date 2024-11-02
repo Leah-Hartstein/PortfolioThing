@@ -1263,7 +1263,7 @@ margin-bottom: 8px;
 }
 
 .modalBackground.active {
-  z-index: 2;
+  z-index: 999;
   grid-row: 1/999;
   grid-column: 1/999;
   opacity: 70%;
@@ -1905,6 +1905,7 @@ flex: 2 0 60%;
   width: 100%;
   background-color: white;
   background: url(map.png) center no-repeat;
+  z-index: 1000;
 }
 
 
