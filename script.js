@@ -30,6 +30,9 @@ const portfolioExpandButton = document.querySelector(".portfolioModalOpenButton"
 const portfolioExpandModal = document.querySelector(".portfolioExpandModal");
 const portfolioExpandModalClose = document.querySelector(".portfolioModalClose");
 
+const myPortfolioModal = document.querySelector(".portfolioModalContent");
+
+
 
 const modalBackground = document.querySelector(".modalBackground");
 
@@ -546,6 +549,77 @@ if (localSections) {
 
           // Append the task item to the list
             myPortfolio.appendChild(item);
+
+
+      });
+  }
+}
+
+function displaySectionModal() {
+  // Clear the task list before displaying
+  myPortfolioModal.innerHTML = "";
+
+
+
+
+
+  // Get tasks from localStorage
+  let localSections = JSON.parse(localStorage.getItem('sections'));
+
+// Check if localTasks is not empty or null
+if (localSections) {
+  localSections.forEach((section) => {
+      
+        // Create a task item for the DOM
+        let item = document.createElement("div");
+        item.className = "portfolioSection";
+        item.setAttribute("data-id", section.id);
+
+
+      item.innerHTML = `
+
+                      <div class = "portfolioSectionHeader">
+
+          <div class ="portfolioSectionTitle"><h3>${section.sectionName}</h3>
+            <br><b>${section.sectionType}</b>
+          </div>    
+          
+        </div>
+
+        <div class ="portfolioSectionContent">
+          <div class = "portfolioSectionContentThumbnailLarge" id ="thumbnail1">
+                            <span class="thumbnailLabel">Text</span>
+</div>
+          <div class = "portfolioSectionContentThumbnailSmall" id ="thumbnail2">
+                            <span class="thumbnailLabel">Text</span>
+</div>
+          <div class = "portfolioSectionContentThumbnailSmall" id ="thumbnail3">
+                            <span class="thumbnailLabel">Text</span>
+</div>
+          <div class = "portfolioSectionContentThumbnailLarge" id ="thumbnail4">
+                            <span class="thumbnailLabel">Text</span>
+</div>
+
+        </div>
+        
+        <div class ="portfolioSectionFooter">
+<div class = "portfolioSectionProgressBar" id = "section1">
+                <div class = "portfolioSectionProgress" 
+                style="width:${section.sectionCompletion}%; background-color:#745a67;   border-radius: 15px; z-index: 1;"></div>
+
+                <p class ="portfolioSectionProgressBarNumber">${section.sectionCompletion}% Complete</p>
+                </div>
+
+      <button type="button" class="sectionExpandButton" id = "${section.id}" >Open <img src="new window.png"> </button>
+      </div>
+
+
+
+`;
+
+
+          // Append the task item to the list
+            myPortfolioModal.appendChild(item);
 
 
       });
@@ -1772,4 +1846,5 @@ addSection('My Design Philosophy','About Me',90);
 displayTasks();
 displayChosenTask(0);
 displaySectionWidget();
+displaySectionModal();
 
