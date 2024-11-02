@@ -13,6 +13,11 @@ const taskDrafting = document.getElementById("taskItemsDrafting");
 const taskFinalisation = document.getElementById("taskItemsFinalisation");
 const taskInterview = document.getElementById("taskItemsInterview");
 
+const taskModalIdeation = document.getElementById("taskModalTasksIdeation");
+const taskModalDrafting = document.getElementById("taskModalTasksDrafting");
+const taskModalFinalisation = document.getElementById("taskModalTasksFinalisation");
+const taskModalInterview = document.getElementById("taskModalTasksInterview");
+
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
@@ -307,10 +312,7 @@ function displayTasks() {
             item.className = "listTask";
             item.setAttribute("data-id", task.id);
 
-            let starsHTML = '';
-            for (let i = 0; i < task.taskDifficulty; i++) {
-                starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
-            }
+            let starsHTML = `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`.repeat(task.taskDifficulty);
 
             item.innerHTML = `
                 <em class ="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
@@ -331,19 +333,43 @@ function displayTasks() {
                 </div>
             `;
 
+
+            // for the modal
+            let modalItem = document.createElement("div");
+            modalItem.className = "taskItemTask";
+            modalItem.innerHTML = `
+                <img class="taskItemTaskImg" src="assets/working.jpg">
+                <p class="taskItemTaskBoldText taskItemTaskTitle">${task.taskName}</p>
+                <input type="checkbox" class="taskItemTaskTick">
+                <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} mins</p>
+                <div class="taskItemTaskStars">${starsHTML}</div>
+                <div class="taskItemTaskExpandable">
+                    <p class="taskItemTaskBoldText">${task.taskSectionType} - ${task.taskSection}</p>
+                    <p class="taskItemTaskText">${task.taskDescription}</p>
+                    <ul class="taskItemTaskList">
+                        <li class="taskItemTaskText">${task.taskMainTask}</li>
+                        <li class="taskItemTaskText">${task.taskSubTask}</li>
+                    </ul>
+                </div>
+            `;
+
             // Append the task item to the list
             switch (task.taskStage) {
                 case 'Ideation':
                     taskIdeation.appendChild(item);
+                    taskModalIdeation.appendChild(modalItem);
                     break;
                 case 'Drafting':
                     taskDrafting.appendChild(item);
+                    taskModalDrafting.appendChild(modalItem);
                     break;
                 case 'Finalisation':
                     taskFinalisation.appendChild(item);
+                    taskModalFinalisation.appendChild(modalItem);
                     break;
                 case 'Interview':
                     taskInterview.appendChild(item);
+                    taskModalInterview.appendChild(modalItem);
                     break;
                 default:
                     break;
@@ -1846,5 +1872,6 @@ addSection('My Design Philosophy','About Me',90);
 displayTasks();
 displayChosenTask(0);
 displaySectionWidget();
+expandHeader("taskItemsIdeation");
 displaySectionModal();
 
