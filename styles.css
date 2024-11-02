@@ -52,7 +52,7 @@ hr {
 
 ul {
   margin-left: 0px;
-  padding: 4;
+  padding-left: 16px;
 }
 
 /* Side panel buttons */
@@ -782,7 +782,7 @@ justify-content: space-between;
   display: flex;
   flex-direction:column;
   align-items: center;
-  width: 100%;
+  width: 90%;
 }
 
 
@@ -879,7 +879,6 @@ justify-content: space-between;
   flex-direction: row;           /* Arrange items in a row */
   justify-content: space-between; /* Space between items */
   position: sticky;              /* Sticky positioning */
-  z-index: 10;                   /* Layer order */
   background-color: white;       /* Background color */
   border-top: 1px solid #ccc;    /* Top border */
   height: 30px;                  /* Fixed height */
@@ -903,13 +902,12 @@ justify-content: space-between;
   display: flex;
   flex-direction: column;
   min-height: min-content;
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
-  margin: 4px 4px 4px 12px;
   /* overflow: hidden; */
   transition: flex 0.5s ease;
   background: white;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 16px 10px 16px;
   box-shadow: #00000040 0 6px 6px;
   border-radius: 15px;
   padding: 8px 16px 8px 16px;
@@ -927,8 +925,40 @@ justify-content: space-between;
   display: none;
 }
 
+/* .listTask .ListTaskImg {
+  display: none;
+} */
+
 .listTask h3 {
   font-size: 20;
+}
+
+.taskHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 16px 0px 16px;
+  align-items: center;
+}
+
+.listTaskTitle{
+  width: 90%;
+  font-size: 18;
+
+}
+
+.listTaskImg {
+  height: 100%;
+  width: 100px;
+  /* object-fit: contain; */
+}
+
+
+.listTaskSection{
+  padding-left: 8px;
+  font-size: 12;
+align-self: flex-start;
+margin-bottom: 8px;
 }
 
 .taskFooter {
@@ -939,20 +969,31 @@ justify-content: space-between;
   align-items: center;
 }
 
+
+
 .listTaskOpen {
   display: flex;
   flex-direction: column;
   min-height: fit-content;
   border-radius: 5px;
-  margin: 4px 4px 4px 12px;
-  /* overflow: hidden; */
-  transition: flex 0.5s ease;
   background: white;
   margin: 10px 10px 10px 10px;
   border-radius: 15px;
   box-shadow: #00000040 0 6px 6px;
-
+  width: 100%;
+  padding: 8px 16px 8px 16px;
+  transition: flex 0.5s ease;
 }
+
+.listTaskOpen p  {
+  padding-left: 16px;
+}
+
+.listTask ul {
+  padding-left: 16px;
+}
+
+
 
 /* Bottom Row */
 

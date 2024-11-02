@@ -309,9 +309,13 @@ for (let i = 0; i < task.taskDifficulty; i++) {
 }
 
         item.innerHTML = `
-      <img class="taskItemTaskImg" src="assets/working.jpg">
-      <p class="taskItemTaskTitle">${task.taskName}</p>
-      <em>${task.taskSection}</em>
+              <em class ="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
+
+      <div class = "taskHeader">
+      <b class="listTaskTitle">${task.taskName}</b>
+            <img class="listTaskImg" src="assets/working.jpg">
+
+      </div>
       <p class="taskDescription">${task.taskDescription}</p>
       <ul>
           <li class="taskMainTask">${task.taskMainTask}</li>
@@ -394,7 +398,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
     // and add if not
 
 
-    if (sectionType === 'casestudy') {
+    if (sectionType === 'Case Study') {
 
       // Ideation
 
@@ -407,7 +411,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Compile your documentation from your original work",
         "Select your favourite pieces of writing",
         "./legs.png",
-        3,
+        1,
         "Communication",
         2,
         "Time Management",
@@ -424,7 +428,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Choose your best visual material from your original work",
         "Select the most important visuals from your original work",
         "./legs.png",
-        3,
+        1,
         "Visual Design",
         2,
         "Communication",
@@ -441,7 +445,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Review the original feedback for your case study.",
         "Find examples of work that contributed to iterations",
         "./legs.png",
-        3,
+        1,
         "Communication",
         1,
         "",
@@ -460,7 +464,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Describe the core premise of your project.",
         "Describe your role in your team",
         "./legs.png",
-        3,
+        2,
         "Communication",
         1,
         "Teamwork",
@@ -477,7 +481,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Describe your research approach.",
         "Outline your research methods.",
         "./legs.png",
-        3,
+        2,
         "Communication",
         1,
         15,
@@ -492,7 +496,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Describe your ideation methods.",
         "Outline your role in ideation.",
         "./legs.png",
-        3,
+        2,
         "Problem Solving",
         1,
         "Teamwork",
@@ -526,7 +530,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Compile the best sketches.",
         "Outline your role in sketching.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Problem Solving",
@@ -543,7 +547,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Summarise key iterations.",
         "Outline your role in wireframing.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Teamwork",
@@ -560,7 +564,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Outline your goals in prototyping.",
         "Outline your initial testing results.",
         "./legs.png",
-        3,
+        2,
         "Problem Solving",
         1,
         "Visual Design",
@@ -577,7 +581,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Summarise key iterations from prototyping.",
         "Outline your role in creating mockups.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Teamwork",
@@ -594,7 +598,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Summarise key iterations from Mid-Fidelity mockups.",
         "Outline your role in High-Fidelity mockups.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Teamwork",
@@ -645,7 +649,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Consider a basic visual design for your case study and what elements you want to emphasise.",
         "Prepare some initial sketches for the layout of your case study.",
         "./legs.png",
-        3,
+        1,
         "Visual Design",
         3,
         30,
@@ -663,7 +667,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Refine draft overview of your case study to a final iteration.",
         "Consider a shorter version you can deliver in an interview if necessary",
         "./legs.png",
-        3,
+        2,
         "Communication",
         1,
         "Teamwork",
@@ -680,8 +684,10 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Finalise your research overview.",
         "Prepare a brief summary of your methods for interviews.",
         "./legs.png",
-        3,
+        2,
         "Communication",
+        1,
+        "Problem Solving",
         1,
         25,
       )
@@ -829,7 +835,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Finalise draft conclusion.",
         "Prepare concluding remarks for interview.",
         "./legs.png",
-        3,
+        4,
         "Problem solving",
         2,
         "Teamwork",
@@ -846,7 +852,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Finalise layout of case study.",
         "Prepare a 'Hero' Image for your case study.",
         "./legs.png",
-        3,
+        4,
         "Visual Design",
         4,
         "Communication",
@@ -865,7 +871,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Think of a high-level summary of your piece that you can deliver if you are pressed for time.",
         "Prepare a quick overview of your role in the team.",
         "./legs.png",
-        3,
+        2,
         "Communication",
         4,
         "Visual Design",
@@ -873,7 +879,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         30,
       )
 
-    } if (sectionType === 'aboutme') {
+    } if (sectionType === 'About Me') {
 
       // IDEATION
 
@@ -886,7 +892,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Compile previous designer and personal statements",
         "Think about your strengths as a designer",
         "./legs.png",
-        3,
+        1,
         "Communication",
         2,
         "Time Management",
@@ -903,7 +909,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Compile images of your favourite designs",
         "Think about why you enjoy your favourite designers",
         "./legs.png",
-        3,
+        1,
         "Visual design",
         1,
         "Communication",
@@ -922,7 +928,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Draft About Me page",
         "",
         "./legs.png",
-        3,
+        2,
         "Communication",
         2,
         "Time Management",
@@ -942,7 +948,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Finalise about me page from drafts",
         "Prepare a brief summary for interviews",
         "./legs.png",
-        3,
+        2,
         "Communication",
         2,
         "Problem Solving",
@@ -959,14 +965,14 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Finalise visual design for About me page",
         "Refer to past moodboard",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Time Management",
         1,
         30,
       )
-    } if (sectionType === 'index') {
+    } if (sectionType === 'Index/Landing') {
       // Ideation
       
       addTask(
@@ -978,7 +984,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Find example portfolio index/landing pages, as well as other designed material that inspires you.",
         "Combine materials into a moodboard.",
         "./legs.png",
-        3,
+        1,
         "Visual Design",
         2,
         "Communication",
@@ -998,7 +1004,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Create a draft layout for your index/landing pages.",
         "Consider alternate layouts for different screen sizes, if necessary.",
         "./legs.png",
-        3,
+        1,
         "Visual Design",
         2,
         "Communication",
@@ -1018,14 +1024,14 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Create the final layout for your index/landing pages.",
         "Create alternate layouts for different screen sizes, if necessary.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Communication",
         1,
         30,
       )
-    } if (sectionType === 'resume') {
+    } if (sectionType === 'Resume') {
 
       // Ideation
 
@@ -1039,7 +1045,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Write a rough draft of your resume.",
         "Consider alternate versions that convey different skills",
         "./legs.png",
-        3,
+        1,
         "Communication",
         1,
         "Time Management",
@@ -1059,7 +1065,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
         "Create a final resume layout.",
         "Prepare alternate resumes for different roles, if necessary.",
         "./legs.png",
-        3,
+        2,
         "Visual Design",
         2,
         "Communication",
@@ -1478,12 +1484,14 @@ closeCheerfulMessage.addEventListener('click', () => {
 localStorage.clear();
 
 
-addSection('CoolProduct','casestudy',10);
-addSection('FunCube','casestudy',20);
-addSection('SmartClog','casestudy',69);
-addSection('Main Resume','resume',69);
-addSection('Website Landing','index',69);
-addSection('My Design Philosophy','aboutme',69);
+addSection('CoolProduct','Case Study',10);
+addSection('FunCube','Case Study',20);
+addSection('SmartClog','Case Study',69);
+addSection('Main Resume','Resume',69);
+addSection('Website Landing','Index/Landing',69);
+addSection('My Design Philosophy','About Me',69);
+
+
 
 
 displayTasks();
