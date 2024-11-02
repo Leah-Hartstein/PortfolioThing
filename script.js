@@ -352,7 +352,7 @@ for (let i = 0; i < task.taskDifficulty; i++) {
     }
 }
 
-
+/*
 function displayChosenTask(id) {
   // Clear the task display area before adding the chosen task
   chosenTaskContainer.innerHTML = "";
@@ -412,6 +412,67 @@ function displayChosenTask(id) {
 
     openTask(task.id);
 
+  }
+}
+*/
+
+function displayChosenTask() {
+  // Clear the task display area before adding the chosen task
+  chosenTaskContainer.innerHTML = "";
+
+  // Get tasks from localStorage
+  let localTasks = JSON.parse(localStorage.getItem('tasks'));
+
+  // Check if there is at least one task to display
+  if (localTasks && localTasks.length > 0) {
+    // Choose the first task (or any specific task you want to display)
+    let task = localTasks[0];
+
+    // Create a task item for the DOM
+    let item = document.createElement("div");
+    item.className = "chosenTask";
+    item.setAttribute("data-id", task.id + "infocus");
+
+    // Generate stars based on task difficulty
+    let starsHTML = '';
+    for (let i = 0; i < task.taskDifficulty; i++) {
+      starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+    }
+
+    // Set the inner HTML for the task item
+    item.innerHTML = `
+      <h3>${task.taskSection}</h3>
+      <h2>${task.taskName}</h2>
+      <p>${task.taskDescription}</p>
+      <ul>
+        <li><b>${task.taskMainTask}</b></li>
+        <ul>
+          <li>${task.taskSubTask}</li>
+        </ul>
+      </ul>
+      <div class="chosenTaskFooter">
+        <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+        <p class="chosenTaskType">${task.taskStage}</p>
+        <div class="taskItemTaskStars">${starsHTML}</div>
+      </div>
+      <div class="chosenTaskButtons">
+        <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
+          <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+        </button>
+        <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">
+          Begin Task<img src="edit.png">
+        </button>
+        <button class="chosenTaskNext" onclick="nextTask(${task.id})">
+          <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
+        </button>
+      </div>
+    `;
+
+    // Append the task item to the chosenTask container
+    chosenTaskContainer.appendChild(item);
+
+    // Optionally open the task if needed
+    openTask(task.id);
   }
 }
 
@@ -1610,5 +1671,5 @@ addSection('My Design Philosophy','About Me',69);
 
 
 displayTasks();
-
+displayChosenTask();
 
