@@ -445,6 +445,7 @@ function displayChosenTask(taskId) {
       item.innerHTML = `
         <h3>${task.taskSection}</h3>
         <h2>${task.taskName}</h2>
+        <div class ="chosenTaskText">
         <p>${task.taskDescription}</p>
         <ul>
           <li><b>${task.taskMainTask}</b></li>
@@ -452,6 +453,7 @@ function displayChosenTask(taskId) {
             <li>${task.taskSubTask}</li>
           </ul>
         </ul>
+        </div>
         <div class="chosenTaskFooter">
           <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
           <p class="chosenTaskType">${task.taskStage}</p>
