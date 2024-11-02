@@ -596,7 +596,6 @@ h5 {
   border: none;
   margin-right: 8px;
   align-self: flex-end;
-
 }
 
 .zoomButtons {
@@ -763,6 +762,7 @@ justify-content: space-between;
   position: sticky;
   z-index: 1;
   background-color: white;
+  cursor: pointer;
 }
 
 
@@ -807,11 +807,16 @@ justify-content: space-between;
   flex-direction:column;
   align-items: center;
   width: 90%;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 
 .taskItemsActive {
-  max-height: 100%;
+  max-height: min-content;
+  min-height: min-content;
 }
 
 .taskItemTask {
