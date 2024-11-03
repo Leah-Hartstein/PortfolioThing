@@ -2187,7 +2187,7 @@ flex: 2 0 60%;
 }
 
 .TimeLine h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: proxima-nova, sans-serif;
   font-size: 0.84rem;
   margin-bottom: 0.35rem;
   margin-left: 24px;
@@ -2233,7 +2233,7 @@ flex: 2 0 60%;
 .milestone .text {
   display: table;
   text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: proxima-nova, sans-serif;
   font-size: 9.8px;
   color: #303030;
   width: 100%;
