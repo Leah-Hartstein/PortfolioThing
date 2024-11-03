@@ -690,7 +690,47 @@ function addSection(sectionName, sectionType, sectionCompletion) {
 
       //set the new item into localstorage
       localStorage.setItem('sections', JSON.stringify(localSections));
-      console.log(section);
+      console.log(section); 
+      
+      */
+
+      /* load and display the saved sections from localStorage in onboarding.js
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const localSections = JSON.parse(localStorage.getItem('sections')) || [];
+        const portfolioContainer = document.querySelector(".portfolioSections");
+      
+        localSections.forEach(section => {
+          const sectionElement = document.createElement('div');
+          sectionElement.classList.add('portfolioSection');
+          sectionElement.setAttribute("data-id", section.id);
+      
+          sectionElement.innerHTML = `
+            <div class="portfolioSectionHeader">
+              <div class="portfolioSectionTitle"><h3>${section.sectionName}</h3><br><b>${section.sectionType}</b></div>
+            </div>
+            <div class="portfolioSectionContent">
+              <div class="portfolioSectionContentThumbnailLarge" id="thumbnail1">
+                <span class="thumbnailLabel">Visualizations</span>
+              </div>
+              <div class="portfolioSectionContentThumbnailSmall" id="thumbnail2">
+                <span class="thumbnailLabel">Text</span>
+              </div>
+            </div>
+            <div class="portfolioSectionFooter">
+              <div class="portfolioSectionProgressBar" id="section1">
+                <div class="portfolioSectionProgress" 
+                     style="width:${section.sectionCompletion}%; background-color:#745a67; border-radius: 15px; z-index: 1;">
+                </div>
+                <p class="portfolioSectionProgressBarNumber">${section.sectionCompletion}% Complete</p>
+              </div>
+              <button type="button" class="sectionExpandButton" id="${section.id}">Open <img src="new window.png"></button>
+            </div>
+          `;
+      
+          portfolioContainer.appendChild(sectionElement);
+        });
+      }); */
 
  
     // if it isnt then check if the task is already there 
