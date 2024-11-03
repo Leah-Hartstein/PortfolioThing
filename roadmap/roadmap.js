@@ -7,14 +7,13 @@ card.newButton = document.querySelector('.new-card');
 const newTaskForm = document.getElementById('new-task-form');
 
 card.wrap.addEventListener('click', (e) => {
-  // Handle clicks on the card header
   if (e.target.closest('.card__header') && !e.target.classList.contains('task-checkbox')) {
     let parentCard = e.target.closest('.card');
     parentCard.classList.toggle('is-active');
   }
 });
 
-// Handle checkbox changes
+
 card.wrap.addEventListener('change', (e) => {
   if (e.target.classList.contains('task-checkbox')) {
     let parentCard = e.target.closest('.card');
@@ -27,16 +26,16 @@ card.newButton.addEventListener('click', () => {
   card.newButton.style.display = 'none';
 });
 
-// Handle adding new tasks
+
 newTaskForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  // Get form values
+
   const title = document.getElementById('task-title').value.trim();
   const description = document.getElementById('task-description').value.trim();
   const priority = document.getElementById('task-priority').value;
 
-  // Validate input
+
   if (title === '' || description === '') {
     alert('Please fill in all required fields.');
     return;
@@ -85,14 +84,14 @@ newTaskForm.addEventListener('submit', (e) => {
 
 // Feedback Expansion
 $(document).ready(function() {
-  // Handle the feedback expansion
+
   $(".is-expandable").on('click', function(){
     const $that = $(this);
     const $content = $that.find(".content");
     const $contentSpan = $content.find("span");
 
     if(!$that.hasClass("is-expanded")) {
-        // Set initial states
+
         gsap.set($content, {height: "auto"});
         gsap.set($contentSpan, {opacity: 1});
         gsap.from($content, {height: 0, duration: 0.4, ease: "expo.out"});
@@ -119,14 +118,14 @@ $(document).ready(function() {
 // Close Button
 document.querySelector('.close-button').addEventListener('click', function() {
   if (confirm('Are you sure you want to return to the dashboard?')) {
-    window.location.href = '../index.html'; //current dashboard path
+    window.location.href = '../index.html';
   }
 });
 
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Toggle feedback form visibility
+
   document.getElementById("show-feedback-form").addEventListener("click", function() {
     const form = document.getElementById("feedback-form");
     form.style.display = form.style.display === "none" ? "block" : "none";
@@ -144,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function() {
     newFeedback.className = "feedback-milestone no-flicker is-current";
 
     if (feedbackTitle && feedbackText) {
-      // Expandable item if both title and description are provided
       newFeedback.innerHTML = `
         <div class="feedback-action is-expandable">
           <h2 class="title">${feedbackTitle}</h2>
@@ -226,54 +224,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-// const taskCheckboxes = document.querySelectorAll('.task-checkbox');
-// const progressBar = document.querySelector('.progress-bar');
-// const progressText = document.querySelector('.progress-text');
-
-// function updateProgress() {
-//   let completedTasks = 0;
-//   taskCheckboxes.forEach((checkbox, index) => {
-//     // Save checkbox state
-//     localStorage.setItem(`taskCheckbox${index}`, checkbox.checked);
-//     if (checkbox.checked) completedTasks++;
-//   });
-//   const totalTasks = taskCheckboxes.length;
-//   const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
-
-//   // Debugging statements
-//   console.log(`Completed Tasks: ${completedTasks}`);
-//   console.log(`Total Tasks: ${totalTasks}`);
-//   console.log(`Progress Percentage: ${progressPercentage}%`);
-
-//   // Store progress data in localStorage
-//   localStorage.setItem('taskProgress', JSON.stringify({
-//     completedTasks,
-//     totalTasks,
-//     progressPercentage
-//   }));
-
-//   // Update progress bar and text
-//   const progressBar = document.querySelector('.progress-bar');
-//   const progressText = document.querySelector('.progress-text');
-
-//   if (progressBar) {
-//     progressBar.style.width = `${progressPercentage}%`;
-//     console.log(`Updated progress bar width to ${progressPercentage}%`);
-//   } else {
-//     console.error('Progress bar element not found.');
-//   }
-
-//   if (progressText) {
-//     progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
-//     console.log(`Updated progress text.`);
-//   } else {
-//     console.error('Progress text element not found.');
-//   }
-// }
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const taskCheckboxes = document.querySelectorAll('.task-checkbox');
 
@@ -328,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
     checkbox.addEventListener('change', updateProgress);
   });
 
-  // Initial call to set progress
+
   updateProgress();
 });
 
