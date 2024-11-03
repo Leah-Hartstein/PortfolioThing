@@ -54,19 +54,9 @@ const modalBackground = document.querySelector(".modalBackground");
 let currentTaskIndex = 0;
 
 
-// const task = document.getElementById("1");
-//all thats missing from opening tasks from the list here atm is a reference to the 
-// i'ds that are generated when a new task is added
 
 var mapCanvas = document.getElementById("map");
 
-// IF anyone need to use the canvas function just bring it back
-// var ctx = mapCanvas.getContext("2d");
-
-
-
-// just giving the one task you can open an ID but this would be programatically generated
-// a la advanced web dev
 
 function expandList() {
     // Toggle the class for myTasks section
@@ -99,165 +89,7 @@ function expandList() {
     }
 }
 
-// heres my unused advanced web dev function that just needs to be updated to instead
-// drop all that shit in the expanded task from the list :)
-function openfilmModal(taskId) {
 
-
-  // Opening the tasks from local storage
-  let localTasks = JSON.parse(localStorage.getItem('tasks'));
-
-  // searching our tasks for the correct ID, if nothing is found, it returns -1
-  let selectedTaskIndex = localTasks.findIndex(task => task.id === taskId);
-
-  if (selectedTaskIndex !== -1) { //so lets check if it hasn't returned -1.
-    const selectedTask = localTasks[selectedTaskIndex]; //if it's all good, then let's make a selectedtask object that we will build this modal from!
-
-  // Populating the modal with the attributes of the selected film
-  const filmDetails = document.getElementById("filmDetails");
-
-  // EXPERIMENTAL POTENTIALLY FUCKED CONTENT
-
-  // Constructing a string which will then be fed into the innerhtml at the end
-  let entryContent = `<div class ="entry-row"><div class ="entry-label"><em>Title:</em></div><div class ="entry-text"><strong>${selectedTask.filmName}</strong></div></div>`;
-
-  //each form element is checked with an if statement so it can be omitted if it wasn't submitted
-  //since there is always at least one genre submitted, we will instead check if the second string in the array was left blank and omit the comma if it is
-  
-  if (selectedTask.filmGenre.length > 0) {
-    entryContent += `<div class ="entry-row"><div class ="entry-label">Genre:</div><div class ="entry-text"> ${selectedTask.filmGenre[0]}`;
-    
-    if (selectedTask.filmGenre[1] !== "") {
-      entryContent += `, ${selectedTask.filmGenre[1]}`;
-    }
-    
-    entryContent += `</div></div>`;
-  }
-  
-  if (selectedTask.filmRelease) {
-    entryContent += `<div class ="entry-row"><div class ="entry-label">Release Date:</div><div class ="entry-text"> ${selectedTask.filmRelease}</div></div>`;
-  }
-  
-  if (selectedTask.filmDirector) {
-    entryContent += `<div class ="entry-row"><div class ="entry-label">Director:</div><div class ="entry-text"> ${selectedTask.filmDirector}</div></div>`;
-  }
-  
-  //since the filmCast is supposed to be an entry with three arrays, we will instead check if the filmCast array only has a blank string as an entry
-  if (selectedTask.filmCast[0] !== "") {
-    //slicing the 'cast' array to omit entries past the third, for cleanliness
-    const cast = selectedTask.filmCast.slice(0, 3).join(", ");
-    entryContent += `<div class ="entry-row"><div class ="entry-label">Cast:</div><div class ="entry-text"> ${cast}</div></div>`;
-  }
-  
-  if (selectedTask.filmOriginalTitle) {
-    entryContent += `<div class ="entry-row"><div class ="entry-label">Original Title:</div><div class ="entry-text"> ${selectedTask.filmOriginalTitle}</div></div>`;
-  }
-  
-  let taskrating = null;
-      switch (selectedTask.filmRating) {
-        case '1':
-          taskrating = icons['blankhalf']
-          break;
-        case '2':
-          taskrating = icons['blank1']
-          break;
-        case '3':
-          taskrating = icons['blank1half']
-          break;
-        case '4':
-          taskrating = icons['blank2']
-          break;
-        case '5':
-          taskrating = icons['blank2half']
-          break;
-        case '6':
-          taskrating = icons['blank3']
-          break;
-        case '7':
-          taskrating = icons['blank3half']
-          break;
-        case '8':
-          taskrating = icons['blank4']
-          break;
-        case '9':
-          taskrating = icons['blank4half']
-          break;
-        case '10':
-          taskrating = icons['blank5']
-          break;
-          default:
-          break;
-      }
-
-
-  // if (selectedTask.filmRating) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Rating:</em><div class ="entry-text"> ${selectedTask.filmRating}</div></div>`;
-  // }
-
-  if (selectedTask.filmRating) {
-    entryContent += `<div class ="entry-row"><em class ="entry-label">Rating:</em><div class ="entry-text"> <img src ="${taskrating}.png"></div></div>`;
-  }
-
-  // NON FUCKED JS
-
-  // // Constructing a string which will then be fed into the innerhtml at the end
-  // let entryContent = `<div class ="entry-row"><em class ="entry-label">Title:</em>${selectedTask.filmName}</div>`;
-
-  // //each form element is checked with an if statement so it can be omitted if it wasn't submitted
-  // //since there is always at least one genre submitted, we will instead check if the second string in the array was left blank and omit the comma if it is
-  
-  // if (selectedTask.filmGenre.length > 0) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Genre:</em> ${selectedTask.filmGenre[0]}`;
-    
-  //   if (selectedTask.filmGenre[1] !== "") {
-  //     entryContent += `, ${selectedTask.filmGenre[1]}`;
-  //   }
-    
-  //   entryContent += `</div>`;
-  // }
-  
-  // if (selectedTask.filmRelease) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Release Date:</em> ${selectedTask.filmRelease}</div>`;
-  // }
-  
-  // if (selectedTask.filmDirector) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Director:</em> ${selectedTask.filmDirector}</div>`;
-  // }
-  
-  // //since the filmCast is supposed to be an entry with three arrays, we will instead check if the filmCast array only has a blank string as an entry
-  // if (selectedTask.filmCast[0] !== "") {
-  //   //slicing the 'cast' array to omit entries past the third, for cleanliness
-  //   const cast = selectedTask.filmCast.slice(0, 3).join(", ");
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Cast:</em> ${cast}</div>`;
-  // }
-  
-  // if (selectedTask.filmOriginalTitle) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Original Title:</em> ${selectedTask.filmOriginalTitle}</div>`;
-  // }
-  
-  // if (selectedTask.filmRating) {
-  //   entryContent += `<div class ="entry-row"><em class ="entry-label">Rating:</em> ${selectedTask.filmRating}</div>`;
-  // }
-
-  filmDetails.innerHTML = entryContent;
-  
-    // now let's add the delete button, adapted from the code given before 
-    let delButton = document.createElement("button");
-    let delButtonText = document.createTextNode("Delete");
-    delButton.appendChild(delButtonText);
-    filmDetails.appendChild(delButton); // Adds a delete button to the modal
-
-    // Listen for when the delete button is clicked
-    delButton.addEventListener("click", function (event) {
-      localTasks.splice(selectedTaskIndex, 1); // Remove the selected task from the localTasks array
-      localStorage.setItem('tasks', JSON.stringify(localTasks)); // Update the localStorage
-      filmModal.close(); // Close the modal
-      displayTasks(); // Refresh the task list
-    });
-
-  filmModal.showModal();
-} 
-}
 
 function openMap(){
         if (chosenTask.classList.contains("chosenTask")) {
@@ -278,57 +110,10 @@ function openMap(){
             }
 }
 
-// function openMap() {
-//   // Get the elements by their IDs if not already selected
-//   const chosenTask = document.getElementById("chosenTask"); // Replace with the actual ID if needed
-//   const roadMap = document.getElementById("roadMap"); // Replace with the actual ID if needed
-
-//   // Toggle the 'chosenTask' visibility
-//   if (chosenTask.classList.contains("chosenTask")) {
-//       chosenTask.classList.remove("chosenTask");
-//       chosenTask.classList.add("chosenTaskHidden");
-      
-//       roadMap.classList.remove("roadMap");
-//       roadMap.classList.add("roadMapOpen");
-      
-//       // Uncomment if you have a drawMap function to initialize or show the map
-//       // drawMap();
-
-//   } else {
-//       chosenTask.classList.remove("chosenTaskHidden");
-//       chosenTask.classList.add("chosenTask");
-
-//       roadMap.classList.remove("roadMapOpen");
-//       roadMap.classList.add("roadMap");
-
-//       // Call the closeMap function if you have one to hide or remove the map view
-//       closeMap();
-//   }
-// }
 
 
 
-// heres where all the map stuff is handled - I think you'd read all the tasks from localstorage, then run a for loop placing each task in clusters 
-// according to if they're ideation/drafting/etc. 
-
-// just whacking some bullshit on the frame atm
-
-// function drawMap(){
-
-// ctx.beginPath();
-// ctx.arc(95,50,40,0,2*Math.PI);
-
-// ctx.stroke();
-// }
-
-// and u can call this one whenever u need to clean the thing off :)
-
-function closeMap(){
-ctx.clearRect(0, 0, mapCanvas.width, mapCanvas.height);
-}
-
-// here's my function from advanced web dev. I'm just trying to have it append the tasks to the taskList div but it's not quite ready yet
-// and the language needs to be fixed. If u wanna get this to work u just need to refer to how I've named everything in the HTML :))
+// 
 
 
 function displayTasks() {
@@ -440,69 +225,7 @@ function displayTasks() {
   }
 }
 
-/*
-function displayChosenTask(id) {
-  // Clear the task display area before adding the chosen task
-  chosenTaskContainer.innerHTML = "";
 
-  // Get tasks from localStorage
-  let localTasks = JSON.parse(localStorage.getItem('tasks'));
-
-  // Check if there is at least one task to display
-  if (localTasks && localTasks.length > 0) {
-    // Choose the first task (or any specific task you want to display)
-    let task = localTasks[0];
-
-    // Create a task item for the DOM
-    let item = document.createElement("div");
-    item.className = "chosenTask";
-    item.setAttribute("data-id", task.id + "infocus");
-
-    let starsHTML = '';
-    for (let i = 0; i < task.taskDifficulty; i++) {
-      starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
-    }
-
-    item.innerHTML = `
-      <h3>${task.taskSection}</h3>
-      <h2>${task.taskName}</h2>
-      <p>${task.taskDescription}</p>
-      <ul>
-        <li><b>${task.taskMainTask}</b></li>
-        <ul>
-          <li>${task.taskSubTask}</li>
-        </ul>
-      </ul>
-      <div class="chosenTaskFooter">
-        <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-        <p class="chosenTaskType">${task.taskStage}</p>
-        <div class="taskItemTaskStars">
-          ${starsHTML}
-        </div>
-      </div>
-
-      <div class ="chosenTaskButtons">
-      <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
-       <img class="slideshowImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-        </button>
-          
-        <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">Begin Task<img src="edit.png"></button>
-
-         <button class="chosenTaskNext" onclick="nextTask(${task.id})">
-          <img class="slideshowImg slideshowImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-           </button>
-
-         </div>
-    `;
-    
-    // Append the single task item to the chosenTask container
-    chosenTaskContainer.appendChild(item);
-
-    openTask(task.id);
-
-  }
-}
-*/
 
 
 
@@ -1912,24 +1635,6 @@ function setSlideCategory(id) {
 
 setSlideCategory("Ideation");
 
-// // Toggle Task/Map
-// function openMap() {
-//   const taskWindow = document.querySelector('.taskWindow');
-//   const roadMap = document.querySelector('.roadMap');
-//   const toggleButton = document.querySelector('.openMap');
-
-//   console.log(toggleButton);
-
-//   if (taskWindow.style.display === 'block') {
-//     taskWindow.style.display = 'none';
-//     roadMap.style.display = 'block';
-//     toggleButton.textContent = 'Task';
-//   } else {
-//     taskWindow.style.display = 'block';
-//     roadMap.style.display = 'none';
-//     toggleButton.textContent = 'Map';
-//   }
-// }
 
 
 // Handle the adding new milestone on roadmap
