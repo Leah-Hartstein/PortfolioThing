@@ -37,7 +37,7 @@ function addSection() {
   } else {
     alert('Please fill out all fields.');
   }
-}
+} 
 
 function dashboardPage(screen) {
   if (screen === 'dashboardScreen') {

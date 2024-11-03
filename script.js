@@ -703,9 +703,9 @@ function addSection(sectionName, sectionType, sectionCompletion) {
 
       //set the new item into localstorage
       localStorage.setItem('sections', JSON.stringify(localSections));
-      console.log(section);
-
- 
+      console.log(section); 
+      
+      
     // if it isnt then check if the task is already there 
     // and add if not
 
