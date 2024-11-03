@@ -1246,6 +1246,14 @@ h5 {
   background: rgb(233, 234, 242);
 }
 
+.portfolioSectionProgressBarNumber {
+  width: 0;
+  text-wrap: nowrap;
+  transform: translateX(-100px); 
+}
+
+/* Only way I could think of to stop the numbers from messing with the statbars. Clumsy but it works! */
+
 /* GUIDES WIDGET */
 
 
