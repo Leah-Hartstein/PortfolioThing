@@ -57,6 +57,7 @@ let currentTaskIndex = 0;
 
 var mapCanvas = document.getElementById("map");
 
+// The function for toggling expanding out the list. I'm still so proud of this thing.
 
 function expandList() {
     // Toggle the class for myTasks section
@@ -113,7 +114,7 @@ function openMap(){
 
 
 
-// 
+// The function for displaying tasks, which is mostly just creating a div element, injecting in html, then sorting them into appropriate places in the list and modal
 
 
 function displayTasks() {
@@ -227,7 +228,8 @@ function displayTasks() {
 
 
 
-
+// The function for displaying chosen tasks, which works like the task displaying function but without the sorting, but with the ability to show from an ID
+// So that it can be called by the opentasks function
 
 function displayChosenTask(taskId) {
   // Clear the task display area before adding the chosen task
@@ -296,6 +298,8 @@ function displayChosenTask(taskId) {
       chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
   }
 }
+
+// The function for displaying chosen tasks in the task completion modal, which works similarly to the previous function but with the addition of a task completion button.
 
 function displayChosenTaskModal(taskId) {
   // Clear the task display area before adding the chosen task
@@ -501,6 +505,9 @@ if (localSections) {
       });
   }
 }
+
+// The function for adding sections, which is just a very simple object created by a form and then an absolutely enourmous if statement to add 3-30 tasks 
+// Depending on the type of section. Case studies have the most obviously
 
 function addSection(sectionName, sectionType, sectionCompletion) {
 
@@ -1271,6 +1278,9 @@ function addSection(sectionName, sectionType, sectionCompletion) {
 
 }
 
+// The function for adding tasks, which is also very simple but has quite a lot of attributes. Adapted from my advanced web dev function for adding tasks to a list
+// Because I forgot how to do it
+
 function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescription, taskMainTask, taskSubTask, taskImage, taskDifficulty, taskStatsReward1, taskStatsReward1Percentage, taskStatsReward2, taskStatsReward2Percentage, taskCompletionTime) {
     
   
@@ -1287,6 +1297,7 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
     taskSubTask,
     taskImage,
     taskDifficulty,
+    // these next four would control which attributes are increased when the user completes a text
     taskStatsReward1,
     taskStatsReward1Percentage,
     taskStatsReward2,
@@ -1326,9 +1337,10 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
   // if it isnt then check if the task is already there 
   // and add if not
 
-  // displayTasks();
-  // console.log(task);
 }
+
+// The function for completing tasks, which just changes a single attribute from 0 to 1 so they can be removed from the list and chosen task and moved to the
+// appropriate div in the modal
 
 function completeTask(taskId) {
   // Fetch tasks from local storage
@@ -1363,6 +1375,10 @@ function completeTask(taskId) {
   modalBackground.classList.remove("active");
 
 }
+
+// the functions for navigating through the list and scrolling
+
+// this first one is used to control the chosentask
 
 function openTask(id) {
   // Find the task element using data-id
@@ -1786,13 +1802,14 @@ stats.forEach(stat => {
 
 // localStorage.clear();
 
+// Placeholder sections. Comment these back in if you want to fill the page up in a pinch
 
-addSection('CoolProduct','Case Study',10);
-addSection('FunCube','Case Study',20);
-addSection('SmartClog','Case Study',50);
-addSection('Main Resume','Resume',60);
-addSection('Website Landing','Index/Landing',69);
-addSection('My Design Philosophy','About Me',90);
+// addSection('CoolProduct','Case Study',10);
+// addSection('FunCube','Case Study',20);
+// addSection('SmartClog','Case Study',50);
+// addSection('Main Resume','Resume',60);
+// addSection('Website Landing','Index/Landing',69);
+// addSection('My Design Philosophy','About Me',90);
 
 
 
