@@ -3,7 +3,6 @@ function nextScreen(screenId) {
   document.getElementById(screenId).style.display = 'block';
 }
 
-
 let selectedType = '';
 
 function selectType(type) {
@@ -39,46 +38,6 @@ function addSection() {
     alert('Please fill out all fields.');
   }
 } 
-
-  /*let selectedType = '';
-
-  function selectType(type) {
-    selectedType = type;
-    alert(`Selected section type: ${type}`);
-  }
-  
-  function addSection() {
-    const title = document.getElementById('title').value;
-    const completionLevel = document.getElementById('completionLevel').value;
-    const fileUpload = document.getElementById('fileUpload').files[0];
-  
-    if (title && selectedType) {
-      const section = {
-        sectionName: title,
-        sectionType: selectedType,
-        sectionCompletion: completionLevel,
-        id: Date.now()
-      };
-  
-      let localSections = JSON.parse(localStorage.getItem('sections')) || [];
-      localSections.push(section);
-  
-      localStorage.setItem('sections', JSON.stringify(localSections));
-  
-      const sectionsList = document.getElementById('sectionsList');
-      const listItem = document.createElement('li');
-      listItem.textContent = `${title} - ${selectedType} (${completionLevel}% Complete)`;
-      listItem.classList.add('section-box');
-      sectionsList.appendChild(listItem);
-  
-      document.getElementById('title').value = '';
-      document.getElementById('completionLevel').value = '0';
-      document.getElementById('fileUpload').value = '';
-      selectedType = '';
-    } else {
-      alert('Please fill out all fields.');
-    }
-  }*/
 
 function dashboardPage(screen) {
   if (screen === 'dashboardScreen') {
