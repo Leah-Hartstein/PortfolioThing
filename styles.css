@@ -391,32 +391,33 @@ h5 {
 
 #stat1Bar {
   width: 33%; 
-  background-color:#745a67;
+  background-color:#A2BC6A;
+  stroke: 1px;
 }
 
 #stat2Bar {
   width: 50%;
-  background-color: #8d7687
+  background-color: #7C8C5A;
 }
 
 #stat3Bar {
   width: 20%;
-  background-color: #5a4b56;
+  background-color: #739096;
 }
 
 #stat4Bar {
   width: 30%;
-  background-color: #5c565a;
+  background-color: #F29B88;
 }
 
 #stat5Bar {
   width: 24%;
-  background-color: #5a4b4e;
+  background-color: #FFE9BA;
 }
 
 #stat6Bar {
   width: 24%;
-  background-color: #4b5a56;
+  background-color: #F2CC85;
 }
 
 .statsPanelGoal {
@@ -436,7 +437,7 @@ h5 {
 .goalPip{
   flex: 1;
   height: 100%;
-  background-color:#bd93f9;
+  background-color:#FFDC64;
   color: white;
   text-align: right;
   z-index: 0;
@@ -446,12 +447,12 @@ h5 {
 .emptyGoalPip{
   flex: 1;
   height: 100%;
-  background-color:#808080;
+  background-color:#e5e5e5;
   color: white;
   text-align: right;
   z-index: 0;
   border-radius: 10px;
-  box-shadow: inset #00000040 0 6px 6px;
+  box-shadow: inset #00000025 0 6px 6px;
 
 }
 
