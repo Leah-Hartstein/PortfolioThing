@@ -23,6 +23,11 @@ const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
 const taskExpandModalClose = document.querySelector(".taskModalClose");
 
+const taskCompletionExpandButton = document.querySelector(".taskCompletionExpandButton");
+const taskCompletionExpandModal = document.querySelector(".taskCompletionModal");
+const taskCompletionExpandModalClose = document.querySelector(".taskCompletionModalClose");
+
+
 const guidesExpandButton = document.querySelector(".guidesExpandButton");
 const guidesExpandModal = document.querySelector(".guidesExpandModal");
 const guidesExpandModalClose = document.querySelector(".guidesModalClose");
@@ -40,6 +45,8 @@ const myPortfolioModal = document.querySelector(".portfolioModalContent");
 
 
 const modalBackground = document.querySelector(".modalBackground");
+
+
 
 let currentTaskIndex = 0;
 
@@ -447,6 +454,8 @@ function displayChosenTask(id) {
 }
 */
 
+
+
 function displayChosenTask(taskId) {
   // Clear the task display area before adding the chosen task
   chosenTaskContainer.innerHTML = "";
@@ -494,7 +503,7 @@ function displayChosenTask(taskId) {
           <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
             <img class="chosenTaskImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
           </button>
-          <button class="chosenTaskOpen" onclick="openTaskModal(${task.id})">
+          <button class="taskCompletionExpandButton" onclick="openTaskCompletionModal(${task.id})">
             Begin Task<img src="edit.png">
           </button>
           <button class="chosenTaskNext" onclick="nextTask(${task.id})">
@@ -517,6 +526,10 @@ function displayChosenTask(taskId) {
     chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
   }
 }
+
+
+
+
 
 function displaySectionWidget() {
   // Clear the task list before displaying
@@ -1632,6 +1645,19 @@ taskExpandModalClose.onclick = () => {
     modalBackground.classList.remove("active");
 };
 
+// task completion modal
+
+function openTaskCompletionModal() {
+  taskCompletionExpandModal.classList.add("active");
+  modalBackground.classList.add("active");
+  console.log("hey!")
+};
+
+taskCompletionExpandModalClose.onclick = () => {
+  taskCompletionExpandModal.classList.remove("active");
+  modalBackground.classList.remove("active");
+};
+
 // guides modal
 guidesExpandButton.onclick = () => {
     guidesExpandModal.classList.add("active");
@@ -1666,6 +1692,7 @@ portfolioExpandModalClose.onclick = () => {
   portfolioExpandModal.classList.remove("active");
   modalBackground.classList.remove("active");
 };
+
 
 
 function move() {
@@ -1905,7 +1932,6 @@ addSection('SmartClog','Case Study',50);
 addSection('Main Resume','Resume',60);
 addSection('Website Landing','Index/Landing',69);
 addSection('My Design Philosophy','About Me',90);
-
 
 
 
