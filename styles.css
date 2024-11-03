@@ -1388,6 +1388,21 @@ h5 {
   grid-column: 2;
 }
 
+.taskSubHeaderFifth {
+  grid-row: 15;
+  grid-column: 2;
+}
+
+.taskDescriptionFifth {
+  grid-row: 16;
+  grid-column: 2;
+}
+
+.taskModalTasksFifth {
+  grid-row: 17;
+  grid-column: 2;
+}
+
 .modalClose {
   grid-row: 1;
   grid-column: 4;
