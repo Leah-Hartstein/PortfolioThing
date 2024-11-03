@@ -1557,8 +1557,8 @@ function completeTask(taskId) {
   }
 
   // Find the task with the specified ID
-  let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
-
+  let task = taskId ? localTasks.find(t => t.id.toString() === taskId.toString()) : localTasks[0];
+  
   // If the task is found, mark it as complete
   if (task) {
     task.complete = 1;
