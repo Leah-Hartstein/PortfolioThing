@@ -7,10 +7,6 @@ body {
   font-style: normal;
 }
 
-/* div {
-  border: 1px rgb(160, 160, 160) solid;
-} */
-
 
 em {
   font-family: proxima-nova, sans-serif;
@@ -60,6 +56,8 @@ button {
 
 }
 
+/* our core colour palette so we can easily restyle elements */
+
 :root {
   --task: rgba(35, 36, 105, 0.89);
   --taskFont: white;
@@ -70,20 +68,17 @@ button {
 }
 
 
-/* Side panel buttons */
+/* Side panel open and close buttons */
 
 .openList {
   background-image: url(expand.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: rgba(0,0,0,0);
-  /* put the height and width of your image here */
   height: 20px;
   width: 26px;
   border: none;
   align-self: flex-end;
-  /* justify-self: right; */
-
   position: static;
   transition: flex 0.5s ease;
   margin-top: 10px;
@@ -96,13 +91,10 @@ button {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: rgba(0,0,0,0);
-  /* put the height and width of your image here */
   height: 20px;
   width: 26px;
   border: none;
   align-self: flex-end;
-  /* justify-self: right; */
-
   position: static;
   transition: flex 0.5s ease;
   margin-top: 10px;
@@ -115,12 +107,8 @@ button {
 
 
 
-.textblock {
-  padding-left: 20px;
-}
 
 button:hover {
-  /*transform: translateY(-2px);*/
   transition: flex 0.5s ease;
 }
 
@@ -201,6 +189,35 @@ h5 {
   margin: 10px 0 10px 10px;
 }
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px 0px rgba(100, 100, 100, 0.3);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1d1d1d;
+}
+
+
+/* Everything fits into these two confusingly-named elements */
+
 .container {
   display: flex;
   grid-row: 1/999;
@@ -213,8 +230,11 @@ h5 {
 .Content {
   display: flex;
   flex-direction: column;
-  width: 70%; /* Adjust based on your design */
+  width: 70%; 
 }
+
+/* The topbar, which was more important in our user testing fair prototype and doesn't really do anything now. We kept it because it looks cool and balances
+the composition */
 
 .topbar {
   text-align: left;
@@ -233,18 +253,15 @@ h5 {
 }
 
 
-/* Top Row */
+/* the top row of divs! which is just a simple flex row */
 
 .topRow {
   display: flex;
   flex-direction: row;
-  /* flex: 2 0 400px; */
   justify-content: space-between;
   align-items: stretch;
   margin: 8px 0px 8px 0px;
-  /* height: 100%; */
   flex-shrink: 0;
-  /*border: 1px solid rgb(110, 110, 110);*/
   border-radius: 10px;
   box-shadow: #00000040 0 6px 6px;
   background: rgb(233, 234, 242);
@@ -260,16 +277,16 @@ h5 {
   align-items: center;
 }
 
+/* By default the stats panel is roughly 1/3rd the width of the current task panel that it's adjacent to */
 
 .userStats {
   display: flex;
   flex-direction: column;
-  flex: 0.4; /* Adjust width as needed */
+  flex: 0.4; 
   margin: 0 0px;
   height: 100%;
   align-self: center;
   transition: flex 0.5s ease;
-  /*border-right: 1px solid black;*/
   border-radius: 5px;
   background-color: white;
   color: rgb(0, 0, 0);
@@ -279,20 +296,20 @@ h5 {
 
 }
 
+/* but if the user expands the tasklist the panel collapses to give more space for the other elements. This took a little while to get things like the text looking good
+but I'm really proud of it :) - Leah */
+
 .userStatsClosed {
   display: flex;
   flex-direction: column;
-  flex: 0 1; /* Adjust width as needed */
+  flex: 0 1; 
   margin: 0 0px;
   height: 500px;
-  /* width: 0px; */
   align-self: center;
   transition: flex 0.5s ease;
   border-right: none;
   overflow: hidden;
   white-space: nowrap;
-  /* border-right: 1px black; */
-
 }
 
 .userStatsClosed h1 {
@@ -313,6 +330,8 @@ h5 {
 
 
 }
+
+/* The buttons for the stats modal which are mostly unchanged from the base style, just in black and white */
 
 .statsExpandButton {
   font-weight: bold;
@@ -362,6 +381,7 @@ h5 {
 
 }
 
+/* Styling for starbars, which are a simple div element with another div inside for the bar and a p element for the number */
 
 .statsPanelName{
   align-self: center;
@@ -394,6 +414,16 @@ h5 {
 
 }
 
+/* The numbers for the stat bars. Had to remove the width and then translate them over so they wouldn't push the bar div out of the way */
+
+.statPanelNumber {
+  width: 0;
+  z-index: 1;
+  transform: translateX(-50px);
+}
+
+/* Each bar has colours assigned by an ID. The would've been done programatically if we had time to fully implement them with task confusion */
+
 #stat1Bar {
   width: 33%; 
   background-color:#A2BC6A;
@@ -424,6 +454,8 @@ h5 {
   width: 24%;
   background-color: #F2CC85;
 }
+
+/* The 'weekly goal' bar where the stat is split into eight 'pips', so the user can see a clear increment whenever they complete a task */
 
 .statsPanelGoal {
   display: flex;
@@ -461,24 +493,16 @@ h5 {
 
 }
 
-.statPanelNumber {
-  /* position: static; */
-  width: 0;
-  /* justify-self: flex-end; */
-  /* align-self:flex-end; */
-  /* text-align: right; */
-  z-index: 1;
-  /* margin-left: -20px; */
-  /* right: 200px; */
-  transform: translateX(-50px);
 
-}
 
 .userStatsClosed .statsPanel {
   transition: flex 0.5s ease;
   overflow: hidden;
 
 }
+
+/* Current/Chosen Task widget. Tried to keep this all simple with flexboxes but the currenttask window in particular became very confusing once started trying to have it
+toggle between tasks and roadmap */
 
 .currentTask{
   display: flex;
@@ -602,30 +626,30 @@ h5 {
 
 }
 
+/* The mostly-unused side panel buttons */
 
 .sideButtons {
   display: flex;
   flex: 1 1;
-  flex-direction: column; /* Stack buttons vertically */
-  justify-content: space-between; /* Space them vertically */
-  align-items: flex-end; /* Align buttons to the right */
+  flex-direction: column; 
+  justify-content: space-between; 
+  align-items: flex-end; 
   width: 0;
   z-index: 1;
-  height: 100%; /* Add height to occupy the full container, if needed */
+  height: 100%;
   border: none;
   margin-right: 8px;
   align-self: flex-end;
 }
 
 
-
+/* the completely unused zoom in and out buttons */
 
 .zoomButtons {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: flex-end;
-  /* background-color: rgb(27, 27, 27); */
   border: none;
   color: white;
   font-family: "richmond-display", 'Times New Roman', serif;
@@ -657,6 +681,8 @@ h5 {
 
 }
 
+/* the roadmap/task toggle */
+
 .openMap {
   background-color: rgb(27, 27, 27);
   color: white;
@@ -668,22 +694,36 @@ h5 {
   /* position: fixed; */
 }
 
+/* The two styles for expanding and shrinking the tasklist, allowing it to expand out to roughly double the size */
+
 .myTasks {
   order: 2;
   display: flex;
   flex-direction: column;
   flex: 0.748; /* For some ungodly reason the border of this panel only lines up with the one below if its very minutely off */
-  /*margin: 0 0 0 0;*/
   height: 500px;
   align-content: flex-start;
-  transition: flex 0.5s ease; /* Smoothly animate flex property */
-  /*border-left: 1px solid black;*/
+  transition: flex 0.5s ease; 
   border-radius: 5px;
-  /*background-color: var(--taskTitle);*/
-  /*padding-bottom: 8px;*/
-  /* align-items: center; */
+}
+
+
+.myTasksOpen {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1.5; 
+  margin: 0;
+  height: 500px;
+  align-content: flex-start;
+  align-self: flex-end;
+  transition: flex 0.5s ease; 
+  border-radius: 0 10px 10px 0;
+
 
 }
+
+/* the header used for the guides widget */
 
 .sectionHeader {
   padding: 1% 2% 1% 4%;
@@ -697,13 +737,14 @@ h5 {
   border-radius: 9px 9px 0 0;
 }
 
+/* The header used for the task widget */
+
 .taskSectionHeader {
   padding: 1% 2% 1% 4%;
   height: 47px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-/* width: 100%; */
   align-items: center;
   background-color: var(--taskTitle);
   box-shadow: #00000040 0 6px 6px;
@@ -715,6 +756,8 @@ h5 {
   justify-self: left;
   color: var(--taskFont);
 }
+
+/* Buttons for opening tasks and guides modal */
 
 .taskExpandButton, .guidesExpandButton {
   display: flex;
@@ -733,23 +776,6 @@ h5 {
   filter: invert(100%);
 }
 
-.myTasksOpen {
-  order: 2;
-  display: flex;
-  flex-direction: column;
-  flex: 1.5; /* Expanded size */
-  margin: 0;
-  height: 500px;
-  align-content: flex-start;
-  align-self: flex-end;
-  transition: flex 0.5s ease; /* Smoothly animate flex property */
-  /*border-left: 1px solid black;*/
-  border-radius: 0 10px 10px 0;
-  /*background-color: white;*/
-  /*padding-bottom: 8px;*/
-  /*background-color:  var(--task);*/
-
-}
 
 .taskList {
   display: flex;
@@ -766,20 +792,11 @@ h5 {
   align-items: center;
 }
 
-.myTasks .sectionHeader {
-  /*border-bottom: 1px solid black;*/
-}
-
-.myTasksOpen .sectionHeader {
-  /*border-bottom: 1px solid black;*/
-}
 
 .taskGroup {
   padding: 15px;
   border-top: 1px solid black;
   display: grid;
-  /*this animates expansion from center which doesnt look as good as expanding from top imo*/
-  /*align-items: center;*/
 }
 
 
@@ -824,6 +841,8 @@ h5 {
 .taskHeaderExpandActive {
   transform: scaleY(-1);
 }
+
+/* Cards used for the task modal */
 
 .taskItems {
   grid-row: 2;
@@ -950,7 +969,7 @@ h5 {
 }
 
 
-
+/* The footer for quickly navigating through the list */
 
 .taskListFooter {
   display: flex;                  /* Flexbox layout */
@@ -977,7 +996,7 @@ h5 {
   border: 1px solid white;
 }
 
-
+/* the cards that appear in the list, which show less detail until they are expanded */
 
 .listTask {
   display: flex;
@@ -1010,6 +1029,8 @@ h5 {
   border: 3px solid yellow;
 }
 
+/* since its all the same programmatic html, the image and description are hidden from the div when its in its normal non-expanded shape */
+
 .listTask .listTaskImg{
   display: none;
 }
@@ -1018,11 +1039,6 @@ h5 {
   display: none;
 }
 
-
-
-/* .listTask .ListTaskImg {
-  display: none;
-} */
 
 .listTask h3 {
   font-size: 20px;
@@ -1079,7 +1095,7 @@ h5 {
 
 
 
-/* Bottom Row */
+/* The Bottom Row element! */
 
 .bottomRow {
   display: flex;
@@ -1090,18 +1106,17 @@ h5 {
 
 }
 
+/* The main my portfolio widget */
+
 .myPortfolio {
   display: flex;
   flex-direction: column;
   flex: 2;
   justify-content: space-between;
   height: 380px;
-  /*margin: 0 0 0 0px;*/
-  /*border: 1px solid rgb(110, 110, 110);*/
   background-color: var(--portfolio);
   border-radius: 10px;
   box-shadow: #00000040 0 6px 6px;
-   /*padding-bottom: 8px;*/
   overflow-y: hidden;
 }
 
@@ -1110,7 +1125,6 @@ h5 {
   padding: 0.7% 1% 0.5% 2%;
   background-color: var(--portfolio);
   color: white;
-  /*border-bottom: 1px solid black;*/
 }
 
 .portfolioModalOpenButton {
@@ -1131,6 +1145,8 @@ h5 {
   margin: 0.5% 0 0 0;
 }
 
+/* the container div for sections */
+
 .portfolioSections {
   display: flex;
   flex-direction: row;
@@ -1141,8 +1157,9 @@ h5 {
   gap: 16px;
   margin-bottom: 8px;
   background: var(--portfolio);
-  /*border-bottom: 1px solid black;*/
 }
+
+/* and the sections themseslves */
 
 .portfolioSection {
   display: flex;
@@ -1190,6 +1207,7 @@ h5 {
   position: relative;
 }
 
+/* The container for the portfolio section cards themselves */
 
 .portfolioSectionContent {
   display: flex;
@@ -1199,6 +1217,9 @@ h5 {
   padding: 8px;
   gap: 8px;
 }
+
+/* Thumbnails are just simple flexboxes so a later version should be able to drop them into the element dynamically from a function as the user
+uploads images and writes text for their portfolio sections */
 
 .portfolioSectionContentThumbnailLarge{
   flex: 2;
@@ -1213,6 +1234,8 @@ h5 {
   position: relative;
   background-color: rgb(233, 234, 242);
 }
+
+/* Labels for the thumbnails to keep track in the longer term */
 
 .thumbnailLabel {
     position: absolute;
@@ -1280,36 +1303,9 @@ h5 {
 
 .bottombar {
   flex: 1;
-  /* padding: 20px 0; */
-  /* height: 10px; */
 }
 
-/* Scrollbar */
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 5px 5px 0px rgba(100, 100, 100, 0.3);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #1d1d1d;
-}
-
+/* now lets go to the modals! */
 
 /* MODALS BELOW */
 
@@ -1354,9 +1350,9 @@ h5 {
 }
 
 
-/* TASKS */
+/* TASK MODALS */
 
-/*task modal on button click*/
+/*task modal on button click. Every other modal is based on these proportions to an extent*/
 .taskExpandModal {
   grid-template-rows: auto 1fr repeat(999, auto) 1fr; /*1fr at top below header, and at bottom, to center the Ideation etc elements. adjust fr to change proportion of spacing above and below*/
   grid-template-columns: 1fr minmax(min-content, 80%) 1fr;
@@ -1486,7 +1482,7 @@ h5 {
   grid-column: 2;
 }
 
-/* TASK COMPLETION */
+/* TASK COMPLETION MODALS*/
 
 .taskCompletionExpandButton {
   display: flex;
@@ -1736,6 +1732,8 @@ width: 100%;
 align-self:flex-end;
 }
 
+/* the 'equipment' the user would earn to customise their character if we had way more time to make this thing really cool */
+
 .avatarEquipment {
   width: 90%;
   height: 25%;
@@ -1771,9 +1769,7 @@ align-self:flex-end;
   background: rgb(233, 234, 242) url(legs.png) center no-repeat;
 }
 
-/* .itemName {
-  width: 100%;
-} */
+
 
 /* MY PORTFOLIO MODAL */
 
@@ -1940,7 +1936,7 @@ flex: 2 0 60%;
 }
 
 
-/* SLIDESHOW */
+/* The Slideshow in the guides widget */
 
 
 
