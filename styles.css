@@ -64,9 +64,9 @@ button {
   --task: rgba(35, 36, 105, 0.89);
   --taskFont: white;
   --taskTitle: #14123a;
-  --guides: rgba(51, 51, 101, 0.73);
+  --guides: rgb(57, 45, 91);
   --topbar: #181f38;
-  --portfolio: #17304d
+  --portfolio: #242f65
 }
 
 
