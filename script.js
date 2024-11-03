@@ -1915,7 +1915,7 @@ stats.forEach(stat => {
 
 
 
-localStorage.clear();
+// localStorage.clear();
 
 
 addSection('CoolProduct','Case Study',10);
