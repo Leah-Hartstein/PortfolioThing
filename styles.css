@@ -1514,9 +1514,39 @@ h5 {
   
 }
 
+
+.taskCompletionModalTextInput {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.taskCompletionModalSubmit{
+
+width: 60px;
+height: 40px;
+right: 32px;
+background-color: white;
+border: 1px solid black;
+border-radius: 15px;
+cursor: pointer;
+}
+
+.taskCompletionModalContent input{
+  height:200px;
+  border: none;
+  border-radius: 15;
+  background-color: rgb(210, 210, 231);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;  
+  }
+  
+
 .taskCompletionModalText{
   width: 80%;
   align-self: center;
+  height:200px;
   
 }
 

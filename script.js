@@ -546,8 +546,9 @@ function displayChosenTaskModal(taskId) {
       // Set the inner HTML for the task item
       item.innerHTML = `
         <h3>${task.taskSection}</h3>
-                        <img class="taskCompletionModalImage" src="assets/working.jpg">
-
+        <div class = "taskCompletionModalTextInput">
+        <input type="text"></input>
+        </div>
         <h2>${task.taskName}</h2>
         <div class ="taskCompletionModalText">
         
@@ -562,7 +563,8 @@ function displayChosenTaskModal(taskId) {
         <div class="taskCompletionModalFooter">
           <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
           <p class="chosenTaskType">${task.taskStage}</p>
-          <div class="taskItemTaskStars">${starsHTML}</div>
+                  <button class = "taskCompletionModalSubmit" onclick = "completeTask(${task.id})">Complete Task</button>
+
         </div>
 
       `;
@@ -1506,9 +1508,10 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
     taskStatsReward2,
     taskStatsReward2Percentage,
     taskCompletionTime,
-    id: `${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    id: `${Date.now()}${Math.floor(Math.random() * 1000)}`,
     // Previously in advanced web dev it was fine to just use the current time to make task IDs. However right now I'm trying to make more than a hundred of these at once, so chatgpt suggested adding some randomness to it to ensure uniqueness.
     date: new Date().toISOString(),
+    complete: 0,
  }
 
   //first check localstorage to see if an item exists
@@ -1543,6 +1546,31 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
   console.log(task);
 }
 
+function completeTask(taskId) {
+  // Fetch tasks from local storage
+  let localTasks = JSON.parse(localStorage.getItem('tasks'));
+
+  // Check if there are any tasks in local storage
+  if (!localTasks || localTasks.length === 0) {
+    console.log("No tasks available to complete.");
+    return;
+  }
+
+  // Find the task with the specified ID
+  let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
+
+  // If the task is found, mark it as complete
+  if (task) {
+    task.complete = 1;
+
+    // Save the updated tasks back to local storage
+    localStorage.setItem('tasks', JSON.stringify(localTasks));
+
+    console.log(`Task "${task.taskName}" with ID ${task.id} marked as complete.`);
+  } else {
+    console.log(`Task with ID ${taskId} not found.`);
+  }
+}
 
 function openTask(id) {
   // Find the task element using data-id
@@ -1562,6 +1590,7 @@ function openTask(id) {
           task.classList.remove("listTask");
           task.classList.add("listTaskOpen");
           displayChosenTask(id);
+          displayChosenTaskModal(id);
 
           // Close any already open tasks
           if (alreadyOpenTask) {
@@ -1677,6 +1706,8 @@ function expandHeader(stage) {
       }
   }
 }
+
+// task completion
 
 
 
