@@ -17,6 +17,8 @@ const taskModalIdeation = document.getElementById("taskModalTasksIdeation");
 const taskModalDrafting = document.getElementById("taskModalTasksDrafting");
 const taskModalFinalisation = document.getElementById("taskModalTasksFinalisation");
 const taskModalInterview = document.getElementById("taskModalTasksInterview");
+const taskModalComplete = document.getElementById("taskModalTasksComplete");
+
 
 
 const taskExpandButton = document.querySelector(".taskExpandButton");
@@ -303,92 +305,112 @@ ctx.clearRect(0, 0, mapCanvas.width, mapCanvas.height);
 
 
 function displayTasks() {
-    // Clear the task list before displaying
-    taskIdeation.innerHTML = "";
-    taskDrafting.innerHTML = "";
-    taskFinalisation.innerHTML = "";
-    taskInterview.innerHTML = "";
+  // Clear the task list before displaying
+  taskIdeation.innerHTML = "";
+  taskDrafting.innerHTML = "";
+  taskFinalisation.innerHTML = "";
+  taskInterview.innerHTML = "";
+  taskModalComplete.innerHTML = ""; // Clear the completed tasks section in the modal
 
-    // Get tasks from localStorage
-    let localTasks = JSON.parse(localStorage.getItem('tasks'));
+  // Get tasks from localStorage
+  let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
-    // Check if localTasks is not empty or null
-    if (localTasks) {
-        localTasks.forEach((task) => {
-            // Create a task item for the DOM
-            let item = document.createElement("div");
-            item.className = "listTask";
-            item.setAttribute("data-id", task.id);
+  // Check if localTasks is not empty or null
+  if (localTasks) {
+      localTasks.forEach((task) => {
+          // Create a task item for the DOM (for the main list)
+          let item = document.createElement("div");
+          item.className = "listTask";
+          item.setAttribute("data-id", task.id);
 
-            let starsHTML = `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`.repeat(task.taskDifficulty);
+          let starsHTML = `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`.repeat(task.taskDifficulty);
 
-            item.innerHTML = `
-                <em class ="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
-                
-                <div class = "taskHeader">
-                <b class="listTaskTitle">${task.taskName}</b>
-                <img class="listTaskImg" src="assets/working.jpg">
-                
-                </div>
-                <p class="taskDescription">${task.taskDescription}</p>
-                <ul>
-                <li class="taskMainTask"><em>${task.taskMainTask}</em</li>
-                </ul>
-                <div class="taskFooter">
-                <input type="checkbox" class="taskItemTaskTick">
-                <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-                <div class="taskItemTaskStars">${starsHTML}</div>
-                </div>
-            `;
+          item.innerHTML = `
+              <em class="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
+              
+              <div class="taskHeader">
+              <b class="listTaskTitle">${task.taskName}</b>
+              <img class="listTaskImg" src="assets/working.jpg">
+              
+              </div>
+              <p class="taskDescription">${task.taskDescription}</p>
+              <ul>
+              <li class="taskMainTask"><em>${task.taskMainTask}</em</li>
+              </ul>
+              <div class="taskFooter">
+              <input type="checkbox" class="taskItemTaskTick">
+              <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+              <div class="taskItemTaskStars">${starsHTML}</div>
+              </div>
+          `;
 
+          // Create a task item for the modal
+          let modalItem = document.createElement("div");
+          modalItem.className = "taskItemTask";
+          modalItem.innerHTML = `
+              <img class="taskItemTaskImg" src="assets/working.jpg">
+              <p class="taskItemTaskBoldText taskItemTaskTitle">${task.taskName}</p>
+              <input type="checkbox" class="taskItemTaskTick" ${task.complete === 1 ? "checked" : ""}>
+              <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} mins</p>
+              <div class="taskItemTaskStars">${starsHTML}</div>
+              <div class="taskItemTaskExpandable">
+                  <p class="taskItemTaskBoldText">${task.taskSectionType} - ${task.taskSection}</p>
+                  <p class="taskItemTaskText">${task.taskDescription}</p>
+                  <ul class="taskItemTaskList">
+                      <li class="taskItemTaskText">${task.taskMainTask}</li>
+                      <li class="taskItemTaskText">${task.taskSubTask}</li>
+                  </ul>
+              </div>
+          `;
 
-            // for the modal
-            let modalItem = document.createElement("div");
-            modalItem.className = "taskItemTask";
-            modalItem.innerHTML = `
-                <img class="taskItemTaskImg" src="assets/working.jpg">
-                <p class="taskItemTaskBoldText taskItemTaskTitle">${task.taskName}</p>
-                <input type="checkbox" class="taskItemTaskTick">
-                <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} mins</p>
-                <div class="taskItemTaskStars">${starsHTML}</div>
-                <div class="taskItemTaskExpandable">
-                    <p class="taskItemTaskBoldText">${task.taskSectionType} - ${task.taskSection}</p>
-                    <p class="taskItemTaskText">${task.taskDescription}</p>
-                    <ul class="taskItemTaskList">
-                        <li class="taskItemTaskText">${task.taskMainTask}</li>
-                        <li class="taskItemTaskText">${task.taskSubTask}</li>
-                    </ul>
-                </div>
-            `;
+          // Append the task item to the main list only if it’s not complete
+          if (task.complete !== 1) {
+              switch (task.taskStage) {
+                  case 'Ideation':
+                      taskIdeation.appendChild(item);
+                      break;
+                  case 'Drafting':
+                      taskDrafting.appendChild(item);
+                      break;
+                  case 'Finalisation':
+                      taskFinalisation.appendChild(item);
+                      break;
+                  case 'Interview':
+                      taskInterview.appendChild(item);
+                      break;
+                  default:
+                      break;
+              }
 
-            // Append the task item to the list
-            switch (task.taskStage) {
-                case 'Ideation':
-                    taskIdeation.appendChild(item);
-                    taskModalIdeation.appendChild(modalItem);
-                    break;
-                case 'Drafting':
-                    taskDrafting.appendChild(item);
-                    taskModalDrafting.appendChild(modalItem);
-                    break;
-                case 'Finalisation':
-                    taskFinalisation.appendChild(item);
-                    taskModalFinalisation.appendChild(modalItem);
-                    break;
-                case 'Interview':
-                    taskInterview.appendChild(item);
-                    taskModalInterview.appendChild(modalItem);
-                    break;
-                default:
-                    break;
-            }
+              // Add click event to open the task details
+              item.addEventListener("click", function () {
+                  openTask(task.id);
+              });
+          }
 
-            // Add click event to open the task details
-            item.addEventListener("click", function () {
-                openTask(task.id);
-            });
-        });
-    }
+          // Append to the completed tasks modal section if complete, otherwise to task stage modal sections
+          if (task.complete === 1) {
+              taskModalComplete.appendChild(modalItem);
+          } else {
+              switch (task.taskStage) {
+                  case 'Ideation':
+                      taskModalIdeation.appendChild(modalItem);
+                      break;
+                  case 'Drafting':
+                      taskModalDrafting.appendChild(modalItem);
+                      break;
+                  case 'Finalisation':
+                      taskModalFinalisation.appendChild(modalItem);
+                      break;
+                  case 'Interview':
+                      taskModalInterview.appendChild(modalItem);
+                      break;
+                  default:
+                      break;
+              }
+          }
+      });
+  }
 }
 
 /*
@@ -466,55 +488,62 @@ function displayChosenTask(taskId) {
 
   // Check if there are tasks to display
   if (localTasks && localTasks.length > 0) {
-    // If taskId is provided, find the task with that ID; otherwise, use the first task
-    let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
-
-    // If the task is found, display it
-    if (task) {
-      // Create a task item for the DOM
-      let item = document.createElement("div");
-      item.className = "chosenTask";
-      item.setAttribute("data-id", task.id + "infocus");
-
-      // Generate stars based on task difficulty
-      let starsHTML = '';
-      for (let i = 0; i < task.taskDifficulty; i++) {
-        starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+      // If taskId is provided, find the task with that ID; otherwise, use the first incomplete task
+      let task = null;
+      if (taskId) {
+          task = localTasks.find(t => t.id === taskId && t.complete !== 1);
       }
 
-      // Set the inner HTML for the task item
-      item.innerHTML = `
-        <h3>${task.taskSection}</h3>
-        <h2>${task.taskName}</h2>
-        <div class ="chosenTaskText">
-        <p>${task.taskDescription}</p>
-        <ul>
-          <li><b>${task.taskMainTask}</b></li>
-          <ul>
-            <li>${task.taskSubTask}</li>
-          </ul>
-        </ul>
-        </div>
-        <div class="chosenTaskFooter">
-          <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-          <p class="chosenTaskType">${task.taskStage}</p>
-          <div class="taskItemTaskStars">${starsHTML}</div>
-        </div>
+      // If no valid task is found with the given ID, find the first incomplete task
+      if (!task) {
+          task = localTasks.find(t => t.complete !== 1);
+      }
 
-      `;
+      // If the task is found, display it
+      if (task) {
+          // Create a task item for the DOM
+          let item = document.createElement("div");
+          item.className = "chosenTask";
+          item.setAttribute("data-id", task.id + "infocus");
 
-      // Append the task item to the chosenTask container
-      chosenTask.appendChild(item);
+          // Generate stars based on task difficulty
+          let starsHTML = '';
+          for (let i = 0; i < task.taskDifficulty; i++) {
+              starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+          }
 
-      // Optionally open the task if needed
-      // openTask(task.id);
-    } else {
-      // Task with the given ID was not found
-      chosenTaskContainer.innerHTML = "<p>Task not found.</p>";
-    }
+          // Set the inner HTML for the task item
+          item.innerHTML = `
+              <h3>${task.taskSection}</h3>
+              <h2>${task.taskName}</h2>
+              <div class ="chosenTaskText">
+              <p>${task.taskDescription}</p>
+              <ul>
+                <li><b>${task.taskMainTask}</b></li>
+                <ul>
+                  <li>${task.taskSubTask}</li>
+                </ul>
+              </ul>
+              </div>
+              <div class="chosenTaskFooter">
+                <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+                <p class="chosenTaskType">${task.taskStage}</p>
+                <div class="taskItemTaskStars">${starsHTML}</div>
+              </div>
+          `;
+
+          // Append the task item to the chosenTask container
+          chosenTask.appendChild(item);
+
+          // Optionally open the task if needed
+          // openTask(task.id);
+      } else {
+          // No valid task was found
+          chosenTaskContainer.innerHTML = "<p>No incomplete tasks available.</p>";
+      }
   } else {
-    // No tasks available
-    chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
+      // No tasks available
+      chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
   }
 }
 
@@ -527,60 +556,65 @@ function displayChosenTaskModal(taskId) {
 
   // Check if there are tasks to display
   if (localTasks && localTasks.length > 0) {
-    // If taskId is provided, find the task with that ID; otherwise, use the first task
-    let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
-
-    // If the task is found, display it
-    if (task) {
-      // Create a task item for the DOM
-      let item = document.createElement("div");
-      item.className = "taskCompletionModalContent";
-      item.setAttribute("data-id", task.id + "infocus");
-
-      // Generate stars based on task difficulty
-      let starsHTML = '';
-      for (let i = 0; i < task.taskDifficulty; i++) {
-        starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+      // If taskId is provided, find the task with that ID; otherwise, use the first incomplete task
+      let task = null;
+      if (taskId) {
+          task = localTasks.find(t => t.id === taskId && t.complete !== 1);
       }
 
-      // Set the inner HTML for the task item
-      item.innerHTML = `
-        <h3>${task.taskSection}</h3>
-        <div class = "taskCompletionModalTextInput">
-        <input type="text"></input>
-        </div>
-        <h2>${task.taskName}</h2>
-        <div class ="taskCompletionModalText">
-        
-        <p>${task.taskDescription}</p>
-        <ul>
-          <li><b>${task.taskMainTask}</b></li>
-          <ul>
-            <li>${task.taskSubTask}</li>
-          </ul>
-        </ul>
-        </div>
-        <div class="taskCompletionModalFooter">
-          <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
-          <p class="chosenTaskType">${task.taskStage}</p>
-                  <button class = "taskCompletionModalSubmit" onclick = "completeTask(${task.id})">Complete Task</button>
+      // If no valid task is found with the given ID, find the first incomplete task
+      if (!task) {
+          task = localTasks.find(t => t.complete !== 1);
+      }
 
-        </div>
+      // If the task is found, display it
+      if (task) {
+          // Create a task item for the DOM
+          let item = document.createElement("div");
+          item.className = "taskCompletionModalContent";
+          item.setAttribute("data-id", task.id + "infocus");
 
-      `;
+          // Generate stars based on task difficulty
+          let starsHTML = '';
+          for (let i = 0; i < task.taskDifficulty; i++) {
+              starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+          }
 
-      // Append the task item to the chosenTask container
-      taskCompletionModalContainer.appendChild(item);
+          // Set the inner HTML for the task item
+          item.innerHTML = `
+              <h3>${task.taskSection}</h3>
+              <div class="taskCompletionModalTextInput">
+                  <input type="text"></input>
+              </div>
+              <h2>${task.taskName}</h2>
+              <div class ="taskCompletionModalText">
+                  <p>${task.taskDescription}</p>
+                  <ul>
+                    <li><b>${task.taskMainTask}</b></li>
+                    <ul>
+                      <li>${task.taskSubTask}</li>
+                    </ul>
+                  </ul>
+              </div>
+              <div class="taskCompletionModalFooter">
+                  <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+                  <p class="chosenTaskType">${task.taskStage}</p>
+                  <button class="taskCompletionModalSubmit" onclick="completeTask('${task.id}')">Complete Task</button>
+              </div>
+          `;
 
-      // Optionally open the task if needed
-      // openTask(task.id);
-    } else {
-      // Task with the given ID was not found
-      chosenTaskContainer.innerHTML = "<p>Task not found.</p>";
-    }
+          // Append the task item to the chosenTask container
+          taskCompletionModalContainer.appendChild(item);
+
+          // Optionally open the task if needed
+          // openTask(task.id);
+      } else {
+          // No valid task was found
+          chosenTaskContainer.innerHTML = "<p>No incomplete tasks available.</p>";
+      }
   } else {
-    // No tasks available
-    chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
+      // No tasks available
+      chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
   }
 }
 
@@ -1570,6 +1604,14 @@ function completeTask(taskId) {
   } else {
     console.log(`Task with ID ${taskId} not found.`);
   }
+
+  displayTasks();
+  displayChosenTask();
+  displayChosenTaskModal();
+
+  taskCompletionExpandModal.classList.remove("active");
+  modalBackground.classList.remove("active");
+
 }
 
 function openTask(id) {
