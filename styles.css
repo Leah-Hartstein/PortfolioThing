@@ -1439,8 +1439,19 @@ h5 {
 /* TASK COMPLETION */
 
 .taskCompletionExpandButton {
-  background-color: yellow !important; /* Makes button highly visible */
-  z-index: 1000; /* Ensures button is on top */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px 0 8px;
+  font-weight: bold;
+  width: 80px;
+  height: 35px;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  justify-self: right;
 }
 
 .taskCompletionModal {
