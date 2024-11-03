@@ -18,7 +18,7 @@ body {
   text-align: left;
 }
 
-/* First Screen Styles */
+/* welcome screen styles */
 #welcomeScreen h1 {
   font-size: 70px;
   font-weight: 700; 
@@ -52,7 +52,7 @@ body {
   border: 1px solid #303030;
 }
 
-/* Second Screen Styles */
+/* portfolio progress screen */
 #portfolioProgressScreen h2 {
   font-size: 48px;
   font-weight: 700; /* Bold */
@@ -81,7 +81,7 @@ body {
   border: 1px solid #303030;
 }
 
-/* Add Section Screen Layout */
+/* add section form layout */
 #addSectionScreen {
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ body {
   gap: 20px;
 }
 
-/* Left side: Form container styling */
+/* left side of form container */
 .form-container {
   flex: 2; /* Two-thirds width */
   display: flex;
@@ -136,7 +136,7 @@ body {
   border: 1px solid #303030;
 }
 
-/* Right side: Sections list container styling */
+/* right side of form that makes section list */
 .sections-list {
   flex: 1; /* One-third width */
   border-left: 1px solid #ccc;
@@ -146,7 +146,7 @@ body {
   flex-direction: column; /* Align titles and sections vertically */
 }
 
-/* Button and input styling */
+/* styling for buttons and inputs */
 .button-group button,
 button {
   padding: 10px;
@@ -173,7 +173,7 @@ input[type="file"] {
   font-family: 'Instrument Sans', sans-serif;
 }
 
-/* Section Box Styling */
+/* styling of section box */
 .section-box {
   font-size: 18px;
   background-color: #CED7F0;

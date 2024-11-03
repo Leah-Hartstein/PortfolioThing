@@ -10,7 +10,7 @@ function selectType(type) {
   alert(`Selected section type: ${type}`);
 }
 
-// Add sectinos to localStorage
+// add sections to localStorage
 function addSectionToLocalStorage(section) {
 
   // get all sections from local storage
@@ -65,36 +65,9 @@ function addSection() {
   }
 } 
 
-
-// Function to add section and save it to localStorage
-// function addSection() {
-//   const title = document.getElementById('title').value;
-//   const completionLevel = document.getElementById('completionLevel').value;
-//   const fileUpload = document.getElementById('fileUpload').files[0];
-
-//   if (title && selectedType) {
-//     const section = {
-//       id: Date.now(),
-//       sectionName: title,
-//       sectionType: selectedType,
-//       sectionCompletion: completionLevel,
-//       file: fileUpload ? fileUpload.name : null
-//     };
-
-//     let localSections = JSON.parse(localStorage.getItem('sections')) || [];
-//     localSections.push(section);
-//     localStorage.setItem('sections', JSON.stringify(localSections));
-
-//     alert(`Section '${title}' added!`);
-//   } else {
-//     alert('Please fill out all fields.');
-//   }
-// }
-
-
 function dashboardPage(screen) {
   if (screen === 'dashboardScreen') {
-    // Adjust the path below to match the location of your other index.html file
+    // direct page to dashboard from onboarding 
     window.location.href = '/index.html';
   }
 }
