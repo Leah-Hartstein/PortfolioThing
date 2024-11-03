@@ -2,7 +2,7 @@ const myTasksSection = document.querySelector(".myTasks");
 const userStatsSection = document.querySelector(".userStats");
 const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
-// const chosenTaskContainer = document.querySelector(".chosenTask");
+const chosenTaskContainer = document.querySelector(".chosenTaskContainer");
 
 const roadMap = document.querySelector(".roadMap");
 
@@ -264,16 +264,16 @@ function displayChosenTask(taskId) {
 
           // Set the inner HTML for the task item
           item.innerHTML = `
-              <h3>${task.taskSection}</h3>
-              <h2>${task.taskName}</h2>
-              <div class ="chosenTaskText">
-              <p>${task.taskDescription}</p>
-              <ul>
-                <li><b>${task.taskMainTask}</b></li>
-                <ul>
-                  <li>${task.taskSubTask}</li>
-                </ul>
-              </ul>
+              <h3 class="mainTaskSection">${task.taskSection}</h3>
+              <h2 class="mainTaskName">${task.taskName}</h2>
+              <div class="chosenTaskText">
+                  <p class="mainTextDesc">${task.taskDescription}</p>
+                  <ul>
+                      <li class="mainTaskMainTask">${task.taskMainTask}</li>
+                      <ul>
+                        <li class="mainTaskSubTask">${task.taskSubTask}</li>
+                      </ul>
+                  </ul>
               </div>
               <div class="chosenTaskFooter">
                 <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
@@ -283,7 +283,7 @@ function displayChosenTask(taskId) {
           `;
 
           // Append the task item to the chosenTask container
-          chosenTask.appendChild(item);
+          chosenTaskContainer.appendChild(item);
 
           // Optionally open the task if needed
           // openTask(task.id);
