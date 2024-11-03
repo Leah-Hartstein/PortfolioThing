@@ -600,7 +600,7 @@ function displaySectionModal() {
 
 
 
-/*
+
 
   // Get tasks from localStorage
   let localSections = JSON.parse(localStorage.getItem('sections'));
@@ -702,13 +702,15 @@ function addSection(sectionName, sectionType, sectionCompletion) {
       localStorage.setItem('sections', JSON.stringify(localSections));
       console.log(section); 
 
-      */
+      
 
-      document.addEventListener("DOMContentLoaded", () => {
+     /* document.addEventListener("DOMContentLoaded", () => {
         const myPortfolio = document.querySelector(".portfolioSections");
       
         // Retrieve sections from localStorage
         let localSections = JSON.parse(localStorage.getItem('sections'));
+
+        console.log(localSections,'localsecs')
       
         if (localSections) {
           localSections.forEach((section) => {
@@ -744,7 +746,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
             myPortfolio.appendChild(sectionItem);
           });
         }
-      });
+      }); */
       
     // if it isnt then check if the task is already there 
     // and add if not
