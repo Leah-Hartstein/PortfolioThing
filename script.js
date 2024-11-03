@@ -587,7 +587,7 @@ function displaySectionModal() {
 
 
 
-
+/*
 
   // Get tasks from localStorage
   let localSections = JSON.parse(localStorage.getItem('sections'));
@@ -604,7 +604,7 @@ if (localSections) {
 
       item.innerHTML = `
 
-                      <div class = "portfolioSectionHeader">
+          <div class = "portfolioSectionHeader">
 
           <div class ="portfolioSectionTitle"><h3>${section.sectionName}</h3>
             <br><b>${section.sectionType}</b>
@@ -638,9 +638,6 @@ if (localSections) {
 
       <button type="button" class="sectionExpandButton" id = "${section.id}" >Open <img src="new window.png"> </button>
       </div>
-
-
-
 `;
 
 
@@ -691,7 +688,50 @@ function addSection(sectionName, sectionType, sectionCompletion) {
       //set the new item into localstorage
       localStorage.setItem('sections', JSON.stringify(localSections));
       console.log(section); 
+
+      */
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const myPortfolio = document.querySelector(".portfolioSections");
       
+        // Retrieve sections from localStorage
+        let localSections = JSON.parse(localStorage.getItem('sections'));
+      
+        if (localSections) {
+          localSections.forEach((section) => {
+            // Create the section item
+            const sectionItem = document.createElement("div");
+            sectionItem.className = "portfolioSection";
+            sectionItem.setAttribute("data-id", section.id);
+      
+            sectionItem.innerHTML = `
+              <div class="portfolioSectionHeader">
+                <div class="portfolioSectionTitle"><h3>'${section.sectionName}'</h3>
+                  <br><b>${section.sectionType}</b>
+                </div>
+              </div>
+              <div class="portfolioSectionContent">
+                <div class="portfolioSectionContentThumbnailLarge">
+                  <span class="thumbnailLabel">Visualizations</span>
+                </div>
+                <div class="portfolioSectionContentThumbnailSmall">
+                  <span class="thumbnailLabel">Text</span>
+                </div>
+              </div>
+              <div class="portfolioSectionFooter">
+                <div class="portfolioSectionProgressBar">
+                  <div class="portfolioSectionProgress" style="width:${section.sectionCompletion}%; background-color:#745a67; border-radius: 15px;"></div>
+                  <p class="portfolioSectionProgressBarNumber">${section.sectionCompletion}% Complete</p>
+                </div>
+                <button type="button" class="sectionExpandButton">Open <img src="new window.png"></button>
+              </div>
+            `;
+      
+            // Append the section item to the portfolioSections container
+            myPortfolio.appendChild(sectionItem);
+          });
+        }
+      });
       
     // if it isnt then check if the task is already there 
     // and add if not
