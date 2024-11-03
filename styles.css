@@ -567,26 +567,22 @@ h5 {
 }
 
 .chosenTaskOpen {
-  font-weight: bold;
-  width: 120px;
-  height: 35px;
-  background: none;
-  border-radius: 15px;
-  border: 1px solid black;
+  height: 320px;
+  width: 380px;
+
   cursor: pointer;
+
+  justify-self: flex-end;
   align-self: center;
   margin: 4px 8px 4px 8px;
-  opacity: 1;
-  transition: opacity 0.5s ;
-  padding: 0 8px 0 8px;
+  opacity: 0;
+
   
 
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 
-  background-color: white;
   position: relative;
 
 }
@@ -611,6 +607,9 @@ h5 {
   margin-right: 8px;
   align-self: flex-end;
 }
+
+
+
 
 .zoomButtons {
   display: flex;

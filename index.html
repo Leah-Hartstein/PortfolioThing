@@ -400,7 +400,7 @@ Leah Hartstein
                 
                 <h1>Task</h1>
                 
-                <section class = "chosenTaskContainer">
+                <section class = "chosenTaskContainer" onclick="openTaskCompletionModal()">
                 <div class = "chosenTask">
                   <h2>Draft Case Study 1</h2>
                   <h3>'Second Year Studio'</h3>
@@ -431,7 +431,6 @@ Leah Hartstein
 
 
               </section>
-              <button class ="chosenTaskOpen" onclick="openTaskCompletionModal()">Begin Task<img src="edit.png"></button>
 
 
 
@@ -493,6 +492,8 @@ Leah Hartstein
 
                 <div class = sideButtons>
                 <button class ="openList" onclick="expandList()"></button>
+                <button class ="chosenTaskOpen" onclick="openTaskCompletionModal()">Begin Task<img src="edit.png"></button>
+
                 <div class ="zoomButtons">
                   <button class ="openMap" onclick="openMap()">Map/Task</button>
                   <button class ="zoomIn" onclick="openTaskCompletionModal()">+</button>
