@@ -396,7 +396,7 @@ Leah Hartstein
               </div>
             </div>
 
-              <div class= "currentTask" id="taskModal"> 
+              <section class= "currentTask" id="taskModal"> 
                 
                 <h1>Task</h1>
                 
@@ -425,21 +425,15 @@ Leah Hartstein
                     </div>
                   </div>
 
-                    <div class ="chosenTaskButtons">
-                      <button class="chosenTaskNext">
-                        <img class="chosenTaskImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-                      </button>
-          
-                    <button class="chosenTaskOpen" onclick="addSection('peepee','casestudy',3)">Begin Task<img src="edit.png"></button>
 
-                    <button class="chosenTaskPrev">
-                      <img class="chosenTaskImg chosenTaskImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-                    </button>
-
-                  </div>
 
                 </div>
+
+
               </section>
+              <button class ="chosenTaskOpen" onclick="openTaskCompletionModal()">Begin Task<img src="edit.png"></button>
+
+
 
             <!-- Roadmap/Timeline (Hidden by default) --><!-- just a TRIAL -->
                 <div class="roadMap" id="map">
@@ -501,14 +495,14 @@ Leah Hartstein
                 <button class ="openList" onclick="expandList()"></button>
                 <div class ="zoomButtons">
                   <button class ="openMap" onclick="openMap()">Map/Task</button>
-                  <button class ="zoomIn" onclick="zoomIn()">+</button>
+                  <button class ="zoomIn" onclick="openTaskCompletionModal()">+</button>
                   <button class ="zoomOut" onclick="zoomOut()">-</button>
 
 
                 </div>
               </div>
 
-              </div>
+            </section>
 
 
         </section>

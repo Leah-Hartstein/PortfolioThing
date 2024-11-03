@@ -2,7 +2,7 @@ const myTasksSection = document.querySelector(".myTasks");
 const userStatsSection = document.querySelector(".userStats");
 const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
-const chosenTaskContainer = document.querySelector(".chosenTaskContainer");
+// const chosenTaskContainer = document.querySelector(".chosenTask");
 
 const roadMap = document.querySelector(".roadMap");
 
@@ -23,7 +23,7 @@ const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
 const taskExpandModalClose = document.querySelector(".taskModalClose");
 
-const taskCompletionExpandButton = document.querySelector(".taskCompletionExpandButton");
+const taskCompletionExpandButton = document.querySelector(".chosenTaskOpen");
 const taskCompletionExpandModal = document.querySelector(".taskCompletionModal");
 const taskCompletionExpandModalClose = document.querySelector(".taskCompletionModalClose");
 
@@ -458,7 +458,7 @@ function displayChosenTask(id) {
 
 function displayChosenTask(taskId) {
   // Clear the task display area before adding the chosen task
-  chosenTaskContainer.innerHTML = "";
+  chosenTask.innerHTML = "";
 
   // Get tasks from localStorage
   let localTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -499,21 +499,11 @@ function displayChosenTask(taskId) {
           <p class="chosenTaskType">${task.taskStage}</p>
           <div class="taskItemTaskStars">${starsHTML}</div>
         </div>
-        <div class="chosenTaskButtons">
-          <button class="chosenTaskPrev" onclick="prevTask(${task.id})">
-            <img class="chosenTaskImg" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-          </button>
-          <button class="taskCompletionExpandButton" onclick="openTaskCompletionModal(${task.id})">
-            Begin Task<img src="edit.png">
-          </button>
-          <button class="chosenTaskNext" onclick="nextTask(${task.id})">
-            <img class="chosenTaskImg chosenTaskImgNext" src="https://cdn-icons-png.flaticon.com/512/6423/6423874.png">
-          </button>
-        </div>
+
       `;
 
       // Append the task item to the chosenTask container
-      chosenTaskContainer.appendChild(item);
+      chosenTask.appendChild(item);
 
       // Optionally open the task if needed
       // openTask(task.id);
@@ -1649,7 +1639,7 @@ taskExpandModalClose.onclick = () => {
 
 // task completion modal
 
-function openTaskCompletionModal() {
+taskCompletionExpandButton.onclick = () => {
   taskCompletionExpandModal.classList.add("active");
   modalBackground.classList.add("active");
   console.log("hey!")
