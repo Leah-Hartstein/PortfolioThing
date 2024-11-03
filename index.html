@@ -47,8 +47,26 @@
   </div>
 
   <section class ="taskCompletionModal">
-    <h1 class="modalHeader">Stats    <button class="modalClose taskCompletionModalClose">&times</button>
+    <h1 class="modalHeader">Complete a Task<button class="modalClose taskCompletionModalClose">&times</button>
     </h1>
+    <div class = "taskCompletionModalContainer">
+      <h3>${task.taskSection}</h3>
+      <h2>${task.taskName}</h2>
+      <div class ="chosenTaskText">
+      <p>${task.taskDescription}</p>
+      <ul>
+        <li><b>${task.taskMainTask}</b></li>
+        <ul>
+          <li>${task.taskSubTask}</li>
+        </ul>
+      </ul>
+      </div>
+      <div class="chosenTaskFooter">
+        <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+        <p class="chosenTaskType">${task.taskStage}</p>
+        <div class="taskItemTaskStars">${starsHTML}</div>
+      </div>
+    </div>
   </section>
 
   <section class ="statsExpandModal">
@@ -492,7 +510,7 @@ Leah Hartstein
 
                 <div class = sideButtons>
                 <button class ="openList" onclick="expandList()"></button>
-                <button class ="chosenTaskOpen" onclick="openTaskCompletionModal()">Begin Task<img src="edit.png"></button>
+                              <button class ="chosenTaskOpen" onclick="openTaskCompletionModal()">Begin Task<img src="edit.png"></button>
 
                 <div class ="zoomButtons">
                   <button class ="openMap" onclick="openMap()">Map/Task</button>

@@ -509,6 +509,8 @@ h5 {
   margin-bottom: 50px;
 }
 
+
+
 .chosenTaskContainer {
   display: flex;
   flex-direction: column;
@@ -520,6 +522,7 @@ h5 {
   margin-bottom: 50px;
 
 }
+
 
 .chosenTaskHidden {
   width: 0px;
@@ -1465,16 +1468,60 @@ h5 {
   border-radius: 10px;
   background: white;
   opacity: 0;
-  z-index: 3;
+  z-index: 1000;
   overflow-x: hidden;
   overflow-y: scroll;
   transform: scale(0);
   transition: .3s ease;
+  overflow-y: hidden;
+
 }
+
 
 .taskCompletionModal.active {
   opacity: 1;
   transform: scale(1);
+}
+
+.taskCompletionModal .modalClose{
+  align-self: center;
+}
+
+.taskCompletionModal .modalHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.taskCompletionModalContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.taskCompletionModalContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    background-color: white;
+    box-shadow: #00000040 0 6px 6px;
+    border-radius: 10px;
+    padding: 8px;
+  
+}
+
+.taskCompletionModalText{
+  width: 80%;
+  height: 50%;
+  align-self: center;
+  
+}
+
+.taskCompletionModalImage{
+  height: 50%;
+  align-self: center;
 }
 
 

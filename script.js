@@ -26,6 +26,7 @@ const taskExpandModalClose = document.querySelector(".taskModalClose");
 const taskCompletionExpandButton = document.querySelector(".chosenTaskOpen");
 const taskCompletionExpandModal = document.querySelector(".taskCompletionModal");
 const taskCompletionExpandModalClose = document.querySelector(".taskCompletionModalClose");
+const taskCompletionModalContainer = document.querySelector(".taskCompletionModalContainer");
 
 
 const guidesExpandButton = document.querySelector(".guidesExpandButton");
@@ -517,6 +518,69 @@ function displayChosenTask(taskId) {
   }
 }
 
+function displayChosenTaskModal(taskId) {
+  // Clear the task display area before adding the chosen task
+  taskCompletionModalContainer.innerHTML = "";
+
+  // Get tasks from localStorage
+  let localTasks = JSON.parse(localStorage.getItem('tasks'));
+
+  // Check if there are tasks to display
+  if (localTasks && localTasks.length > 0) {
+    // If taskId is provided, find the task with that ID; otherwise, use the first task
+    let task = taskId ? localTasks.find(t => t.id === taskId) : localTasks[0];
+
+    // If the task is found, display it
+    if (task) {
+      // Create a task item for the DOM
+      let item = document.createElement("div");
+      item.className = "taskCompletionModalContent";
+      item.setAttribute("data-id", task.id + "infocus");
+
+      // Generate stars based on task difficulty
+      let starsHTML = '';
+      for (let i = 0; i < task.taskDifficulty; i++) {
+        starsHTML += `<img class="taskItemTaskStar" src="https://www.iconpacks.net/icons/2/free-star-icon-2768-thumb.png">`;
+      }
+
+      // Set the inner HTML for the task item
+      item.innerHTML = `
+        <h3>${task.taskSection}</h3>
+                        <img class="taskCompletionModalImage" src="assets/working.jpg">
+
+        <h2>${task.taskName}</h2>
+        <div class ="taskCompletionModalText">
+        
+        <p>${task.taskDescription}</p>
+        <ul>
+          <li><b>${task.taskMainTask}</b></li>
+          <ul>
+            <li>${task.taskSubTask}</li>
+          </ul>
+        </ul>
+        </div>
+        <div class="chosenTaskFooter">
+          <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+          <p class="chosenTaskType">${task.taskStage}</p>
+          <div class="taskItemTaskStars">${starsHTML}</div>
+        </div>
+
+      `;
+
+      // Append the task item to the chosenTask container
+      taskCompletionModalContainer.appendChild(item);
+
+      // Optionally open the task if needed
+      // openTask(task.id);
+    } else {
+      // Task with the given ID was not found
+      chosenTaskContainer.innerHTML = "<p>Task not found.</p>";
+    }
+  } else {
+    // No tasks available
+    chosenTaskContainer.innerHTML = "<p>No tasks available.</p>";
+  }
+}
 
 
 
@@ -1915,7 +1979,7 @@ stats.forEach(stat => {
 
 
 
-// localStorage.clear();
+localStorage.clear();
 
 
 addSection('CoolProduct','Case Study',10);
@@ -1929,6 +1993,7 @@ addSection('My Design Philosophy','About Me',90);
 
 displayTasks();
 displayChosenTask(0);
+displayChosenTaskModal(0);
 displaySectionWidget();
 expandHeader("taskItemsIdeation");
 displaySectionModal();
