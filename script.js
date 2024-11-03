@@ -559,7 +559,7 @@ function displayChosenTaskModal(taskId) {
           </ul>
         </ul>
         </div>
-        <div class="chosenTaskFooter">
+        <div class="taskCompletionModalFooter">
           <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
           <p class="chosenTaskType">${task.taskStage}</p>
           <div class="taskItemTaskStars">${starsHTML}</div>
