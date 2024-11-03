@@ -278,6 +278,33 @@ function openMap(){
             }
 }
 
+// function openMap() {
+//   // Get the elements by their IDs if not already selected
+//   const chosenTask = document.getElementById("chosenTask"); // Replace with the actual ID if needed
+//   const roadMap = document.getElementById("roadMap"); // Replace with the actual ID if needed
+
+//   // Toggle the 'chosenTask' visibility
+//   if (chosenTask.classList.contains("chosenTask")) {
+//       chosenTask.classList.remove("chosenTask");
+//       chosenTask.classList.add("chosenTaskHidden");
+      
+//       roadMap.classList.remove("roadMap");
+//       roadMap.classList.add("roadMapOpen");
+      
+//       // Uncomment if you have a drawMap function to initialize or show the map
+//       // drawMap();
+
+//   } else {
+//       chosenTask.classList.remove("chosenTaskHidden");
+//       chosenTask.classList.add("chosenTask");
+
+//       roadMap.classList.remove("roadMapOpen");
+//       roadMap.classList.add("roadMap");
+
+//       // Call the closeMap function if you have one to hide or remove the map view
+//       closeMap();
+//   }
+// }
 
 
 
@@ -790,7 +817,7 @@ function addSection(sectionName, sectionType, sectionCompletion) {
 
       //set the new item into localstorage
       localStorage.setItem('sections', JSON.stringify(localSections));
-      console.log(section); 
+      // console.log(section); 
 
       
 
@@ -1577,7 +1604,7 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
   // and add if not
 
   // displayTasks();
-  console.log(task);
+  // console.log(task);
 }
 
 function completeTask(taskId) {
@@ -1912,7 +1939,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const cancelButton = document.querySelector('.cancel-button');
   const milestonesContainer = document.querySelector('.milestones');
 
-  console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
+  // console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
 
   addMilestoneButton.addEventListener('click', function() {
     console.log('Add Milestone Button Clicked');
