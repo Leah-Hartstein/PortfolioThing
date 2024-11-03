@@ -2312,7 +2312,7 @@ flex: 2 0 60%;
 #cheerfulIconContainer {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 120px;
   cursor: pointer;
   z-index: 1000;
 }
