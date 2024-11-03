@@ -233,7 +233,7 @@ function displayTasks() {
 
 function displayChosenTask(taskId) {
   // Clear the task display area before adding the chosen task
-  chosenTask.innerHTML = "";
+  chosenTaskContainer.innerHTML = "";
 
   // Get tasks from localStorage
   let localTasks = JSON.parse(localStorage.getItem('tasks'));
