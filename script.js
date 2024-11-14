@@ -408,7 +408,7 @@ if (localSections) {
 
               <div class ="portfolioSectionContent">
                 <div class = "portfolioSectionContentThumbnailLarge" id ="thumbnail1">
-                  <span class="thumbnailLabel">Visualizations</span>
+                  <span class="thumbnailLabel">Image</span>
                 </div>
                 <div class = "portfolioSectionContentThumbnailSmall" id ="thumbnail2">
                   <span class="thumbnailLabel">Text</span>
