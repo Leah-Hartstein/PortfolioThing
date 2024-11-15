@@ -736,7 +736,7 @@ toggle between tasks and roadmap */
 
 .sectionHeader {
   padding: 1% 2% 1% 4%;
-  height: 47px;
+  height: 46px;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr;
@@ -1305,9 +1305,6 @@ uploads images and writes text for their portfolio sections */
   background: var(--guides);
 
   border-radius: 10px;
-  display: grid;
-  grid-gap: 0;
-  grid-template-rows: auto 1fr;
   box-shadow: #00000040 0 6px 6px;
 }
 
@@ -1322,11 +1319,13 @@ uploads images and writes text for their portfolio sections */
   width: 100%;
   background-color: var(--lightbg);
   border-radius: 0 0 9px 9px;
-  height: 100%; */
+  */
+  height: min-content; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 30px;
   padding-bottom: 8px;
   background-color: var(--lightbg);
 }
@@ -1389,7 +1388,7 @@ uploads images and writes text for their portfolio sections */
 
 .slideshowItem {
   background: white;
-  width: 100%;
+  min-width: 100%;
   /*width: auto;*/
   height: 225px;
   border-radius: 15px;
