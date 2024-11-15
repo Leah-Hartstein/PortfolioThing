@@ -1,0 +1,32 @@
+changes that would be cool in no particular order
+
+a colour scheme but for real this time
+    - why is each dash panel a different colour and why is three of those colours just very slightly different shades of navy thats weird imo
+    - why is the stats panel not coloured to match. 
+
+an actual roadmap
+    - instead of the timeline thing that never worked
+    - with graphics and it looks like a fantasy rpg world map
+    - that reflects progress through tasks
+
+task completion
+    - modal after you complete tasks that shows your progress in stats and on the worldmap
+    - working or faked file upload and text input
+
+stats that make sense
+    - avatar customisation
+    - stats that update from task completion
+    - some sort of metric reflecting user progress
+
+avatar customisation 
+    - several cute clothing options
+    - choosing a name in onboarding
+    - choosing a gender or body type or whatever
+    - choosing a 'class' in onboarding
+    - full interactivity for intended playthrough, starting with a blank character and then unlocking an item by completing a task and equipping it
+        - so like one or two options that unlock and a blank character
+    - highly customised example persona character
+
+portfolio sections
+    - showing files uploaded and section completion
+    - or at the very least quality placeholders on the dash
