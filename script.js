@@ -25,7 +25,7 @@ const taskExpandButton = document.querySelector(".taskExpandButton");
 const taskExpandModal = document.querySelector(".taskExpandModal");
 const taskExpandModalClose = document.querySelector(".taskModalClose");
 
-const taskCompletionExpandButton = document.querySelector(".chosenTaskOpen");
+const taskCompletionExpandButton = document.querySelector(".chosenTaskContainer");
 const taskCompletionExpandModal = document.querySelector(".taskCompletionModal");
 const taskCompletionExpandModalClose = document.querySelector(".taskCompletionModalClose");
 const taskCompletionModalContainer = document.querySelector(".taskCompletionModalContainer");
@@ -93,17 +93,17 @@ function expandList() {
 
 
 function openMap(){
-        if (chosenTask.classList.contains("chosenTask")) {
-            chosenTask.classList.remove("chosenTask");
-            chosenTask.classList.add("chosenTaskHidden");
+        if (chosenTaskContainer.classList.contains("chosenTaskContainer")) {
+          chosenTaskContainer.classList.remove("chosenTaskContainer");
+          chosenTaskContainer.classList.add("chosenTaskHidden");
     
             roadMap.classList.remove("roadMap");
             roadMap.classList.add("roadMapOpen");
             // drawMap();
     
         } else {
-            chosenTask.classList.remove("chosenTaskHidden");
-            chosenTask.classList.add("chosenTask");
+          chosenTaskContainer.classList.remove("chosenTaskHidden");
+          chosenTaskContainer.classList.add("chosenTaskContainer");
 
             roadMap.classList.remove("roadMapOpen");
             roadMap.classList.add("roadMap");
@@ -1542,7 +1542,7 @@ taskExpandModalClose.onclick = () => {
 
 // task completion modal
 
-taskCompletionExpandButton.onclick = () => {
+function openTaskCompletionModal() {
   taskCompletionExpandModal.classList.add("active");
   modalBackground.classList.add("active");
   console.log("hey!")
@@ -1653,149 +1653,149 @@ setSlideCategory("Ideation");
 
 
 
-// Handle the adding new milestone on roadmap
-document.addEventListener('DOMContentLoaded', function() {
-  const addMilestoneButton = document.querySelector('.add-milestone-button');
-  const newMilestoneForm = document.querySelector('.new-milestone-form');
-  const cancelButton = document.querySelector('.cancel-button');
-  const milestonesContainer = document.querySelector('.milestones');
+// // Handle the adding new milestone on roadmap
+// document.addEventListener('DOMContentLoaded', function() {
+//   const addMilestoneButton = document.querySelector('.add-milestone-button');
+//   const newMilestoneForm = document.querySelector('.new-milestone-form');
+//   const cancelButton = document.querySelector('.cancel-button');
+//   const milestonesContainer = document.querySelector('.milestones');
 
-  // console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
+//   // console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
 
-  addMilestoneButton.addEventListener('click', function() {
-    console.log('Add Milestone Button Clicked');
-    newMilestoneForm.style.display = 'flex';
-    addMilestoneButton.style.display = 'none';
-  });
-
-
-  cancelButton.addEventListener('click', function() {
-    console.log('Cancel Button Clicked');
-    newMilestoneForm.style.display = 'none';
-    addMilestoneButton.style.display = 'inline-block';
-  });
-
-  newMilestoneForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const milestoneTitle = newMilestoneForm.elements['milestoneTitle'].value;
-
-    const newMilestone = document.createElement('div');
-    newMilestone.classList.add('milestone');
-    newMilestone.innerHTML = `
-      <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
-      <div class="point"></div>
-      <div class="line"></div>
-    `;
-
-    milestonesContainer.appendChild(newMilestone);
-
-    newMilestoneForm.reset();
-    newMilestoneForm.style.display = 'none';
-    addMilestoneButton.style.display = 'inline-block';
-  });
-});
-
-// Array of messages
-const cheerfulMessages = [
-  "You're doing an amazing job! Keep it up! 🌟",
-  "Embrace today’s little joys—they all add up to something big! 🎉",
-  "Celebrate every small victory. Each step forward is worth celebrating! 🎈",
-  "The best is yet to come, and you’re right on track. Keep shining! ✨", 
-  "One step at a time, and you'll reach places you never imagined!", 
-  "Every tiny action counts. Keep going—you’re making progress, even if it’s , little by little! 💪",
-  "You’re closer to finishing than you think. Just keep that momentum going!",
-  "It’s all about small wins. One checkbox at a time—let’s get it done! ✔️"
-];
-
-// Get references to elements
-const cheerfulIcon = document.getElementById('cheerfulIcon');
-const cheerfulMessageContainer = document.getElementById('cheerfulMessageContainer');
-const cheerfulMessageText = document.getElementById('cheerfulMessageText');
-const closeCheerfulMessage = document.getElementById('closeCheerfulMessage');
-
-// Function to show message
-function showCheerfulMessage() {
-  // Prevent multiple clicks
-  cheerfulIcon.style.pointerEvents = 'none';
-
-  // Get random message
-  const randomIndex = Math.floor(Math.random() * cheerfulMessages.length);
-  const message = cheerfulMessages[randomIndex];
-
-  // Display message
-  cheerfulMessageText.innerText = message;
-  cheerfulMessageContainer.classList.add('show');
-  cheerfulMessageContainer.style.display = 'block';
-
-  // Hide after 5 seconds
-  setTimeout(() => {
-    cheerfulMessageContainer.style.display = 'none';
-    cheerfulIcon.style.pointerEvents = 'auto';
-  }, 5000);
-}
-
-// Event listeners
-cheerfulIcon.addEventListener('click', showCheerfulMessage);
-closeCheerfulMessage.addEventListener('click', () => {
-  cheerfulMessageContainer.style.display = 'none';
-  cheerfulIcon.style.pointerEvents = 'auto';
-});
+//   addMilestoneButton.addEventListener('click', function() {
+//     console.log('Add Milestone Button Clicked');
+//     newMilestoneForm.style.display = 'flex';
+//     addMilestoneButton.style.display = 'none';
+//   });
 
 
-// load item from tasklist of roadmap page
-document.addEventListener("DOMContentLoaded", () => {
-  // Retrieve task progress data from localStorage
-  const progressData = JSON.parse(localStorage.getItem('taskProgress'));
+//   cancelButton.addEventListener('click', function() {
+//     console.log('Cancel Button Clicked');
+//     newMilestoneForm.style.display = 'none';
+//     addMilestoneButton.style.display = 'inline-block';
+//   });
 
-  if (progressData) {
-    const { completedTasks, totalTasks, progressPercentage } = progressData;
+//   newMilestoneForm.addEventListener('submit', function(event) {
+//     event.preventDefault();
+//     const milestoneTitle = newMilestoneForm.elements['milestoneTitle'].value;
 
-    // Update the dashboard progress bar
-    const progressBar = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text'); // Optional, for displaying text
+//     const newMilestone = document.createElement('div');
+//     newMilestone.classList.add('milestone');
+//     newMilestone.innerHTML = `
+//       <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
+//       <div class="point"></div>
+//       <div class="line"></div>
+//     `;
 
-    if (progressBar) {
-      progressBar.style.width = `${progressPercentage}%`;
-    }
+//     milestonesContainer.appendChild(newMilestone);
 
-    if (progressText) {
-      progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
-    }
-  }
-});
+//     newMilestoneForm.reset();
+//     newMilestoneForm.style.display = 'none';
+//     addMilestoneButton.style.display = 'inline-block';
+//   });
+// });
 
-const goalProgress = 3; // Current progress
-const totalGoals = 8; // Total goals
-const goalPips = document.querySelectorAll(".GoalPip, .emptyGoalPip");
+// // Array of messages
+// const cheerfulMessages = [
+//   "You're doing an amazing job! Keep it up! 🌟",
+//   "Embrace today’s little joys—they all add up to something big! 🎉",
+//   "Celebrate every small victory. Each step forward is worth celebrating! 🎈",
+//   "The best is yet to come, and you’re right on track. Keep shining! ✨", 
+//   "One step at a time, and you'll reach places you never imagined!", 
+//   "Every tiny action counts. Keep going—you’re making progress, even if it’s , little by little! 💪",
+//   "You’re closer to finishing than you think. Just keep that momentum going!",
+//   "It’s all about small wins. One checkbox at a time—let’s get it done! ✔️"
+// ];
 
-goalPips.forEach((pip, index) => {
-  if (index < goalProgress) {
-    pip.classList.add("filled-goal"); // Add a filled class to indicate progress
-    pip.classList.remove("emptyGoalPip");
-  } else {
-    pip.classList.add("emptyGoalPip");
-  }
-});
+// // Get references to elements
+// const cheerfulIcon = document.getElementById('cheerfulIcon');
+// const cheerfulMessageContainer = document.getElementById('cheerfulMessageContainer');
+// const cheerfulMessageText = document.getElementById('cheerfulMessageText');
+// const closeCheerfulMessage = document.getElementById('closeCheerfulMessage');
+
+// // Function to show message
+// function showCheerfulMessage() {
+//   // Prevent multiple clicks
+//   cheerfulIcon.style.pointerEvents = 'none';
+
+//   // Get random message
+//   const randomIndex = Math.floor(Math.random() * cheerfulMessages.length);
+//   const message = cheerfulMessages[randomIndex];
+
+//   // Display message
+//   cheerfulMessageText.innerText = message;
+//   cheerfulMessageContainer.classList.add('show');
+//   cheerfulMessageContainer.style.display = 'block';
+
+//   // Hide after 5 seconds
+//   setTimeout(() => {
+//     cheerfulMessageContainer.style.display = 'none';
+//     cheerfulIcon.style.pointerEvents = 'auto';
+//   }, 5000);
+// }
+
+// // Event listeners
+// cheerfulIcon.addEventListener('click', showCheerfulMessage);
+// closeCheerfulMessage.addEventListener('click', () => {
+//   cheerfulMessageContainer.style.display = 'none';
+//   cheerfulIcon.style.pointerEvents = 'auto';
+// });
 
 
-const stats = [
-  { id: "stat1", value: 30, max: 90 },
-  { id: "stat2", value: 40, max: 80 },
-  { id: "stat3", value: 10, max: 50 },
-  { id: "stat4", value: 15, max: 50 },
-  { id: "stat5", value: 12, max: 50 },
-  { id: "stat6", value: 12, max: 50 },
-];
+// // load item from tasklist of roadmap page
+// document.addEventListener("DOMContentLoaded", () => {
+//   // Retrieve task progress data from localStorage
+//   const progressData = JSON.parse(localStorage.getItem('taskProgress'));
 
-stats.forEach(stat => {
-  const percentage = (stat.value / stat.max) * 100;
-  const bar = document.getElementById(`${stat.id}Bar`);
-  const numberDisplay = document.getElementById(`number${stat.id.charAt(stat.id.length - 1)}`);
+//   if (progressData) {
+//     const { completedTasks, totalTasks, progressPercentage } = progressData;
+
+//     // Update the dashboard progress bar
+//     const progressBar = document.querySelector('.progress-fill');
+//     const progressText = document.querySelector('.progress-text'); // Optional, for displaying text
+
+//     if (progressBar) {
+//       progressBar.style.width = `${progressPercentage}%`;
+//     }
+
+//     if (progressText) {
+//       progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
+//     }
+//   }
+// });
+
+// const goalProgress = 3; // Current progress
+// const totalGoals = 8; // Total goals
+// const goalPips = document.querySelectorAll(".GoalPip, .emptyGoalPip");
+
+// goalPips.forEach((pip, index) => {
+//   if (index < goalProgress) {
+//     pip.classList.add("filled-goal"); // Add a filled class to indicate progress
+//     pip.classList.remove("emptyGoalPip");
+//   } else {
+//     pip.classList.add("emptyGoalPip");
+//   }
+// });
+
+
+// const stats = [
+//   { id: "stat1", value: 30, max: 90 },
+//   { id: "stat2", value: 40, max: 80 },
+//   { id: "stat3", value: 10, max: 50 },
+//   { id: "stat4", value: 15, max: 50 },
+//   { id: "stat5", value: 12, max: 50 },
+//   { id: "stat6", value: 12, max: 50 },
+// ];
+
+// stats.forEach(stat => {
+//   const percentage = (stat.value / stat.max) * 100;
+//   const bar = document.getElementById(`${stat.id}Bar`);
+//   const numberDisplay = document.getElementById(`number${stat.id.charAt(stat.id.length - 1)}`);
   
-  // Update bar width and number display
-  bar.style.width = `${percentage}%`;
-  if (numberDisplay) numberDisplay.textContent = `${Math.round(percentage)}%`;
-});
+//   // Update bar width and number display
+//   bar.style.width = `${percentage}%`;
+//   if (numberDisplay) numberDisplay.textContent = `${Math.round(percentage)}%`;
+// });
 
 
 
