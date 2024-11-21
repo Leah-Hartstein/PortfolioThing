@@ -2330,6 +2330,11 @@ flex: 2 0 60%;
   opacity: 1;
 }
 
+.mapDotCurrent .mapMarkerText {
+  display: flex;
+}
+
+
 .mapDot:hover .mapMarker  {
   opacity: 0.8;
   animation: none;
@@ -2341,8 +2346,16 @@ flex: 2 0 60%;
 display: flex;
 }
 
+.mapDot:hover .mapMarkerText button {
+  display: none;
+}
+
 .mapDotComplete:hover .mapMarkerText  {
   display: flex;
+  }
+
+  .mapDotComplete:hover .mapMarkerText button {
+    display: none;
   }
 
 .mapDot:hover .mapLine  {

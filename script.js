@@ -252,18 +252,15 @@ function displayMapDots() {
   let localTasks = JSON.parse(localStorage.getItem("tasks"));
   let localSections = JSON.parse(localStorage.getItem("sections"));
 
+  let firstIncompleteDot = null; // Track the first incomplete task
+
   if (localSections) {
     localSections.forEach((section) => {
-      // Create a task item for the DOM (for the main list)
       let title = document.createElement("b");
       title.className = "mapClusterName";
       title.setAttribute("data-id", section.id);
+      title.innerHTML = `${section.sectionName}`;
 
-      title.innerHTML = `
-        ${section.sectionName}
-      `;
-
-      // Append the task item to the main list only if it’s not complete
       switch (section.sectionName) {
         case "CoolProduct":
           caseStudy1.appendChild(title);
@@ -280,7 +277,6 @@ function displayMapDots() {
     });
   }
 
-  // Check if localTasks is not empty or null
   if (localTasks) {
     localTasks.forEach((task) => {
       let item = document.createElement("div");
@@ -290,70 +286,50 @@ function displayMapDots() {
       item.innerHTML = `
         <div class="mapLine"></div>
         <div class="mapMarker"></div>
-        <div class="mapMarkerText">${task.taskName}</div>
+        <div class="mapMarkerText">${task.taskName}
+        <button onclick="openMap()"></button>
+        </div>
       `;
 
-      // Append the task item to the main list only if it’s not complete
+      // For incomplete tasks
       if (task.complete !== 1) {
-        switch (task.taskStage){
+        if (!firstIncompleteDot) {
+          firstIncompleteDot = item; // Set the first incomplete task
+        }
+
+        switch (task.taskStage) {
           case "Ideation":
             switch (task.taskSection) {
               case "CoolProduct":
                 caseStudy1.appendChild(item);
-                item.addEventListener("click", function () {
-                  // Clear any currently selected marker
-                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
-                  if (alreadyOpenTaskMarker) {
-                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
-                    alreadyOpenTaskMarker.classList.add("mapDot");
-                  }
-                  // Set the current marker
-                  item.classList.add("mapDotCurrent");
-                  item.classList.remove("mapDot");
-                  openTask(task.id);
-                });
                 break;
               case "FunCube":
                 caseStudy2.appendChild(item);
-                item.addEventListener("click", function () {
-                  // Clear any currently selected marker
-                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
-                  if (alreadyOpenTaskMarker) {
-                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
-                    alreadyOpenTaskMarker.classList.add("mapDot");
-                  }
-                  // Set the current marker
-                  item.classList.add("mapDotCurrent");
-                  item.classList.remove("mapDot");
-                  openTask(task.id);
-                });
                 break;
               case "SmartClog":
                 caseStudy3.appendChild(item);
-                item.addEventListener("click", function () {
-                  // Clear any currently selected marker
-                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
-                  if (alreadyOpenTaskMarker) {
-                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
-                    alreadyOpenTaskMarker.classList.add("mapDot");
-                  }
-                  // Set the current marker
-                  item.classList.add("mapDotCurrent");
-                  item.classList.remove("mapDot");
-                  openTask(task.id);
-                });
-                break;
-              default:
                 break;
             }
+
+            // Add click event to each item
+            item.addEventListener("click", function () {
+              let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
+              if (alreadyOpenTaskMarker) {
+                alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
+                alreadyOpenTaskMarker.classList.add("mapDot");
+              }
+              item.classList.add("mapDotCurrent");
+              item.classList.remove("mapDot");
+              openTask(task.id);
+            });
+            break;
         }
 
       } else {
-        switch (task.taskStage){
-          case "Ideation":
+        // For complete tasks
+        item.className = "mapDotComplete";
         switch (task.taskSection) {
           case "CoolProduct":
-            item.className = "mapDotComplete";
             caseStudy1.appendChild(item);
             break;
           case "FunCube":
@@ -362,14 +338,19 @@ function displayMapDots() {
           case "SmartClog":
             caseStudy3.appendChild(item);
             break;
-          default:
-            break;
         }
       }
-    }
     });
+
+    // Set the first incomplete dot as the selected one if no dot is selected
+    if (firstIncompleteDot) {
+      firstIncompleteDot.classList.add("mapDotCurrent");
+      firstIncompleteDot.classList.remove("mapDot");
+      openTask(firstIncompleteDot.getAttribute("data-id"));
+    }
   }
 }
+
 
 
 // The function for displaying chosen tasks, which works like the task displaying function but without the sorting, but with the ability to show from an ID
@@ -1514,6 +1495,7 @@ function completeTask(taskId) {
   displayTasks();
   displayChosenTask();
   displayChosenTaskModal();
+  displayMapDots();
 
   taskCompletionExpandModal.classList.remove("active");
   modalBackground.classList.remove("active");
