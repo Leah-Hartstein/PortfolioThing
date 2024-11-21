@@ -2365,25 +2365,25 @@ display: flex;
 
 
 #cluster2{
-  transform: translatex(150px) translatey(-120px);
+  transform: translatex(-120px) translatey(-75px);
   width: 80px;
   height: 80px;
 }
 
 #cluster3{
-  transform: translatex(80px) translatey(120px);
+  transform: translatex(80px) translatey(156px);
   width: 80px;
   height: 80px;
 }
 
 #cluster4{
-  transform: translatex(-340px) translatey(-140px);
+  transform: translatex(-135px) translatey(-140px);
   width: 280px;
   height: 140px;
 }
 
 #cluster5{
-  transform: translatex(-380px) translatey(10px);
+  transform: translatex(-255px) translatey(10px);
   width: 260px;
   height: 120px;
 }

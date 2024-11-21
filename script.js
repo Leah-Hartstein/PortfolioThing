@@ -301,18 +301,45 @@ function displayMapDots() {
               case "CoolProduct":
                 caseStudy1.appendChild(item);
                 item.addEventListener("click", function () {
+                  // Clear any currently selected marker
+                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
+                  if (alreadyOpenTaskMarker) {
+                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
+                    alreadyOpenTaskMarker.classList.add("mapDot");
+                  }
+                  // Set the current marker
+                  item.classList.add("mapDotCurrent");
+                  item.classList.remove("mapDot");
                   openTask(task.id);
                 });
                 break;
               case "FunCube":
                 caseStudy2.appendChild(item);
                 item.addEventListener("click", function () {
+                  // Clear any currently selected marker
+                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
+                  if (alreadyOpenTaskMarker) {
+                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
+                    alreadyOpenTaskMarker.classList.add("mapDot");
+                  }
+                  // Set the current marker
+                  item.classList.add("mapDotCurrent");
+                  item.classList.remove("mapDot");
                   openTask(task.id);
                 });
                 break;
               case "SmartClog":
                 caseStudy3.appendChild(item);
                 item.addEventListener("click", function () {
+                  // Clear any currently selected marker
+                  let alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
+                  if (alreadyOpenTaskMarker) {
+                    alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
+                    alreadyOpenTaskMarker.classList.add("mapDot");
+                  }
+                  // Set the current marker
+                  item.classList.add("mapDotCurrent");
+                  item.classList.remove("mapDot");
                   openTask(task.id);
                 });
                 break;
@@ -1504,8 +1531,9 @@ function openTask(id) {
 
 
   // Find the task element by its data-id
-  var task = document.querySelector(`[data-id="${id}"]`);
   var taskDot = document.querySelector(`[data-id="${id}"].mapDot`);
+
+  var task = document.querySelector(`[data-id="${id}"].listTask`);
 
 
   // Reference to the scrollable container (replace with your actual div's ID or class)
@@ -1518,21 +1546,15 @@ function openTask(id) {
       if (task.classList.contains("listTask")) {
           task.classList.remove("listTask");
           task.classList.add("listTaskOpen");
-          taskDot.classList.remove("mapDot");
-          taskDot.classList.add("mapDotCurrent");
+
           displayChosenTask(id);
           displayChosenTaskModal(id);
-          displayMapDots(id);
           // Close any already open tasks
           if (alreadyOpenTask) {
               alreadyOpenTask.classList.remove("listTaskOpen");
               alreadyOpenTask.classList.add("listTask");
           }
 
-          if (alreadyOpenTaskMarker) {
-            alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
-            alreadyOpenTaskMarker.classList.add("mapDot");
-        }
 
           // Calculate the task's position relative to the container
           const taskPosition = task.offsetTop - scrollContainer.offsetTop;
