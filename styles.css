@@ -2249,6 +2249,25 @@ flex: 2 0 60%;
   transition: 0.1s ease-out;
 }
 
+.mapDotComplete{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  background-color: var(--portfolio);
+  border-radius: 15px;
+  margin: 32px; 
+  transform: translatey(20px);
+  bottom:-30px;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+  transition: 0.1s ease-out;
+}
+
+
+
 .mapDot:hover{
   transform: translateY(18px);
   transition: 0.1s ease-out;
@@ -2301,6 +2320,12 @@ flex: 2 0 60%;
   opacity: 0;
 }
 
+.mapMarkerText {
+  display:none;
+  width: 100px;
+  transform: translateY(-260px);
+}
+
 .mapDotCurrent .mapMarker {
   opacity: 1;
 }
@@ -2311,6 +2336,14 @@ flex: 2 0 60%;
   filter: saturate(0);
   transform: translatey(-110px);
 }
+
+.mapDot:hover .mapMarkerText  {
+display: flex;
+}
+
+.mapDotComplete:hover .mapMarkerText  {
+  display: flex;
+  }
 
 .mapDot:hover .mapLine  {
   opacity: 0.8;
@@ -2526,89 +2559,6 @@ flex: 2 0 60%;
   height: 120px;
 }
 
-/* Styles for the icon */
-#cheerfulIconContainer {
-  position: fixed;
-  bottom: 20px;
-  right: 120px;
-  cursor: pointer;
-  z-index: 1000;
-  display: none;
-}
-
-/* Styles for the icon */
-#cheerfulIcon {
-  width: 100px;
-  height: 100px;
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-/* Hover effect on the icon */
-#cheerfulIconContainer:hover #cheerfulIcon {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
-
-/* Tooltip styling */
-#cheerfulTooltip {
-  visibility: hidden;
-  width: 300px; /* Adjust as needed */
-  background-color: #f0f8ff;
-  color: #333;
-  text-align: center;
-  padding: 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  position: absolute;
-  bottom: 110%; /* Position above the icon */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  white-space: normal;
-}
-
-/* Tooltip arrow */
-#cheerfulTooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: #f0f8ff transparent transparent transparent;
-}
-
-/* Show the tooltip when hovering over the icon container */
-#cheerfulIconContainer:hover #cheerfulTooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-#cheerfulMessageContainer {
-  position: fixed;
-  bottom: 110px;
-  right: 20px;
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 10px;
-  max-width: 300px;
-  display: none;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#cheerfulMessageText {
-  margin: 0;
-}
-
-
-/* Fade-in effect */
-#cheerfulMessageContainer.show {
-  animation: fadeIn 0.5s;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; }

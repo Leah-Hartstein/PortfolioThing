@@ -238,6 +238,112 @@ function displayTasks() {
 }
 
 
+function displayMapDots() {
+  var caseStudy1 = document.getElementById("cluster1");
+  var caseStudy2 = document.getElementById("cluster4");
+  var caseStudy3 = document.getElementById("cluster5");
+
+  // Clear the task list before displaying
+  caseStudy1.innerHTML = "";
+  caseStudy2.innerHTML = "";
+  caseStudy3.innerHTML = "";
+
+  // Get tasks from localStorage
+  let localTasks = JSON.parse(localStorage.getItem("tasks"));
+  let localSections = JSON.parse(localStorage.getItem("sections"));
+
+  if (localSections) {
+    localSections.forEach((section) => {
+      // Create a task item for the DOM (for the main list)
+      let title = document.createElement("b");
+      title.className = "mapClusterName";
+      title.setAttribute("data-id", section.id);
+
+      title.innerHTML = `
+        ${section.sectionName}
+      `;
+
+      // Append the task item to the main list only if it’s not complete
+      switch (section.sectionName) {
+        case "CoolProduct":
+          caseStudy1.appendChild(title);
+          break;
+        case "FunCube":
+          caseStudy2.appendChild(title);
+          break;
+        case "SmartClog":
+          caseStudy3.appendChild(title);
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  // Check if localTasks is not empty or null
+  if (localTasks) {
+    localTasks.forEach((task) => {
+      let item = document.createElement("div");
+      item.className = "mapDot";
+      item.setAttribute("data-id", task.id);
+
+      item.innerHTML = `
+        <div class="mapLine"></div>
+        <div class="mapMarker"></div>
+        <div class="mapMarkerText">${task.taskName}</div>
+      `;
+
+      // Append the task item to the main list only if it’s not complete
+      if (task.complete !== 1) {
+        switch (task.taskStage){
+          case "Ideation":
+            switch (task.taskSection) {
+              case "CoolProduct":
+                caseStudy1.appendChild(item);
+                item.addEventListener("click", function () {
+                  openTask(task.id);
+                });
+                break;
+              case "FunCube":
+                caseStudy2.appendChild(item);
+                item.addEventListener("click", function () {
+                  openTask(task.id);
+                });
+                break;
+              case "SmartClog":
+                caseStudy3.appendChild(item);
+                item.addEventListener("click", function () {
+                  openTask(task.id);
+                });
+                break;
+              default:
+                break;
+            }
+        }
+
+      } else {
+        switch (task.taskStage){
+          case "Ideation":
+        switch (task.taskSection) {
+          case "CoolProduct":
+            item.className = "mapDotComplete";
+            caseStudy1.appendChild(item);
+            break;
+          case "FunCube":
+            caseStudy2.appendChild(item);
+            break;
+          case "SmartClog":
+            caseStudy3.appendChild(item);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+    });
+  }
+}
+
 
 // The function for displaying chosen tasks, which works like the task displaying function but without the sorting, but with the ability to show from an ID
 // So that it can be called by the opentasks function
@@ -1394,9 +1500,13 @@ function completeTask(taskId) {
 function openTask(id) {
   // Find the task element using data-id
   var alreadyOpenTask = document.querySelector(".listTaskOpen");
+  var alreadyOpenTaskMarker = document.querySelector(".mapDotCurrent");
+
 
   // Find the task element by its data-id
   var task = document.querySelector(`[data-id="${id}"]`);
+  var taskDot = document.querySelector(`[data-id="${id}"].mapDot`);
+
 
   // Reference to the scrollable container (replace with your actual div's ID or class)
   var scrollContainer = document.querySelector(".taskList");
@@ -1408,14 +1518,21 @@ function openTask(id) {
       if (task.classList.contains("listTask")) {
           task.classList.remove("listTask");
           task.classList.add("listTaskOpen");
+          taskDot.classList.remove("mapDot");
+          taskDot.classList.add("mapDotCurrent");
           displayChosenTask(id);
           displayChosenTaskModal(id);
-
+          displayMapDots(id);
           // Close any already open tasks
           if (alreadyOpenTask) {
               alreadyOpenTask.classList.remove("listTaskOpen");
               alreadyOpenTask.classList.add("listTask");
           }
+
+          if (alreadyOpenTaskMarker) {
+            alreadyOpenTaskMarker.classList.remove("mapDotCurrent");
+            alreadyOpenTaskMarker.classList.add("mapDot");
+        }
 
           // Calculate the task's position relative to the container
           const taskPosition = task.offsetTop - scrollContainer.offsetTop;
@@ -1663,165 +1780,16 @@ function setSlideCategory(id) {
 
 setSlideCategory("Ideation");
 
-
-
-// // Handle the adding new milestone on roadmap
-// document.addEventListener('DOMContentLoaded', function() {
-//   const addMilestoneButton = document.querySelector('.add-milestone-button');
-//   const newMilestoneForm = document.querySelector('.new-milestone-form');
-//   const cancelButton = document.querySelector('.cancel-button');
-//   const milestonesContainer = document.querySelector('.milestones');
-
-//   // console.log(addMilestoneButton, newMilestoneForm, cancelButton, milestonesContainer);
-
-//   addMilestoneButton.addEventListener('click', function() {
-//     console.log('Add Milestone Button Clicked');
-//     newMilestoneForm.style.display = 'flex';
-//     addMilestoneButton.style.display = 'none';
-//   });
-
-
-//   cancelButton.addEventListener('click', function() {
-//     console.log('Cancel Button Clicked');
-//     newMilestoneForm.style.display = 'none';
-//     addMilestoneButton.style.display = 'inline-block';
-//   });
-
-//   newMilestoneForm.addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     const milestoneTitle = newMilestoneForm.elements['milestoneTitle'].value;
-
-//     const newMilestone = document.createElement('div');
-//     newMilestone.classList.add('milestone');
-//     newMilestone.innerHTML = `
-//       <div class="text"><div class="align-bottom">${milestoneTitle}</div></div>
-//       <div class="point"></div>
-//       <div class="line"></div>
-//     `;
-
-//     milestonesContainer.appendChild(newMilestone);
-
-//     newMilestoneForm.reset();
-//     newMilestoneForm.style.display = 'none';
-//     addMilestoneButton.style.display = 'inline-block';
-//   });
-// });
-
-// // Array of messages
-// const cheerfulMessages = [
-//   "You're doing an amazing job! Keep it up! 🌟",
-//   "Embrace today’s little joys—they all add up to something big! 🎉",
-//   "Celebrate every small victory. Each step forward is worth celebrating! 🎈",
-//   "The best is yet to come, and you’re right on track. Keep shining! ✨", 
-//   "One step at a time, and you'll reach places you never imagined!", 
-//   "Every tiny action counts. Keep going—you’re making progress, even if it’s , little by little! 💪",
-//   "You’re closer to finishing than you think. Just keep that momentum going!",
-//   "It’s all about small wins. One checkbox at a time—let’s get it done! ✔️"
-// ];
-
-// // Get references to elements
-// const cheerfulIcon = document.getElementById('cheerfulIcon');
-// const cheerfulMessageContainer = document.getElementById('cheerfulMessageContainer');
-// const cheerfulMessageText = document.getElementById('cheerfulMessageText');
-// const closeCheerfulMessage = document.getElementById('closeCheerfulMessage');
-
-// // Function to show message
-// function showCheerfulMessage() {
-//   // Prevent multiple clicks
-//   cheerfulIcon.style.pointerEvents = 'none';
-
-//   // Get random message
-//   const randomIndex = Math.floor(Math.random() * cheerfulMessages.length);
-//   const message = cheerfulMessages[randomIndex];
-
-//   // Display message
-//   cheerfulMessageText.innerText = message;
-//   cheerfulMessageContainer.classList.add('show');
-//   cheerfulMessageContainer.style.display = 'block';
-
-//   // Hide after 5 seconds
-//   setTimeout(() => {
-//     cheerfulMessageContainer.style.display = 'none';
-//     cheerfulIcon.style.pointerEvents = 'auto';
-//   }, 5000);
-// }
-
-// // Event listeners
-// cheerfulIcon.addEventListener('click', showCheerfulMessage);
-// closeCheerfulMessage.addEventListener('click', () => {
-//   cheerfulMessageContainer.style.display = 'none';
-//   cheerfulIcon.style.pointerEvents = 'auto';
-// });
-
-
-// // load item from tasklist of roadmap page
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Retrieve task progress data from localStorage
-//   const progressData = JSON.parse(localStorage.getItem('taskProgress'));
-
-//   if (progressData) {
-//     const { completedTasks, totalTasks, progressPercentage } = progressData;
-
-//     // Update the dashboard progress bar
-//     const progressBar = document.querySelector('.progress-fill');
-//     const progressText = document.querySelector('.progress-text'); // Optional, for displaying text
-
-//     if (progressBar) {
-//       progressBar.style.width = `${progressPercentage}%`;
-//     }
-
-//     if (progressText) {
-//       progressText.textContent = `Progress: ${completedTasks}/${totalTasks} tasks completed (${Math.round(progressPercentage)}%)`;
-//     }
-//   }
-// });
-
-// const goalProgress = 3; // Current progress
-// const totalGoals = 8; // Total goals
-// const goalPips = document.querySelectorAll(".GoalPip, .emptyGoalPip");
-
-// goalPips.forEach((pip, index) => {
-//   if (index < goalProgress) {
-//     pip.classList.add("filled-goal"); // Add a filled class to indicate progress
-//     pip.classList.remove("emptyGoalPip");
-//   } else {
-//     pip.classList.add("emptyGoalPip");
-//   }
-// });
-
-
-// const stats = [
-//   { id: "stat1", value: 30, max: 90 },
-//   { id: "stat2", value: 40, max: 80 },
-//   { id: "stat3", value: 10, max: 50 },
-//   { id: "stat4", value: 15, max: 50 },
-//   { id: "stat5", value: 12, max: 50 },
-//   { id: "stat6", value: 12, max: 50 },
-// ];
-
-// stats.forEach(stat => {
-//   const percentage = (stat.value / stat.max) * 100;
-//   const bar = document.getElementById(`${stat.id}Bar`);
-//   const numberDisplay = document.getElementById(`number${stat.id.charAt(stat.id.length - 1)}`);
-  
-//   // Update bar width and number display
-//   bar.style.width = `${percentage}%`;
-//   if (numberDisplay) numberDisplay.textContent = `${Math.round(percentage)}%`;
-// });
-
-
-
-
-// localStorage.clear();
+localStorage.clear();
 
 // Placeholder sections. Comment these back in if you want to fill the page up in a pinch
 
-// addSection('CoolProduct','Case Study',10);
-// addSection('FunCube','Case Study',20);
-// addSection('SmartClog','Case Study',50);
-// addSection('Main Resume','Resume',60);
-// addSection('Website Landing','Index/Landing',69);
-// addSection('My Design Philosophy','About Me',90);
+addSection('CoolProduct','Case Study',10);
+addSection('FunCube','Case Study',20);
+addSection('SmartClog','Case Study',50);
+addSection('Main Resume','Resume',60);
+addSection('Website Landing','Index/Landing',69);
+addSection('My Design Philosophy','About Me',90);
 
 
 
@@ -1831,4 +1799,5 @@ displayChosenTaskModal(0);
 displaySectionWidget();
 expandHeader("taskItemsIdeation");
 displaySectionModal();
+displayMapDots();
 
