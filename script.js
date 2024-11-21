@@ -3,6 +3,8 @@ const userStatsSection = document.querySelector(".userStats");
 const openListSection = document.querySelector(".openList");
 const chosenTask = document.querySelector(".chosenTask");
 const chosenTaskContainer = document.querySelector(".chosenTaskContainer");
+const chosenTaskOpen = document.querySelector(".chosenTaskOpen");
+
 
 const roadMap = document.querySelector(".roadMap");
 
@@ -99,6 +101,11 @@ function openMap(){
     
             roadMap.classList.remove("roadMap");
             roadMap.classList.add("roadMapOpen");
+
+            chosenTaskOpen.classList.remove("chosenTaskOpen");
+            chosenTaskOpen.classList.add("chosenTaskOpenHidden");
+
+
             // drawMap();
     
         } else {
@@ -107,6 +114,10 @@ function openMap(){
 
             roadMap.classList.remove("roadMapOpen");
             roadMap.classList.add("roadMap");
+
+            chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
+            chosenTaskOpen.classList.add("chosenTaskOpen");
+            
             closeMap();
             }
 }
@@ -1527,6 +1538,7 @@ modalBackground.onclick = () => {
     statsExpandModal.classList.remove("active");
     modalBackground.classList.remove("active");
     portfolioExpandModal.classList.remove("active");
+    taskCompletionExpandModal.classList.remove("active");
 };
 
 // task modal
