@@ -545,6 +545,7 @@ toggle between tasks and roadmap */
   padding: 15px;
   margin-bottom: 50px;
   border: 1px solid var(--taskborder);
+  z-index: 999;
 }
 
 
@@ -558,7 +559,8 @@ toggle between tasks and roadmap */
   position: fixed;
   align-self: center;
   margin-bottom: 50px;
-  
+  z-index: 999;
+
 }
 
 
@@ -1022,7 +1024,6 @@ toggle between tasks and roadmap */
   border-radius: 15px;
   border: 1px solid var(--taskborder);
 
-
 }
 
 .listTaskOpen {
@@ -1062,6 +1063,7 @@ toggle between tasks and roadmap */
   font-size: 20px;
 }
 
+
 .taskHeader {
   display: flex;
   flex-direction: row;
@@ -1075,6 +1077,13 @@ toggle between tasks and roadmap */
   width: 90%;
   font-size: 18px;
   color: black;
+
+}
+
+.listTaskOpen .listTaskTitle {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .listTaskImg {
@@ -2210,16 +2219,17 @@ flex: 2 0 60%;
   padding: 20px 20px 20px 20px;
 }
 
+
 .mapCluster{
   z-index: 2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid var(--taskborder);
-  background-color: var(--lightbg);
+  border: 3px solid var(--lightbg);
+  /* background-color: var(--lightbg); */
   border-radius: 15px;
-  box-shadow: #00000040 0 6px 6px;
   align-items: center;
+  position: absolute;
 }
 
 .mapClusterName {
@@ -2238,7 +2248,8 @@ flex: 2 0 60%;
   align-items: center;
   width: 15px;
   height: 15px;
-  background-color: var(--topbar);
+  background-color: var(--lightbg);
+  border: 1px solid var(--taskborder);
   border-radius: 15px;
   margin: 32px; 
   transform: translatey(20px);
@@ -2247,15 +2258,17 @@ flex: 2 0 60%;
   overflow: visible;
   cursor: pointer;
   transition: 0.1s ease-out;
+  position: relative;
+  z-index: 3;
 }
 
 .mapDotComplete{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 15px;
-  height: 15px;
-  background-color: var(--portfolio);
+  width: 12px;
+  height: 12px;
+  background-color: rgb(90, 90, 90);
   border-radius: 15px;
   margin: 32px; 
   transform: translatey(20px);
@@ -2288,16 +2301,20 @@ flex: 2 0 60%;
   position: relative;
   overflow: visible;
   cursor: pointer;
+  box-shadow: #00000040 0 6px 6px;
+  z-index: 999;
 
 }
 
 .mapLine{
-  min-width:4px;
+  max-width:4px;
   min-height:20px;
   background-color: var(--topbar);
   border-radius: 15px;
   transform: translatey(-25px);
   opacity: 0;
+  box-shadow: #00000040 0 6px 6px;
+
 }
 
 .mapDotCurrent .mapLine {
@@ -2318,13 +2335,65 @@ flex: 2 0 60%;
   animation-timing-function: ease-in-out;
   filter: drop-shadow(2px 6px 4px #949494);
   opacity: 0;
+  position: relative;
 }
 
 .mapMarkerText {
   display:none;
-  width: 100px;
-  transform: translateY(-260px);
+  width:160px;
+  transform: translateY(-140px);
+  position: absolute;
+  z-index: 999;
+  text-align: center;
+  background-color: white;
+  padding: 4px;
+  border-radius: 5px;
+  box-shadow: #00000040 0 6px 6px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
+.mapMarkerText em {
+  font-size: 10pt;
+}
+
+.mapMarkerCompleteText{
+  display: none;
+}
+
+.mapMarkerOpenButton {
+  font-weight: bold;
+  width: 80px;
+  height: 35px;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+  align-self: flex-end;
+  margin: 8px 8px;
+  opacity: 1;
+  transition: opacity 0.5s ;
+  padding: 0px 8px 0px 8px;
+  box-shadow: #00000040 0 6px 6px;
+
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+  transform: translateX(-44px) translateY(48px);
+
+}
+
+.mapMarkerOpenButton:active {
+  transform: translateX(-44px) translateY(46px);
+}
+
+
 
 .mapDotCurrent .mapMarker {
   opacity: 1;
@@ -2332,6 +2401,11 @@ flex: 2 0 60%;
 
 .mapDotCurrent .mapMarkerText {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+
 }
 
 
@@ -2346,15 +2420,27 @@ flex: 2 0 60%;
 display: flex;
 }
 
-.mapDot:hover .mapMarkerText button {
+.mapDot:hover .mapMarkerOpenButton{
   display: none;
 }
 
 .mapDotComplete:hover .mapMarkerText  {
   display: flex;
+  background-color: transparent; /* Override background */
+  box-shadow: none; /* Remove shadow as well, if needed */
+
   }
 
-  .mapDotComplete:hover .mapMarkerText button {
+.mapDotComplete:hover .mapMarkerText em {
+    text-decoration: line-through;
+  }
+
+  .mapDotComplete:hover .mapMarkerCompleteText{
+    display: flex;
+  }
+  
+
+  .mapDotComplete:hover .mapMarkerOpenButton{
     display: none;
   }
 
@@ -2370,35 +2456,35 @@ display: flex;
 }
 
 #cluster1{
-  transform: translatex(30px) translatey(80px);
-  border: 3px solid yellow;
-  width: 300px;
-  height: 160px;
+  transform: translatex(70px) translatey(80px);
+  width: 260px;
+  height: 220px;
+  z-index: 9;
 }
 
 
 #cluster2{
-  transform: translatex(-120px) translatey(-75px);
+  transform: translatex(450px) translatey(-150px);
   width: 80px;
   height: 80px;
 }
 
 #cluster3{
-  transform: translatex(80px) translatey(156px);
+  transform: translatex(440px) translatey(156px);
   width: 80px;
   height: 80px;
 }
 
 #cluster4{
-  transform: translatex(-135px) translatey(-140px);
+  transform: translatex(75px) translatey(-140px);
   width: 280px;
-  height: 140px;
+  height: 170px;
 }
 
 #cluster5{
-  transform: translatex(-255px) translatey(10px);
+  transform: translatex(350px) translatey(20px);
   width: 260px;
-  height: 120px;
+  height: 155px;
 }
 
 

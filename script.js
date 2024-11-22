@@ -104,7 +104,7 @@ function openMap(){
 
             chosenTaskOpen.classList.remove("chosenTaskOpen");
             chosenTaskOpen.classList.add("chosenTaskOpenHidden");
-
+            displayMapDots();
 
             // drawMap();
     
@@ -117,8 +117,9 @@ function openMap(){
 
             chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
             chosenTaskOpen.classList.add("chosenTaskOpen");
-            
-            closeMap();
+            displayMapDots();
+
+            // closeMap();
             }
 }
 
@@ -153,7 +154,7 @@ function displayTasks() {
               <em class="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
               
               <div class="taskHeader">
-              <b class="listTaskTitle">${task.taskName}</b>
+              <div class="listTaskTitle">${task.taskName}</div>
               <img class="listTaskImg" src="assets/working.jpg">
               
               </div>
@@ -284,10 +285,19 @@ function displayMapDots() {
       item.setAttribute("data-id", task.id);
 
       item.innerHTML = `
-        <div class="mapLine"></div>
+        <div class="mapLine">
+        <button class="mapMarkerOpenButton" onclick="openTaskCompletionModal()">Open<img src="new window.png"></button>
+        
+        </div>
         <div class="mapMarker"></div>
-        <div class="mapMarkerText">${task.taskName}
-        <button onclick="openMap()"></button>
+        <div class="mapMarkerText">
+        <em>${task.taskName}</em>
+
+        <div class ="mapMarkerCompleteText">
+                <br>
+        Complete</div>
+
+        
         </div>
       `;
 
@@ -1496,6 +1506,7 @@ function completeTask(taskId) {
   displayChosenTask();
   displayChosenTaskModal();
   displayMapDots();
+  // openMap();
 
   taskCompletionExpandModal.classList.remove("active");
   modalBackground.classList.remove("active");
