@@ -7,6 +7,7 @@ const chosenTaskOpen = document.querySelector(".chosenTaskOpen");
 
 
 const roadMap = document.querySelector(".roadMap");
+const zoomedOutMap = document.querySelector(".roadMapZoomedOut");
 
 const myPortfolio = document.querySelector(".portfolioSections");
 
@@ -124,6 +125,19 @@ function openMap(){
 }
 
 
+function zoomOut(){
+if (roadMap.classList.contains("roadMapOpen")){
+  roadMap.classList.remove("roadMapOpen");
+  roadMap.classList.add("roadMap");
+  zoomedOutMap.classList.remove("roadMapZoomedOut");
+  zoomedOutMap.classList.add("roadMapZoomedOutOpen");
+} else {
+  roadMap.classList.remove("roadMap");
+  roadMap.classList.add("roadMapOpen");
+  zoomedOutMap.classList.remove("roadMapZoomedOutOpen");
+  zoomedOutMap.classList.add("roadMapZoomedOut");
+}
+}
 
 
 // The function for displaying tasks, which is mostly just creating a div element, injecting in html, then sorting them into appropriate places in the list and modal
@@ -154,16 +168,18 @@ function displayTasks() {
               <em class="listTaskSection">${task.taskSectionType} - ${task.taskSection}</em>
               
               <div class="taskHeader">
-              <div class="listTaskTitle">${task.taskName}</div>
-              <img class="listTaskImg" src="assets/working.jpg">
-              
-              </div>
-              <p class="taskDescription">${task.taskDescription}</p>
-              <ul>
+              <div class="listTaskTitle">${task.taskName}
+                            <ul>
               <li class="taskMainTask"><em>${task.taskMainTask}</em</li>
               </ul>
+</div>
+              
+              <img class="listTaskImg" src="assets/visualdesign.png">
+
+              </div>
+
               <div class="taskFooter">
-              <input type="checkbox" class="taskItemTaskTick">
+              Visual Design
               <p class="taskItemTaskText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
               <div class="taskItemTaskStars">${starsHTML}</div>
               </div>
@@ -1792,6 +1808,8 @@ function setSlideCategory(id) {
     dots.replaceChildren(...newDots);
     setSlide(0);
 }
+
+
 
 setSlideCategory("Ideation");
 
