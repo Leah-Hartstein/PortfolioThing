@@ -1811,6 +1811,8 @@ function setSlideCategory(id) {
 
 
 
+
+
 setSlideCategory("Ideation");
 
 localStorage.clear();
@@ -1834,3 +1836,51 @@ expandHeader("taskItemsIdeation");
 displaySectionModal();
 displayMapDots();
 
+    // Path to the folder containing your images
+    const imageFolder = 'assets/';
+
+    // List of image filenames in the folder
+    const imageFiles = [
+      'aipatterner.png',
+      'penguin.jpg',
+      'vidtome1.png',
+      'vidtome2.png',
+      'vidtome3.png',
+      'vidtome4.png',
+      'hifi1.png',
+      'hifi2.png',
+      'hifi3.png',
+      'hifi4.png',
+      'annote.png',
+      'annote2.png',
+      'sketch1.png',
+      'sketch2.png',
+      'sketch3.png',
+      'sketch4.png',
+
+
+      // 'image3.jpg',
+      // 'image4.jpg',
+      // 'image5.jpg'
+    ];
+
+    function getRandomImage() {
+      const randomIndex = Math.floor(Math.random() * imageFiles.length);
+      return imageFolder + imageFiles[randomIndex];
+    }
+    
+    // Function to assign random images to elements of a specific class
+    function assignRandomBackgrounds(className) {
+      const elements = document.querySelectorAll(`.${className}`);
+      elements.forEach(element => {
+        const randomImage = getRandomImage();
+        element.style.backgroundImage = `url('${randomImage}')`;
+        element.style.backgroundSize = '100%'; // Set background size to 100%
+        element.style.backgroundRepeat = 'no-repeat'; // Prevent background repetition
+        element.style.backgroundPosition = 'center'; // Center the background image
+      });
+    }
+    
+    // Assign random images to both large and small thumbnails
+    assignRandomBackgrounds('portfolioSectionContentThumbnailLarge');
+    assignRandomBackgrounds('portfolioSectionContentThumbnailSmall');

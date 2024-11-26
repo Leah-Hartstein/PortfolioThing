@@ -1509,7 +1509,7 @@ uploads images and writes text for their portfolio sections */
 .slideshowItemImg {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .slideshowItemTitle {
@@ -2629,7 +2629,7 @@ display: flex;
 
 #cluster1{
   transform: translatex(25px) translatey(95px);
-  width: 260px;
+  width: 285px;
   height: 180px;
   z-index: 9;
 }
@@ -2642,7 +2642,7 @@ display: flex;
 }
 
 #cluster3{
-  transform: translatex(420px) translatey(176px);
+  transform: translatex(380px) translatey(176px);
   width: 80px;
   height: 80px;
 }
@@ -2654,7 +2654,7 @@ display: flex;
 }
 
 #cluster5{
-  transform: translatex(330px) translatey(24px);
+  transform: translatex(330px) translatey(14px);
   width: 260px;
   height: 155px;
 }
@@ -2686,3 +2686,14 @@ display: flex;
 
 /* Fixing Overlay Issues */
 
+/* .portfolioSectionContentThumbnailLarge{
+  background: url(assets/aipatterner.png) center no-repeat;
+  background-size: 100%;
+  border: 1px solid var(--taskborder);
+}
+
+.portfolioSectionContentThumbnailSmall{
+  background: url(assets/penguin.jpg) center no-repeat;
+  background-size: 100%;
+  border: 1px solid var(--taskborder);
+} */
