@@ -8,6 +8,10 @@ const chosenTaskOpen = document.querySelector(".chosenTaskOpen");
 
 const roadMap = document.querySelector(".roadMap");
 const zoomedOutMap = document.querySelector(".roadMapZoomedOut");
+const roadMapDrafting = document.querySelector(".roadMapDrafting");
+const roadMapFinalisation = document.querySelector(".roadMapFinalisation");
+const roadMapInterview = document.querySelector(".roadMapInterview");
+
 
 const myPortfolio = document.querySelector(".portfolioSections");
 
@@ -95,34 +99,126 @@ function expandList() {
 
 
 
-function openMap(){
-        if (chosenTaskContainer.classList.contains("chosenTaskContainer")) {
-          chosenTaskContainer.classList.remove("chosenTaskContainer");
-          chosenTaskContainer.classList.add("chosenTaskHidden");
+// function openMap(){
+//         if (chosenTaskContainer.classList.contains("chosenTaskContainer")) {
+//           chosenTaskContainer.classList.remove("chosenTaskContainer");
+//           chosenTaskContainer.classList.add("chosenTaskHidden");
     
-            roadMap.classList.remove("roadMap");
-            roadMap.classList.add("roadMapOpen");
+//             roadMap.classList.remove("roadMap");
+//             roadMap.classList.add("roadMapOpen");
 
-            chosenTaskOpen.classList.remove("chosenTaskOpen");
-            chosenTaskOpen.classList.add("chosenTaskOpenHidden");
-            displayMapDots();
+//             chosenTaskOpen.classList.remove("chosenTaskOpen");
+//             chosenTaskOpen.classList.add("chosenTaskOpenHidden");
+//             displayMapDots();
 
-            // drawMap();
+//             // drawMap();
     
-        } else {
-          chosenTaskContainer.classList.remove("chosenTaskHidden");
-          chosenTaskContainer.classList.add("chosenTaskContainer");
+//         } else {
+//           chosenTaskContainer.classList.remove("chosenTaskHidden");
+//           chosenTaskContainer.classList.add("chosenTaskContainer");
 
-            roadMap.classList.remove("roadMapOpen");
-            roadMap.classList.add("roadMap");
+//             roadMap.classList.remove("roadMapOpen");
+//             roadMap.classList.add("roadMap");
 
-            chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
-            chosenTaskOpen.classList.add("chosenTaskOpen");
-            displayMapDots();
+//             chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
+//             chosenTaskOpen.classList.add("chosenTaskOpen");
+//             displayMapDots();
 
-            // closeMap();
-            }
+//             // closeMap();
+//             }
+// }
+
+function openMap(mapType) {
+  if (chosenTaskContainer.classList.contains("chosenTaskContainer")) {
+      chosenTaskContainer.classList.remove("chosenTaskContainer");
+      chosenTaskContainer.classList.add("chosenTaskHidden");
+
+      roadMap.classList.remove("roadMap");
+      
+      // Remove all possible roadmap classes to avoid conflicts
+      roadMap.classList.remove("roadMapOpen", "roadMapOpenDrafting", "roadMapOpenFinalisation", "roadMapOpenInterview", "roadMapOpenZoomedOut");
+
+      // Apply the correct roadmap class based on mapType
+      switch (mapType) {
+          case 'drafting':
+              roadMap.classList.add("roadMapOpenDrafting");
+              break;
+          case 'finalisation':
+              roadMap.classList.add("roadMapOpenFinalisation");
+              break;
+          case 'interview':
+              roadMap.classList.add("roadMapOpenInterview");
+              break;
+          case 'zoomedOut':
+              roadMap.classList.add("roadMapOpenZoomedOut");
+              break;
+          default:
+              roadMap.classList.add("roadMapOpen");
+      }
+
+      chosenTaskOpen.classList.remove("chosenTaskOpen");
+      chosenTaskOpen.classList.add("chosenTaskOpenHidden");
+      displayMapDots();
+
+  } else {
+      chosenTaskContainer.classList.remove("chosenTaskHidden");
+      chosenTaskContainer.classList.add("chosenTaskContainer");
+
+      roadMap.classList.remove("roadMapOpen", "roadMapOpenDrafting", "roadMapOpenFinalisation", "roadMapOpenInterview", "roadMapOpenZoomedOut");
+      roadMap.classList.add("roadMap");
+
+      chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
+      chosenTaskOpen.classList.add("chosenTaskOpen");
+      displayMapDots();
+  }
 }
+
+function swapMap(mapType) {
+  // Define the class names for each map view
+  const mapViews = [
+      "roadMap",
+      "roadMapDrafting",
+      "roadMapFinalisation",
+      "roadMapInterview",
+      "roadMapZoomedOut"
+  ];
+
+  // Hide all map views by setting visibility to 'hidden'
+  mapViews.forEach(view => {
+      const element = document.querySelector(`.${view}`);
+      if (element) {
+          element.style.visibility = "hidden"; // Hide element
+      }
+  });
+
+  // Determine which view to show based on the mapType argument
+  let selectedView;
+  switch (mapType) {
+      case 'drafting':
+          selectedView = "roadMapDrafting";
+          break;
+      case 'finalisation':
+          selectedView = "roadMapFinalisation";
+          break;
+      case 'interview':
+          selectedView = "roadMapInterview";
+          break;
+      case 'zoomedOut':
+          selectedView = "roadMapZoomedOut";
+          break;
+      default:
+          selectedView = "roadMap";
+  }
+
+  // Show the selected map view by setting visibility to 'visible'
+  const selectedElement = document.querySelector(`.${selectedView}`);
+  if (selectedElement) {
+      selectedElement.style.visibility = "visible";
+  }
+}
+
+
+
 
 
 function zoomOut(){
@@ -138,6 +234,21 @@ if (roadMap.classList.contains("roadMapOpen")){
   zoomedOutMap.classList.add("roadMapZoomedOut");
 }
 }
+
+function openMapDrafting(){
+  if (roadMap.classList.contains("roadMapOpen")){
+    roadMap.classList.remove("roadMapOpen");
+    roadMap.classList.add("roadMap");
+    roadMapDrafting.classList.remove("roadMapDrafting");
+    roadMapDrafting.classList.add("roadMapOpenDrafting");
+  } else {
+    roadMap.classList.remove("roadMap");
+    roadMap.classList.add("roadMapOpen");
+    zoomedOutMap.classList.remove("roadMapZoomedOutOpen");
+    zoomedOutMap.classList.add("roadMapZoomedOut");
+  }
+  }
+  
 
 
 // The function for displaying tasks, which is mostly just creating a div element, injecting in html, then sorting them into appropriate places in the list and modal

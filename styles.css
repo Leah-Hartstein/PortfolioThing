@@ -2317,6 +2317,24 @@ flex: 2 0 60%;
   width: 100%;
 }
 
+.roadMapDrafting {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+.roadMapFinalisation {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+.roadMapInterview {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
 .roadMapOpen h1 {
   position: sticky;
   width: 0;
@@ -2333,6 +2351,63 @@ flex: 2 0 60%;
 
 
 .roadMapOpen{
+  position: absolute;
+  height: 460px;
+  min-width: 600px;
+  max-width: 700px;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
+  background-color: lightblue;
+  background-image: url(assets/ideationbg.png)  ;
+  background-size:130% 130%;
+  background-position-x: 40%;
+  background-position-y: 90%;
+  overflow:hidden;
+}
+
+.roadMapOpenDrafting{
+  position: absolute;
+  height: 460px;
+  min-width: 600px;
+  max-width: 700px;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
+  background-color: lightblue;
+  background-image: url(assets/ideationbg.png)  ;
+  background-size:130% 130%;
+  background-position-x: 40%;
+  background-position-y: 90%;
+  overflow:hidden;
+}
+
+.roadMapOpenFinalisation{
+  position: absolute;
+  height: 460px;
+  min-width: 600px;
+  max-width: 700px;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
+  background-color: lightblue;
+  background-image: url(assets/ideationbg.png)  ;
+  background-size:130% 130%;
+  background-position-x: 40%;
+  background-position-y: 90%;
+  overflow:hidden;
+}
+
+.roadMapOpenInterview{
   position: absolute;
   height: 460px;
   min-width: 600px;
