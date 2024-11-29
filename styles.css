@@ -725,13 +725,12 @@ toggle between tasks and roadmap */
   box-shadow: #00000040 0 6px 6px;
 
   
-  display:flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
   background-color: white;
-
+  display: none;
 
 }
 

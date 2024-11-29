@@ -11,6 +11,8 @@ const zoomedOutMap = document.querySelector(".roadMapZoomedOut");
 const roadMapDrafting = document.querySelector(".roadMapDrafting");
 const roadMapFinalisation = document.querySelector(".roadMapFinalisation");
 const roadMapInterview = document.querySelector(".roadMapInterview");
+const zoomOutBtn = document.querySelector(".zoomOut");
+
 
 
 const myPortfolio = document.querySelector(".portfolioSections");
@@ -159,6 +161,7 @@ function openMap(mapType) {
       chosenTaskOpen.classList.remove("chosenTaskOpen");
       chosenTaskOpen.classList.add("chosenTaskOpenHidden");
       displayMapDots();
+      zoomOutBtn.style.display = "flex";
 
   } else {
       chosenTaskContainer.classList.remove("chosenTaskHidden");
@@ -166,10 +169,14 @@ function openMap(mapType) {
 
       roadMap.classList.remove("roadMapOpen", "roadMapOpenDrafting", "roadMapOpenFinalisation", "roadMapOpenInterview", "roadMapOpenZoomedOut");
       roadMap.classList.add("roadMap");
+      zoomedOutMap.classList.remove("roadMapZoomedOutOpen");
+      zoomedOutMap.classList.add("roadMapZoomedOut");
 
       chosenTaskOpen.classList.remove("chosenTaskOpenHidden");
       chosenTaskOpen.classList.add("chosenTaskOpen");
       displayMapDots();
+      zoomOutBtn.style.display = "none";
+
   }
 }
 
