@@ -40,6 +40,7 @@ const taskCompletionExpandModalClose = document.querySelector(".taskCompletionMo
 const taskCompletionModalContainer = document.querySelector(".taskCompletionModalContainer");
 
 
+
 const guidesExpandButton = document.querySelector(".guidesExpandButton");
 const guidesExpandModal = document.querySelector(".guidesExpandModal");
 const guidesExpandModalClose = document.querySelector(".guidesModalClose");
@@ -605,6 +606,7 @@ function displayChosenTaskModal(taskId) {
 
           // Set the inner HTML for the task item
           item.innerHTML = `
+          <div class = "taskCompletionModalInput">
               <h3>${task.taskSection}</h3>
               <div class="taskCompletionModalTextInput">
                   <input type="text"></input>
@@ -622,7 +624,35 @@ function displayChosenTaskModal(taskId) {
               <div class="taskCompletionModalFooter">
                   <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
                   <p class="chosenTaskType">${task.taskStage}</p>
-                  <button class="taskCompletionModalSubmit" onclick="completeTask('${task.id}')">Complete Task</button>
+                  <button class="taskCompletionModalSubmit" onclick="showResultsScreen()">Complete Task</button>
+              </div>
+          </div>  
+
+              <div class = "taskCompletionModalResults">
+                    <h3>${task.taskSection}</h3>
+
+              <div class = "taskCompletionModalVictory"></div>
+
+
+              <h2>${task.taskName}</h2>
+
+
+              <div class ="taskCompletionModalText">
+                  <ul>
+                    <li><b>${task.taskMainTask}</b></li>
+                    <ul>
+                      <li>${task.taskSubTask}</li>
+                    </ul>
+                  </ul>
+              </div>
+               <h2 class = "taskCompletionModalResultsCompleteHeader">
+              COMPLETE
+              </h2>
+              <div class="taskCompletionModalFooter">
+                  <p class="taskItemTaskBoldText taskItemTaskTime">${task.taskCompletionTime} Minutes</p>
+                  <p class="chosenTaskType">${task.taskStage}</p>
+                  <button class="taskCompletionModalSubmit" onclick="completeTask('${task.id}')">Done!</button>
+              </div>
               </div>
           `;
 
@@ -1611,6 +1641,17 @@ function addTask(taskName, taskSection, taskSectionType, taskStage, taskDescript
 // The function for completing tasks, which just changes a single attribute from 0 to 1 so they can be removed from the list and chosen task and moved to the
 // appropriate div in the modal
 
+function showResultsScreen() {
+  var taskCompletionModalContainerResults = document.querySelector(".taskCompletionModalResults");
+
+  var taskCompletionModalInput = document.querySelector(".taskCompletionModalInput");
+
+  taskCompletionModalInput.classList.remove("taskCompletionModalInput");
+  taskCompletionModalInput.classList.add("taskCompletionModalResults");
+  taskCompletionModalContainerResults.classList.remove("taskCompletionModalResults");
+  taskCompletionModalContainerResults.classList.add("taskCompletionModalResultsOpen");
+}
+
 function completeTask(taskId) {
   // Fetch tasks from local storage
   let localTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -1641,6 +1682,7 @@ function completeTask(taskId) {
   displayChosenTaskModal();
   displayMapDots();
   // openMap();
+
 
   taskCompletionExpandModal.classList.remove("active");
   modalBackground.classList.remove("active");

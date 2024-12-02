@@ -1879,6 +1879,86 @@ cursor: pointer;
   width:100%
 }
 
+.taskCompletionModalResults {
+  display: none;
+}
+
+.taskCompletionModalResultsOpen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px;
+  justify-content: center;
+}
+
+
+.taskCompletionModalResultsOpen .taskCompletionModalText{
+  width: 80%;
+  align-self: center;
+  height: 150px;
+  
+}
+
+.taskCompletionModalResultsCompleteHeader{
+  text-align: center;
+}
+
+.taskCompletionModalVictory {
+  position: relative; /* Ensures proper positioning for the ::before pseudo-element */
+  height: 250px;
+  border: none;
+  border-radius: 15px; /* Correct syntax for border-radius */
+  background-image: url(assets/ideationbg.png);
+  background-size: 200% 200%;
+  background-position: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;  
+  overflow: hidden; /* Ensures ::before layer doesn't overflow the container */
+}
+
+.taskCompletionModalVictory::before {
+  content: ""; /* Required to make the pseudo-element appear */
+  position: absolute; /* Ensures ::before is placed relative to the parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9; /* Places the ::before layer behind the main content */
+  background: url(assets/lface.png) center no-repeat; /* Use the same image or a different one */
+  background-size: 30%;
+  background-position-x: 10%; /* Starting position */
+  animation: moveX 3s ease-in-out 1 forwards; /* Animation details */
+  animation-delay: 1s;
+
+}
+
+/* Keyframes for moving the background position */
+@keyframes moveX {
+  0% {
+    background-position-x: 10%;
+  }
+  100% {
+    background-position-x: 90%;
+  }
+}
+
+
+
+.taskCompletionModalInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.taskCompletionModalResultsOpen .taskCompletionModalText {
+  text-decoration: line-through;
+}
+
 /* STATS */
 
 .statsExpandModal {
