@@ -1908,7 +1908,7 @@ cursor: pointer;
 }
 
 .taskCompletionModalVictory {
-  position: relative; /* Ensures proper positioning for the ::before pseudo-element */
+  position: relative; 
   height: 250px;
   border: none;
   border-radius: 15px; /* Correct syntax for border-radius */
